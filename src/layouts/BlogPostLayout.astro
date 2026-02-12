@@ -1,0 +1,80 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  publishDate: string;
+  readingTime: string;
+  category: string;
+  heroEmoji: string;
+}
+
+const { title, description, publishDate, readingTime, category, heroEmoji } = Astro.props;
+const siteUrl = 'https://aprendenotion.com';
+const pageUrl = new URL(Astro.url.pathname, siteUrl).href;
+---
+
+<BaseLayout title={`${title} — Aprende Notion`} description={description}>
+  <article class="page-wrapper" itemscope itemtype="https://schema.org/BlogPosting">
+    <!-- Blog post header -->
+    <header class="blog-post-header">
+      <div class="blog-post-header__meta">
+        <span class="blog-post-header__category">{category}</span>
+        <span class="blog-post-header__separator">·</span>
+        <time datetime={publishDate} itemprop="datePublished">{new Date(publishDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span class="blog-post-header__separator">·</span>
+        <span>{readingTime}</span>
+      </div>
+      <div class="blog-post-header__emoji" aria-hidden="true">{heroEmoji}</div>
+      <h1 class="blog-post-header__title" itemprop="headline">{title}</h1>
+      <p class="blog-post-header__description" itemprop="description">{description}</p>
+    </header>
+
+    <hr />
+
+    <!-- Blog post content -->
+    <div class="blog-post-content content" itemprop="articleBody">
+      <slot />
+    </div>
+
+    <!-- Author box -->
+    <div class="blog-post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+      <div class="blog-post-author__avatar">EM</div>
+      <div class="blog-post-author__info">
+        <strong itemprop="name">Elena Madrigal</strong>
+        <p>Creadora de Aprende Notion. Apasionada de la productividad y los sistemas personales.</p>
+      </div>
+    </div>
+
+    <!-- Back to blog -->
+    <nav class="page-nav" aria-label="Navegación del blog">
+      <a href="/blog" class="page-nav__link">← Volver al blog</a>
+      <span class="page-nav__link page-nav__link--disabled"></span>
+    </nav>
+  </article>
+
+  <!-- BlogPosting structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "datePublished": publishDate,
+    "author": {
+      "@type": "Person",
+      "name": "Elena Madrigal",
+      "url": "https://elenamadrigal.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Aprende Notion",
+      "url": siteUrl
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": pageUrl
+    },
+    "inLanguage": "es"
+  })} />
+</BaseLayout>

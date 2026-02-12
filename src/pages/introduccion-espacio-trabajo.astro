@@ -1,0 +1,114 @@
+---
+import LessonLayout from '../layouts/LessonLayout.astro';
+
+const toc = [
+  { label: 'La barra lateral', href: '#barra-lateral' },
+  { label: 'Cambio de espacio de trabajo, búsqueda, notificaciones y settings', href: '#workspace-utils', nested: true },
+  { label: 'Subsecciones del espacio de trabajo', href: '#subsecciones', nested: true },
+  { label: 'Templates, import & trash', href: '#templates-import', nested: true },
+  { label: 'El editor', href: '#editor' },
+  { label: 'Navegación', href: '#navegacion', nested: true },
+  { label: 'Colaboradores', href: '#colaboradores', nested: true },
+  { label: 'Compartir', href: '#compartir', nested: true },
+  { label: 'Updates', href: '#updates', nested: true },
+  { label: 'Favorite', href: '#favorite', nested: true },
+  { label: 'Menu ...', href: '#menu', nested: true },
+];
+---
+
+<LessonLayout
+  title="01. Introducción al espacio de trabajo — Aprende Notion"
+  description="Familiarízate con el espacio de trabajo de Notion: la barra lateral, el editor, navegación, opciones de compartir y todas las herramientas disponibles."
+  emoji="✏️"
+  lessonTitle="01. Introducción al espacio de trabajo"
+  nextLink={{ href: '/paginas-bloques', label: '🧱 02. Páginas y Bloques' }}
+  toc={toc}
+>
+  <p>Cuando abres Notion por primera vez te encuentras con una página en blanco. Antes de empezar a crear páginas, es importante familiarizarse con el espacio de trabajo y entender cómo está organizado.</p>
+
+  <h2 id="barra-lateral">La barra lateral</h2>
+  <p>La barra lateral es el panel de navegación principal de Notion. Desde aquí puedes acceder a todas tus páginas, buscar contenido, gestionar notificaciones y configurar tu espacio de trabajo. Se divide en tres secciones principales.</p>
+
+  <h3 id="workspace-utils">Cambio de espacio de trabajo, búsqueda, notificaciones y settings</h3>
+
+  <h4>Cambio de espacio de trabajo</h4>
+  <p>Si perteneces a varios espacios de trabajo, puedes acceder a cada uno de ellos desde aquí. También puedes crear nuevos, añadir cuentas o cerrar sesión.</p>
+
+  <h4>Búsqueda</h4>
+  <p>La búsqueda de Notion es bastante potente. Puedes acceder a ella desde el icono de la lupa o con el atajo <code>cmd/ctrl + p</code>. Permite ordenar resultados, filtrar por tipo y combinar múltiples filtros para búsquedas avanzadas.</p>
+
+  <h4>Notificaciones (All Updates)</h4>
+  <p>Un panel que divide las notificaciones en cuatro tipos:</p>
+  <ul>
+    <li><strong>Inbox:</strong> Menciones y alertas configuradas</li>
+    <li><strong>Following:</strong> Actualizaciones de páginas que sigues en espacios compartidos</li>
+    <li><strong>All:</strong> Actualizaciones globales del espacio de trabajo e historial</li>
+    <li><strong>Archive:</strong> Notificaciones archivadas previamente</li>
+  </ul>
+
+  <h3 id="subsecciones">Subsecciones del espacio de trabajo</h3>
+
+  <h4>Workspace y Private</h4>
+  <p>Las cuentas personales no muestran distinción entre tipos de páginas; todas son privadas por defecto. Las cuentas Pro y Team muestran esta diferenciación. Las páginas del Workspace son visibles y compartibles con los miembros del equipo. Las páginas Private solo son accesibles para el propietario de la cuenta.</p>
+
+  <h4>Shared</h4>
+  <p>Las páginas compartidas individualmente aparecen aquí, visibles solo para aquellos con el enlace.</p>
+
+  <h4>Favorites</h4>
+  <p>Las páginas marcadas como favoritas aparecen aquí para acceso rápido. Puedes reordenar, añadir o eliminar favoritos sin borrar las páginas originales.</p>
+
+  <h3 id="templates-import">Templates, import & trash</h3>
+
+  <h4>Templates</h4>
+  <p>Estructuras de página prediseñadas disponibles para diferentes casos de uso, que ayudan a los nuevos usuarios a evitar empezar desde cero.</p>
+
+  <h4>Import</h4>
+  <p>Puedes importar datos desde Evernote, Trello, Asana, Word, Google Docs o Dropbox.</p>
+
+  <h4>Trash</h4>
+  <p>Las páginas eliminadas van aquí. Un panel con dos pestañas permite revisar las eliminaciones: una muestra todos los elementos eliminados y otra filtra las subpáginas eliminadas dentro de la página actual. Los elementos pueden restaurarse o eliminarse permanentemente.</p>
+
+  <div class="callout">
+    <span class="callout__icon">💡</span>
+    <div class="callout__content">
+      <p>La papelera nunca elimina nada definitivamente, lo que permite usarla como archivo para páginas que quieres ocultar pero no eliminar.</p>
+    </div>
+  </div>
+
+  <h2 id="editor">El editor</h2>
+  <p>El editor contiene elementos del menú superior que desaparecen cuando escribes para minimizar distracciones.</p>
+
+  <h3 id="navegacion">Navegación</h3>
+  <p>Una miga de pan (breadcrumb) que muestra tu ubicación actual dentro de la jerarquía de páginas, permitiendo navegar a páginas padre y subpáginas.</p>
+
+  <h3 id="colaboradores">Colaboradores</h3>
+  <p>Muestra las personas con acceso a la página actual (deben ser usuarios de Notion).</p>
+
+  <h3 id="compartir">Compartir</h3>
+  <p>Las opciones incluyen:</p>
+  <ul>
+    <li><strong>Share to the web:</strong> Genera un enlace, publica la página públicamente, con opciones de edición, comentarios o permisos de duplicación</li>
+    <li><strong>Share with workspace:</strong> Hace visibles las páginas privadas para los miembros del workspace con niveles de permisos seleccionables</li>
+    <li><strong>Invite people:</strong> Comparte con personas específicas vía email, otorgando niveles de acceso personalizables</li>
+    <li><strong>Copy link:</strong> Copia un enlace para compartir al portapapeles (solo funcional tras activar una opción de compartir)</li>
+  </ul>
+
+  <h3 id="updates">Updates</h3>
+  <p>Muestra todos los cambios realizados por ti o miembros del equipo. Opciones para seguir la página y recibir notificaciones, y conectar con canales de Slack.</p>
+
+  <h3 id="favorite">Favorite</h3>
+  <p>Botón para marcar páginas como favoritas para acceso rápido en la barra lateral.</p>
+
+  <h3 id="menu">Menu ...</h3>
+  <p>Opciones adicionales de estilo y gestión:</p>
+  <ul>
+    <li><strong>Style:</strong> Opciones tipográficas (serif, sans-serif, monospace)</li>
+    <li><strong>Small text:</strong> Espaciado condensado</li>
+    <li><strong>Full width:</strong> La página abarca todo el ancho del workspace</li>
+    <li><strong>Page lock:</strong> Previene ediciones accidentales</li>
+    <li><strong>Database lock:</strong> Previene cambios en propiedades/vistas pero permite entrada de datos</li>
+    <li><strong>Page History:</strong> Acceso a versiones anteriores (límite de 30 días, solo planes de pago)</li>
+    <li><strong>Export:</strong> Descargar como PDF, HTML, Markdown o CSV</li>
+    <li><strong>Move to:</strong> Reubicar la página dentro del workspace</li>
+  </ul>
+</LessonLayout>

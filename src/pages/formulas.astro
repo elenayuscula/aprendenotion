@@ -1,0 +1,31 @@
+---
+import LessonLayout from '../layouts/LessonLayout.astro';
+
+const modules = [
+  { icon: 'blue', title: '5.01 Introducción a las Fórmulas en Notion', tag: 'Contenido' },
+  { icon: 'yellow', title: '5.02 Expresiones y condiciones anidadas', tag: 'Contenido' },
+  { icon: 'purple', title: '5.03 Bola extra: Tipos de valores en las fórmulas de Notion', tag: 'Bola extra' },
+  { icon: 'purple', title: '5.04 Bola extra: Cómo crear barras de progreso en Notion', tag: 'Bola extra' },
+];
+---
+
+<LessonLayout
+  title="5. Fórmulas — Aprende Notion"
+  description="Domina las fórmulas en Notion: expresiones, condiciones anidadas, tipos de valores y cómo crear barras de progreso."
+  emoji="➗"
+  lessonTitle="5. Fórmulas"
+  prevLink={{ href: '/relations-rollups', label: '🕸️ 4. Relations & Rollups' }}
+  nextLink={{ href: '/api-notion', label: '🔌 6. La API de Notion' }}
+>
+  <p>Una vez que dominas las bases de datos con sus propiedades fundamentales y funcionalidades más sofisticadas como Relations o Rollups, es hora de explorar la última propiedad: <strong>Formula</strong>. Esta funcionalidad permite realizar diversas operaciones dentro de las bases de datos, amplificando las ya potentes capacidades de Notion.</p>
+
+  <div class="module-list">
+    {modules.map((mod) => (
+      <div class="module-item">
+        <span class={`module-item__icon module-item__icon--${mod.icon}`}></span>
+        <span class="module-item__title">{mod.title}</span>
+        <span class="module-item__tag">{mod.tag}</span>
+      </div>
+    ))}
+  </div>
+</LessonLayout>

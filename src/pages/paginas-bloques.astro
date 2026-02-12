@@ -1,0 +1,122 @@
+---
+import LessonLayout from '../layouts/LessonLayout.astro';
+
+const toc = [
+  { label: 'Tu primera página en Notion', href: '#primera-pagina' },
+  { label: 'Dándole estilo al texto', href: '#estilo-texto' },
+  { label: 'La unidad mínima en Notion son los bloques', href: '#bloques' },
+  { label: 'Bloques básicos', href: '#bloques-basicos' },
+  { label: 'Los bloques son fluidos', href: '#bloques-fluidos' },
+  { label: 'Páginas y subpáginas', href: '#paginas-subpaginas' },
+  { label: 'Bloques especiales', href: '#bloques-especiales' },
+  { label: 'Bloques en línea', href: '#bloques-linea', nested: true },
+  { label: 'Menciones', href: '#menciones', nested: true },
+  { label: 'Recordatorios', href: '#recordatorios', nested: true },
+  { label: 'Emojis', href: '#emojis', nested: true },
+  { label: 'Bloques de base de datos', href: '#bloques-bbdd' },
+  { label: 'Bloques de media', href: '#bloques-media' },
+  { label: 'Bloques para incrustar', href: '#bloques-embed' },
+  { label: 'Práctica: Guía de viajes', href: '#practica' },
+];
+---
+
+<LessonLayout
+  title="02. Páginas y Bloques — Aprende Notion"
+  description="Aprende sobre páginas, bloques, estilos de texto, subpáginas, bloques especiales, bases de datos, media y embeds en Notion."
+  emoji="🧱"
+  lessonTitle="02. Páginas y Bloques"
+  prevLink={{ href: '/introduccion-espacio-trabajo', label: '✏️ 01. Introducción' }}
+  nextLink={{ href: '/bases-datos', label: '📊 03. Bases de Datos' }}
+  toc={toc}
+>
+  <p>Notion promete unificar todas las aplicaciones de productividad que usas a diario. Se presenta como un "All-in-one workspace". Cuando abres la aplicación por primera vez, te encuentras con un lienzo en blanco.</p>
+
+  <h2 id="primera-pagina">Tu primera página en Notion</h2>
+  <p>Crea una nueva página usando el botón "+ New Page" en la barra lateral. Añade un título, un icono y una imagen de fondo. Puedes elegir empezar en blanco o usar una plantilla.</p>
+
+  <h2 id="estilo-texto">Dándole estilo al texto</h2>
+  <p>Selecciona texto para acceder a las opciones de formato: <strong>negrita</strong>, <em>cursiva</em>, subrayado, tachado, enlaces, formato de código y cambios de color de texto y fondo.</p>
+
+  <h2 id="bloques">La unidad mínima en Notion son los bloques</h2>
+  <p>Notion es fundamentalmente como LEGO: bloques que se combinan de diferentes maneras para crear soluciones variadas.</p>
+  <p>Los usuarios pueden acceder a los bloques escribiendo <code>/</code>. La flexibilidad para transformar bloques en diferentes tipos es una característica clave.</p>
+
+  <h2 id="bloques-basicos">Bloques básicos</h2>
+  <ul>
+    <li>Texto</li>
+    <li>Headings (H1, H2, H3)</li>
+    <li>Bullets</li>
+    <li>Checkboxes</li>
+    <li>Listas numeradas</li>
+    <li>Quotes</li>
+    <li>Callouts</li>
+    <li>Desplegables (Toggles)</li>
+    <li>Separadores de contenido</li>
+  </ul>
+
+  <h2 id="bloques-fluidos">Los bloques son fluidos</h2>
+  <p>Cualquier bloque de Notion puede convertirse en un tipo diferente. Las listas pueden convertirse en checklists, el texto puede transformarse en páginas, y las tareas pueden transformarse en tableros kanban.</p>
+
+  <div class="callout">
+    <span class="callout__icon">💡</span>
+    <div class="callout__content">
+      <p>La misma información mostrada de diferentes maneras según el contexto es una de las cualidades especiales de Notion.</p>
+    </div>
+  </div>
+
+  <p>Los bloques pueden arrastrarse y reordenarse para su organización.</p>
+
+  <h2 id="paginas-subpaginas">Páginas y subpáginas</h2>
+  <p>Las páginas funcionan como archivos en Notion. Las páginas pueden contener subpáginas infinitamente. Cada página tiene un enlace único que puede referenciarse en todo el workspace usando <code>@</code> seguido del nombre de la página.</p>
+  <p>La función de "backlinks" introducida recientemente muestra qué páginas hacen referencia a una página determinada.</p>
+
+  <h2 id="bloques-especiales">Bloques especiales</h2>
+
+  <h3 id="bloques-linea">Bloques en línea</h3>
+  <p>Contenido inline accesible con <code>@</code>. Incluye menciones y recordatorios.</p>
+
+  <h3 id="menciones">Menciones</h3>
+  <ul>
+    <li><strong>Mention pages:</strong> Crea enlaces automáticos a páginas especificadas</li>
+    <li><strong>Mention people:</strong> Envía notificaciones a los usuarios mencionados</li>
+    <li><strong>Mention dates:</strong> Crea marcas de tiempo usando formatos como "today", "tomorrow" o "@12/30"</li>
+  </ul>
+
+  <h3 id="recordatorios">Recordatorios</h3>
+  <p>Escribe <code>@remind</code> seguido de una fecha para crear recordatorios. Ejemplo: "@remind tomorrow" genera una etiqueta de recordatorio azul con opciones de notificación personalizables.</p>
+
+  <h3 id="emojis">Emojis</h3>
+  <p>Pulsa <code>:</code> para abrir el selector de emojis. Alternativamente, usa <code>:</code> seguido del nombre del emoji (por ejemplo, <code>:avocado</code> crea 🥑).</p>
+
+  <h2 id="bloques-bbdd">Bloques de base de datos</h2>
+  <p>Existen cinco tipos de visualización de bases de datos:</p>
+  <ul>
+    <li><strong>Tablas</strong> — Vista en filas y columnas</li>
+    <li><strong>Tableros</strong> — Vista tipo Kanban</li>
+    <li><strong>Galerías</strong> — Vista tipo tarjetas</li>
+    <li><strong>Listas</strong> — Vista compacta</li>
+    <li><strong>Calendarios</strong> — Vista por fechas</li>
+  </ul>
+
+  <h2 id="bloques-media">Bloques de media</h2>
+  <ul>
+    <li><strong>Imágenes/GIFs:</strong> Sube o pega enlaces</li>
+    <li><strong>Videos:</strong> Sube o incrusta desde YouTube, Vimeo</li>
+    <li><strong>Audio:</strong> Sube o incrusta desde Spotify, SoundCloud</li>
+    <li><strong>Código:</strong> Resaltado de sintaxis para múltiples lenguajes</li>
+    <li><strong>Archivos:</strong> Sube o enlaza</li>
+    <li><strong>Páginas web:</strong> Guárdalas como marcadores visuales</li>
+  </ul>
+
+  <h2 id="bloques-embed">Bloques para incrustar</h2>
+  <p>Notion soporta incrustaciones de más de 500 aplicaciones. Opciones populares incluyen Google Drive, Typeform, GitHub, Google Maps, Figma, Loom, Invision, Whimsical y Framer.</p>
+  <p>Bloques útiles adicionales:</p>
+  <ul>
+    <li><strong>Table of contents:</strong> Genera automáticamente un índice a partir de los headings</li>
+    <li><strong>Breadcrumb:</strong> Menú de navegación que muestra el contexto de la página actual</li>
+    <li><strong>Template button:</strong> Replica bloques o combinaciones de bloques</li>
+  </ul>
+
+  <h2 id="practica">Práctica. Primeros pasos para crear una guía de viajes</h2>
+  <p>En esta práctica aprenderás a crear los primeros pasos de una guía de viajes en Notion, aplicando los conceptos de páginas y bloques que hemos visto en esta lección.</p>
+</LessonLayout>

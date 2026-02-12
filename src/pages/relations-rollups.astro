@@ -1,0 +1,37 @@
+---
+import LessonLayout from '../layouts/LessonLayout.astro';
+
+const modules = [
+  { icon: 'blue', title: '4.01. La propiedad "Relation"', tag: 'Contenido' },
+  { icon: 'green', title: 'Práctica 01. Crear un repositorio de recetas', tag: 'Práctica' },
+  { icon: 'blue', title: '4.02. La propiedad "Rollup"', tag: 'Contenido' },
+  { icon: 'green', title: 'Práctica 02. Crear una tabla de control de gastos', tag: 'Práctica' },
+];
+---
+
+<LessonLayout
+  title="4. Relations & Rollups — Aprende Notion"
+  description="Aprende a usar las propiedades Relation y Rollup en Notion para conectar bases de datos y extraer información entre ellas."
+  emoji="🕸️"
+  lessonTitle="4. Relations & Rollups"
+  prevLink={{ href: '/bases-datos', label: '📊 03. Bases de Datos' }}
+  nextLink={{ href: '/formulas', label: '➗ 5. Fórmulas' }}
+>
+  <p>En esta sección cubrimos tres propiedades de bases de datos que merecen atención detallada: <strong>Relation</strong>, <strong>Rollup</strong> y <strong>Fórmulas</strong>. Las reservamos de la discusión anterior de propiedades básicas porque entender su poder requiere un enfoque dedicado.</p>
+
+  <ul>
+    <li><strong>Relation:</strong> Permite establecer conexiones y enlaces entre diferentes bases de datos</li>
+    <li><strong>Rollup:</strong> Permite extraer datos de bases de datos enlazadas para acceder a información sin tener que ver esas bases de datos directamente</li>
+    <li><strong>Fórmulas:</strong> Permiten manipular los datos de la base de datos para lograr comportamientos y resultados específicos</li>
+  </ul>
+
+  <div class="module-list">
+    {modules.map((mod) => (
+      <div class="module-item">
+        <span class={`module-item__icon module-item__icon--${mod.icon}`}></span>
+        <span class="module-item__title">{mod.title}</span>
+        <span class="module-item__tag">{mod.tag}</span>
+      </div>
+    ))}
+  </div>
+</LessonLayout>

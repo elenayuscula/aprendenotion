@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill="none">
+  <!-- Miroodles-style abstract illustration: magnifying glass with geometric shapes -->
+
+  <!-- Wavy lines (cyan) -->
+  <path d="M120 80 Q140 65 160 80 Q180 95 200 80" stroke="#4ECDC4" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M130 105 Q150 90 170 105 Q190 120 210 105" stroke="#4ECDC4" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M140 130 Q160 115 180 130 Q200 145 220 130" stroke="#4ECDC4" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+  <!-- Magnifying glass (coral/red circle + handle) -->
+  <circle cx="340" cy="130" r="75" stroke="#FF6B6B" stroke-width="8" fill="none"/>
+  <!-- Glass shine lines -->
+  <path d="M360 85 L365 75" stroke="#37352F" stroke-width="3" stroke-linecap="round"/>
+  <path d="M375 95 L382 87" stroke="#37352F" stroke-width="3" stroke-linecap="round"/>
+  <!-- Eye inside magnifying glass -->
+  <ellipse cx="335" cy="130" rx="28" ry="18" stroke="#37352F" stroke-width="3" fill="none"/>
+  <circle cx="335" cy="130" r="8" fill="#37352F"/>
+  <circle cx="332" cy="127" r="2.5" fill="white"/>
+  <!-- Handle -->
+  <line x1="395" y1="185" x2="435" y2="225" stroke="#FF6B6B" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- Pencil/pen (blue-ish) -->
+  <g transform="translate(390, 180) rotate(35)">
+    <rect x="0" y="0" width="12" height="80" rx="2" fill="#556FB5"/>
+    <polygon points="0,80 12,80 6,95" fill="#37352F"/>
+    <rect x="0" y="0" width="12" height="12" rx="2" fill="#FF6B6B"/>
+  </g>
+
+  <!-- Yellow diamond/rhombus -->
+  <g transform="translate(150, 270) rotate(15)">
+    <rect x="0" y="0" width="80" height="80" rx="4" fill="#FFD93D" transform="rotate(0)"/>
+    <rect x="5" y="5" width="70" height="70" rx="2" fill="none" stroke="#37352F" stroke-width="2" opacity="0.15"/>
+  </g>
+
+  <!-- Blue circle -->
+  <circle cx="280" cy="350" r="18" fill="#556FB5"/>
+  <circle cx="275" cy="345" r="5" fill="white" opacity="0.3"/>
+
+  <!-- Striped circle (hatched) -->
+  <g transform="translate(180, 360)">
+    <circle cx="30" cy="30" r="30" fill="white" stroke="#4ECDC4" stroke-width="3"/>
+    <clipPath id="circleClip">
+      <circle cx="30" cy="30" r="28"/>
+    </clipPath>
+    <g clip-path="url(#circleClip)">
+      <line x1="0" y1="10" x2="60" y2="10" stroke="#4ECDC4" stroke-width="3"/>
+      <line x1="0" y1="20" x2="60" y2="20" stroke="#4ECDC4" stroke-width="3"/>
+      <line x1="0" y1="30" x2="60" y2="30" stroke="#4ECDC4" stroke-width="3"/>
+      <line x1="0" y1="40" x2="60" y2="40" stroke="#4ECDC4" stroke-width="3"/>
+      <line x1="0" y1="50" x2="60" y2="50" stroke="#4ECDC4" stroke-width="3"/>
+    </g>
+  </g>
+
+  <!-- Red/pink triangle -->
+  <polygon points="100,430 170,430 135,360" fill="#FF6B6B"/>
+
+  <!-- Small yellow triangle -->
+  <polygon points="295,380 315,380 305,360" fill="#FFD93D"/>
+
+  <!-- Small cyan diamond -->
+  <g transform="translate(350, 390) rotate(15)">
+    <rect x="0" y="0" width="22" height="22" fill="#4ECDC4"/>
+  </g>
+
+  <!-- Dashes near striped circle -->
+  <g transform="translate(115, 310)">
+    <line x1="0" y1="0" x2="20" y2="8" stroke="#4ECDC4" stroke-width="4" stroke-linecap="round"/>
+    <line x1="0" y1="14" x2="22" y2="20" stroke="#4ECDC4" stroke-width="4" stroke-linecap="round"/>
+    <line x1="5" y1="28" x2="25" y2="32" stroke="#4ECDC4" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- Dots near magnifying glass -->
+  <circle cx="415" cy="110" r="4" fill="#37352F"/>
+  <circle cx="425" cy="130" r="4" fill="#37352F"/>
+</svg>

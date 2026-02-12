@@ -1,0 +1,67 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  emoji: string;
+  lessonTitle: string;
+  prevLink?: { href: string; label: string };
+  nextLink?: { href: string; label: string };
+  toc?: { label: string; href: string; nested?: boolean }[];
+}
+
+const { title, description, emoji, lessonTitle, prevLink, nextLink, toc } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="page-wrapper">
+    <!-- Lesson Header -->
+    <div class="hero" style="padding: 3rem 0 1.5rem;">
+      <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">{emoji}</div>
+      <h1 style="font-size: 1.875rem;">{lessonTitle}</h1>
+    </div>
+
+    <!-- Table of Contents -->
+    {toc && toc.length > 0 && (
+      <nav class="toc" aria-label="Tabla de contenidos">
+        <div class="toc__title">Contenido</div>
+        <ul class="toc__list">
+          {toc.map((item) => (
+            <li class={item.nested ? 'toc__list--nested' : ''}>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )}
+
+    <!-- Lesson Content -->
+    <div class="content">
+      <slot />
+    </div>
+
+    <!-- Useful question -->
+    <div class="useful-question">
+      <p class="useful-question__text">¿Te ha resultado útil este contenido?</p>
+    </div>
+
+    <!-- Previous / Next -->
+    <nav class="page-nav" aria-label="Navegación entre lecciones">
+      {prevLink ? (
+        <a href={prevLink.href} class="page-nav__link">
+          ← {prevLink.label}
+        </a>
+      ) : (
+        <span class="page-nav__link page-nav__link--disabled"></span>
+      )}
+      {nextLink ? (
+        <a href={nextLink.href} class="page-nav__link">
+          {nextLink.label} →
+        </a>
+      ) : (
+        <span class="page-nav__link page-nav__link--disabled"></span>
+      )}
+    </nav>
+  </div>
+</BaseLayout>

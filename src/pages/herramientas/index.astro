@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const products = [
+  {
+    slug: 'sistema-de-mejora-continua',
+    title: 'Sistema de Mejora Continua',
+    description: 'Un sistema para implementar en tu vida la mejora constante.',
+    price: '15€ + IVA',
+    tag: 'Tiny System',
+    tagColor: 'orange',
+    image: '/illustrations/product-mejora-continua.svg',
+  },
+  {
+    slug: 'notion-starter-pack',
+    title: 'Notion Starter Pack',
+    description: 'Todo lo que necesitas para empezar a crear tu propio Sistema Operativo en Notion.',
+    price: '70€ + IVA',
+    tag: 'Tiny System',
+    tagColor: 'orange',
+    image: '/illustrations/product-starter-pack.svg',
+  },
+  {
+    slug: 'control-gastos-notion',
+    title: 'Control de Ingresos y Gastos',
+    description: 'Registra ingresos y gastos, lleva un control de tus suscripciones y pagos recurrentes y comprueba el balance de tus cuentas.',
+    price: '15€ + IVA',
+    tag: 'Herramienta',
+    tagColor: 'blue',
+    image: '/illustrations/product-control-gastos.svg',
+  },
+];
+---
+
+<BaseLayout
+  title="Herramientas — Aprende Notion"
+  description="Herramientas y sistemas construidos en Notion para mejorar tu productividad. Plantillas funcionales con fórmulas, filtros y guías paso a paso."
+>
+  <div class="page-wrapper page-wrapper--wide">
+
+    <!-- Hero -->
+    <section class="store-hero">
+      <span class="store-hero__label">HERRAMIENTAS</span>
+      <h1 class="store-hero__title">¿Buscas una herramienta ya construida?</h1>
+      <p class="store-hero__subtitle">
+        <em>Tiny is Mighty.</em> La otra manera que tengo de volcar mis ideas en un formato accesible para todo el mundo es hacerlo en forma de herramientas que recogen mi manera particular de hacer ciertas cosas.
+      </p>
+    </section>
+
+    <!-- Products Grid — 3 columns like the screenshot -->
+    <section class="store-grid" aria-label="Herramientas disponibles">
+      {products.map((product) => (
+        <a href={`/herramientas/${product.slug}`} class="store-card">
+          <div class="store-card__image">
+            <img src={product.image} alt={product.title} width="360" height="252" loading="lazy" />
+          </div>
+          <div class="store-card__body">
+            <span class={`store-card__tag store-card__tag--${product.tagColor}`}>{product.tag}</span>
+            <h2 class="store-card__title">{product.title}</h2>
+            <p class="store-card__description">{product.description}</p>
+            <span class="store-card__price">{product.price}</span>
+          </div>
+        </a>
+      ))}
+    </section>
+
+  </div>
+
+  <!-- Structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Herramientas de Notion",
+    "description": "Herramientas y sistemas construidos en Notion para mejorar tu productividad.",
+    "url": "https://aprendenotion.com/herramientas",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "url": `https://aprendenotion.com/herramientas/${p.slug}`
+    }))
+  })} />
+</BaseLayout>

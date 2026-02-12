@@ -1,0 +1,36 @@
+---
+import LessonLayout from '../layouts/LessonLayout.astro';
+
+const modules = [
+  { icon: 'blue', title: '6.01. Crear integraciones con la API de Notion', tag: 'Contenido' },
+  { icon: 'green', title: 'Práctica', tag: 'Práctica' },
+];
+---
+
+<LessonLayout
+  title="6. La API de Notion — Aprende Notion"
+  description="Aprende qué es una API, cómo afecta a los usuarios de Notion y cómo crear integraciones usando la API de Notion."
+  emoji="🔌"
+  lessonTitle="6. La API de Notion"
+  prevLink={{ href: '/formulas', label: '➗ 5. Fórmulas' }}
+  nextLink={{ href: '/starter-pack', label: '📦 Notion Starter Pack' }}
+>
+  <h2 id="que-es-api">¿Qué es una API?</h2>
+  <p>Una API (Application Programming Interface) permite la conexión entre diferentes componentes de sistemas de software. Permite el acceso a bases de datos internas o la comunicación con plataformas de terceros.</p>
+
+  <h2 id="como-afecta">¿Cómo afecta esto a los usuarios de Notion?</h2>
+  <p>Con la API pública de Notion (en beta), la plataforma ahora puede interactuar y comunicarse con otros programas y herramientas. Los usuarios pueden personalizar su espacio de trabajo conectando Notion con herramientas externas que usan a diario, expandiendo las capacidades de su workspace existente.</p>
+
+  <h2 id="contenido">Contenido de esta sección</h2>
+  <p>Esta sección cubre la creación de integraciones usando la API de Notion. Incluye ejemplos prácticos de posibilidades actuales con la API.</p>
+
+  <div class="module-list">
+    {modules.map((mod) => (
+      <div class="module-item">
+        <span class={`module-item__icon module-item__icon--${mod.icon}`}></span>
+        <span class="module-item__title">{mod.title}</span>
+        <span class="module-item__tag">{mod.tag}</span>
+      </div>
+    ))}
+  </div>
+</LessonLayout>

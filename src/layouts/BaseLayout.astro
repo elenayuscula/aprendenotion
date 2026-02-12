@@ -1,0 +1,156 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const { title, description, canonical, ogImage } = Astro.props;
+const siteUrl = 'https://aprendenotion.com';
+const pageUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+const defaultOgImage = `${siteUrl}/og-image.png`;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+
+  <!-- Primary Meta Tags -->
+  <title>{title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={description} />
+  <meta name="author" content="Elena Madrigal" />
+  <link rel="canonical" href={pageUrl} />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={pageUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage || defaultOgImage} />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:site_name" content="Aprende Notion" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content={pageUrl} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage || defaultOgImage} />
+  <meta name="twitter:site" content="@elenayuscula" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Preload Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+  <a href="#main-content" class="skip-to-content">Saltar al contenido</a>
+
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Navegación principal">
+    <div class="navbar__inner">
+      <a href="/" class="navbar__logo">
+        <svg class="navbar__logo-icon" viewBox="0 0 120 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.6927 21.9347C29.2927 28.7347 36.8927 31.1347 52.0927 32.3347C52.0927 32.3347 52.0927 107.535 52.0927 110.535C52.0927 113.535 50.2927 114.335 48.4927 112.935C36.4927 103.735 29.8927 102.135 20.6927 101.535V21.9347Z" fill="currentColor"/>
+          <path d="M67.8927 19.5347C58.8927 12.3347 51.2927 9.93466 36.0927 8.73466C36.0927 8.73466 36.0927 98.5347 36.0927 101.535C36.0927 104.535 37.8927 105.335 39.6927 103.935C51.6927 94.7347 58.2927 93.1347 67.8927 92.5347V19.5347Z" fill="currentColor" opacity="0.5"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M14.0927 9.53466C14.0927 4.53466 17.5927 2.23466 21.0927 4.73466C25.0927 7.53466 31.5927 12.1347 40.0927 13.5347C51.0927 15.3347 57.0927 12.9347 67.0927 14.5347C72.5927 15.4347 80.0927 19.5347 83.0927 21.5347C86.0927 23.5347 87.5927 25.5347 87.5927 30.5347V110.535C87.5927 115.535 84.0927 117.835 80.5927 115.335C76.5927 112.535 70.0927 107.935 61.5927 106.535C50.5927 104.735 44.5927 107.135 34.5927 105.535C29.0927 104.635 21.5927 100.535 18.5927 98.5347C15.5927 96.5347 14.0927 94.5347 14.0927 89.5347V9.53466ZM20.6927 21.9347C29.2927 28.7347 36.8927 31.1347 52.0927 32.3347V110.535C50.2927 114.335 50.2927 114.335 48.4927 112.935C36.4927 103.735 29.8927 102.135 20.6927 101.535V21.9347ZM67.8927 19.5347C58.8927 12.3347 51.2927 9.93466 36.0927 8.73466V101.535C37.8927 105.335 37.8927 105.335 39.6927 103.935C51.6927 94.7347 58.2927 93.1347 67.8927 92.5347V19.5347Z" fill="currentColor"/>
+        </svg>
+        Notion para la vida real
+      </a>
+      <div class="navbar__actions">
+        <a href="/herramientas" class="navbar__link">Herramientas</a>
+        <a href="/blog" class="navbar__link">Blog</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+          <span id="theme-icon">☀️</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main id="main-content">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">MakinProcess ✨</div>
+      <div class="footer__grid">
+        <div>
+          <div class="footer__section-title">Lleva Notion más allá</div>
+          <ul class="footer__links">
+            <li><a href="/starter-pack">🚀 Notion Starter Pack</a></li>
+            <li><a href="https://elenamadrigal.com" target="_blank" rel="noopener">🧭 Life Design Kit</a></li>
+            <li><a href="https://elenamadrigal.com" target="_blank" rel="noopener">🖤 Tu Página en Notion</a></li>
+            <li><a href="https://elenamadrigal.gumroad.com" target="_blank" rel="noopener">⚙️ Ver más herramientas y sistemas</a></li>
+            <li><a href="https://elenamadrigal.com" target="_blank" rel="noopener">🌈 Consultorías personalizadas</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__section-title">Contacto</div>
+          <ul class="footer__links">
+            <li><a href="mailto:elena@elenamadrigal.com">📧 elena@elenamadrigal.com</a></li>
+            <li><a href="https://twitter.com/elenayuscula" target="_blank" rel="noopener">🐦 @elenayuscula</a></li>
+            <li><a href="https://linkedin.com/in/elenamadrigal" target="_blank" rel="noopener">📇 elenamadrigal</a></li>
+            <li><a href="https://elenamadrigal.com" target="_blank" rel="noopener">🖋 elenamadrigal.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__credits">
+        <p>Ilustraciones de <a href="https://blush.design/collections/miroodles" target="_blank" rel="noopener">Miroodles</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script is:inline>
+    (function() {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+        if (icon) icon.textContent = theme === 'dark' ? '🌙' : '☀️';
+
+        if (toggle) {
+          toggle.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            if (icon) icon.textContent = next === 'dark' ? '🌙' : '☀️';
+          });
+        }
+      });
+    })();
+  </script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Aprende Notion",
+    "url": "https://aprendenotion.com",
+    "description": "Aprende a usar Notion desde 0 construyendo un proyecto real",
+    "inLanguage": "es",
+    "author": {
+      "@type": "Person",
+      "name": "Elena Madrigal",
+      "url": "https://elenamadrigal.com"
+    }
+  })} />
+</body>
+</html>

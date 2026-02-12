@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" fill="none">
+  <!-- Notion-style product illustration: expense/income tracker -->
+  <!-- Background card -->
+  <rect x="40" y="20" width="320" height="240" rx="12" fill="#F7F6F3" stroke="#E9E9E7" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <g transform="translate(70, 45)">
+    <text x="0" y="16" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#37352F">CONTROL DE INGRESOS Y GASTOS</text>
+    <text x="0" y="32" font-family="Inter, sans-serif" font-size="9" fill="#787774">Todos tus movimientos en un solo lugar</text>
+  </g>
+
+  <!-- Table view -->
+  <g transform="translate(70, 90)">
+    <!-- Header row -->
+    <rect x="0" y="0" width="260" height="24" rx="4" fill="#37352F"/>
+    <text x="12" y="16" font-family="Inter, sans-serif" font-size="9" fill="white" font-weight="600">Concepto</text>
+    <text x="130" y="16" font-family="Inter, sans-serif" font-size="9" fill="white" font-weight="600">Categoría</text>
+    <text x="220" y="16" font-family="Inter, sans-serif" font-size="9" fill="white" font-weight="600">Importe</text>
+
+    <!-- Row 1 -->
+    <rect x="0" y="28" width="260" height="26" rx="0" fill="white" stroke="#E9E9E7" stroke-width="0.5"/>
+    <text x="12" y="45" font-family="Inter, sans-serif" font-size="9" fill="#37352F">Nómina marzo</text>
+    <rect x="130" y="35" width="50" height="16" rx="8" fill="rgba(15,123,108,0.1)"/>
+    <text x="140" y="47" font-family="Inter, sans-serif" font-size="8" fill="#0F7B6C" font-weight="600">Ingreso</text>
+    <text x="220" y="45" font-family="Inter, sans-serif" font-size="9" fill="#0F7B6C" font-weight="600">+2.400€</text>
+
+    <!-- Row 2 -->
+    <rect x="0" y="56" width="260" height="26" rx="0" fill="white" stroke="#E9E9E7" stroke-width="0.5"/>
+    <text x="12" y="73" font-family="Inter, sans-serif" font-size="9" fill="#37352F">Alquiler</text>
+    <rect x="130" y="63" width="62" height="16" rx="8" fill="rgba(224,62,62,0.1)"/>
+    <text x="140" y="75" font-family="Inter, sans-serif" font-size="8" fill="#E03E3E" font-weight="600">Gasto fijo</text>
+    <text x="220" y="73" font-family="Inter, sans-serif" font-size="9" fill="#E03E3E" font-weight="600">-850€</text>
+
+    <!-- Row 3 -->
+    <rect x="0" y="84" width="260" height="26" rx="0" fill="white" stroke="#E9E9E7" stroke-width="0.5"/>
+    <text x="12" y="101" font-family="Inter, sans-serif" font-size="9" fill="#37352F">Netflix</text>
+    <rect x="130" y="91" width="76" height="16" rx="8" fill="rgba(217,115,13,0.1)"/>
+    <text x="140" y="103" font-family="Inter, sans-serif" font-size="8" fill="#D9730D" font-weight="600">Suscripción</text>
+    <text x="220" y="101" font-family="Inter, sans-serif" font-size="9" fill="#D9730D" font-weight="600">-17.99€</text>
+
+    <!-- Row 4 -->
+    <rect x="0" y="112" width="260" height="26" rx="0" fill="white" stroke="#E9E9E7" stroke-width="0.5"/>
+    <text x="12" y="129" font-family="Inter, sans-serif" font-size="9" fill="#37352F">Supermercado</text>
+    <rect x="130" y="119" width="72" height="16" rx="8" fill="rgba(105,64,165,0.1)"/>
+    <text x="140" y="131" font-family="Inter, sans-serif" font-size="8" fill="#6940A5" font-weight="600">Gasto diario</text>
+    <text x="220" y="129" font-family="Inter, sans-serif" font-size="9" fill="#6940A5" font-weight="600">-62.30€</text>
+  </g>
+
+  <!-- Balance badge -->
+  <g transform="translate(180, 225)">
+    <rect x="0" y="0" width="140" height="26" rx="13" fill="#0F7B6C"/>
+    <text x="70" y="17" font-family="Inter, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="600">Balance: +1.469,71€</text>
+  </g>
+</svg>

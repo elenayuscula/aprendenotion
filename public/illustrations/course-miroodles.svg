@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <!-- Miroodles-style: laptop/creativity illustration for course section -->
+
+  <!-- Cloud shape -->
+  <g transform="translate(80, 40)">
+    <ellipse cx="60" cy="50" rx="55" ry="35" fill="white" stroke="#37352F" stroke-width="2.5"/>
+    <ellipse cx="30" cy="55" rx="30" ry="22" fill="white" stroke="#37352F" stroke-width="2.5"/>
+    <ellipse cx="90" cy="55" rx="32" ry="24" fill="white" stroke="#37352F" stroke-width="2.5"/>
+    <ellipse cx="60" cy="50" rx="55" ry="35" fill="white"/>
+    <!-- Rain dots from cloud -->
+    <circle cx="45" cy="88" r="3" fill="#4ECDC4"/>
+    <circle cx="65" cy="95" r="3" fill="#FF6B6B"/>
+    <circle cx="85" cy="88" r="3" fill="#FFD93D"/>
+  </g>
+
+  <!-- Sparkle/star -->
+  <g transform="translate(250, 60)">
+    <line x1="15" y1="0" x2="15" y2="30" stroke="#FFD93D" stroke-width="3" stroke-linecap="round"/>
+    <line x1="0" y1="15" x2="30" y2="15" stroke="#FFD93D" stroke-width="3" stroke-linecap="round"/>
+    <line x1="5" y1="5" x2="25" y2="25" stroke="#FFD93D" stroke-width="2" stroke-linecap="round"/>
+    <line x1="25" y1="5" x2="5" y2="25" stroke="#FFD93D" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Laptop body -->
+  <g transform="translate(60, 150)">
+    <!-- Screen -->
+    <rect x="20" y="0" width="200" height="130" rx="8" fill="#37352F" stroke="#37352F" stroke-width="3"/>
+    <rect x="28" y="8" width="184" height="114" rx="4" fill="white"/>
+    <!-- Screen content lines -->
+    <rect x="45" y="30" width="80" height="4" rx="2" fill="#E0E0E0"/>
+    <rect x="45" y="42" width="120" height="4" rx="2" fill="#E0E0E0"/>
+    <rect x="45" y="54" width="60" height="4" rx="2" fill="#E0E0E0"/>
+    <rect x="45" y="66" width="100" height="4" rx="2" fill="#E0E0E0"/>
+    <!-- Eye on screen -->
+    <ellipse cx="120" cy="75" rx="22" ry="14" stroke="#37352F" stroke-width="2" fill="none"/>
+    <circle cx="120" cy="75" r="6" fill="#37352F"/>
+    <circle cx="118" cy="73" r="2" fill="white"/>
+    <!-- Keyboard base -->
+    <path d="M0 130 L20 130 L15 155 Q120 165 225 155 L220 130 L240 130" stroke="#37352F" stroke-width="3" fill="#F5F5F5"/>
+  </g>
+
+  <!-- Lightning bolt -->
+  <g transform="translate(180, 120)">
+    <polygon points="20,0 8,22 18,22 5,45 30,18 20,18 30,0" fill="#FFD93D" stroke="#37352F" stroke-width="1.5"/>
+  </g>
+
+  <!-- Small floating shapes -->
+  <circle cx="310" cy="180" r="8" fill="#FF6B6B" opacity="0.7"/>
+  <rect x="50" y="200" width="12" height="12" fill="#4ECDC4" opacity="0.7" transform="rotate(20, 56, 206)"/>
+
+  <!-- Decorative zigzag lines -->
+  <path d="M290 250 L300 235 L310 250 L320 235 L330 250" stroke="#FFD93D" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>

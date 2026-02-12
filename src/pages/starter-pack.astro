@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const features = [
+  { emoji: '✅', title: 'Hábitos y rutinas', desc: 'Registros diarios y revisiones semanales para crear consistencia.' },
+  { emoji: '✅', title: 'Gestión de tareas', desc: 'Base de datos maestra de tareas con proyectos asociados.' },
+  { emoji: '🍳', title: 'Recetas', desc: 'Base de datos de recetas con ingredientes enlazados.' },
+  { emoji: '💶', title: 'Finanzas', desc: 'Base de datos de seguimiento de gastos.' },
+  { emoji: '📺', title: 'Entretenimiento', desc: 'Base de datos de películas y series.' },
+  { emoji: '🧠', title: 'Aprendizaje y recursos', desc: 'Notas, ideas, inspiración y repositorio de artículos.' },
+];
+---
+
+<BaseLayout
+  title="Notion Starter Pack — Aprende Notion"
+  description="Todo lo que necesitas para empezar a usar Notion. Templates totalmente funcionales con fórmulas preconfiguradas, guías paso a paso y diseño modular."
+>
+  <div class="page-wrapper">
+    <section class="hero">
+      <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🚀</div>
+      <h1 class="hero__title">Notion Starter Pack</h1>
+      <p class="hero__subtitle">Todo lo que necesitas para empezar a usar Notion</p>
+    </section>
+
+    <blockquote>
+      Templates totalmente funcionales para aprovechar todas las capacidades de Notion sin tener que empezar de 0
+    </blockquote>
+
+    <div style="text-align: center; margin: 2.5rem 0;">
+      <a href="https://gum.co/notion-starter-pack" class="btn" target="_blank" rel="noopener">
+        🚀 Consíguelo aquí
+      </a>
+    </div>
+
+    <hr />
+
+    <section class="section">
+      <h2 class="section__title">Ahorra tiempo, pasa a la acción</h2>
+      <p class="section__text">
+        ¿Por fin te has decidido a probar Notion? ¿Has visto el potencial que tiene pero no sabes muy bien por dónde empezar a utilizarla?
+      </p>
+      <p class="section__text">
+        En esta web tienes videos gratuitos que te enseñan los fundamentos de Notion a través de proyectos reales. El Starter Pack es una colección de templates usados en esos videos, diseñados para construir sistemas operativos esenciales.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">¿Qué incluye?</h2>
+      <div class="features-grid">
+        {features.map((f) => (
+          <div class="feature-item">
+            <span class="feature-item__emoji">{f.emoji}</span>
+            <div class="feature-item__text">
+              <h4>{f.title}</h4>
+              <p>{f.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">Diseño modular</h2>
+      <p class="section__text">
+        Su funcionalidad va desde algo tan sencillo como un espacio donde tomar notas hasta la gestión de tareas, pasando por aplicaciones para la vida diaria como un repositorio de recetas o una base de datos de películas y series.
+      </p>
+      <ul>
+        <li>Fórmulas preconfiguradas y listas para usar</li>
+        <li>Guías paso a paso para personalización</li>
+        <li>Diseño modular adaptable a tus necesidades</li>
+        <li>Acceso a todas las actualizaciones futuras</li>
+      </ul>
+    </section>
+
+    <hr />
+
+    <section class="section starter-pack" style="text-align: center;">
+      <p class="section__text" style="color: var(--color-text-secondary); font-size: 0.875rem;">
+        Por cada 20 copias vendidas, el precio aumentará 5€
+      </p>
+      <div class="starter-pack__price">45€</div>
+      <div style="margin-top: 1.5rem;">
+        <a href="https://gum.co/notion-starter-pack" class="btn" target="_blank" rel="noopener">
+          Consíguelo ahora
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Product structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Notion Starter Pack",
+    "description": "Templates totalmente funcionales para aprovechar todas las capacidades de Notion sin tener que empezar de 0.",
+    "offers": {
+      "@type": "Offer",
+      "price": "45",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "url": "https://gum.co/notion-starter-pack"
+    },
+    "brand": {
+      "@type": "Brand",
+      "name": "Aprende Notion"
+    }
+  })} />
+</BaseLayout>
