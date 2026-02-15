@@ -1,53 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
-const posts = [
-  {
-    slug: 'como-organizar-tu-vida-con-notion',
-    title: 'Cómo organizar tu vida con Notion: Guía completa para principiantes',
-    description: 'Descubre cómo utilizar Notion para organizar todos los aspectos de tu vida personal y profesional, desde tareas diarias hasta proyectos a largo plazo.',
-    date: '2025-01-15',
-    readingTime: '8 min de lectura',
-    category: 'Productividad',
-    emoji: '🗂️',
-  },
-  {
-    slug: 'bases-de-datos-notion-guia-completa',
-    title: 'Bases de datos en Notion: Todo lo que necesitas saber',
-    description: 'Aprende a crear y dominar las bases de datos en Notion. Tablas, tableros, calendarios, galerías y líneas de tiempo explicados paso a paso.',
-    date: '2025-01-28',
-    readingTime: '10 min de lectura',
-    category: 'Tutorial',
-    emoji: '📊',
-  },
-  {
-    slug: 'notion-vs-otras-herramientas-productividad',
-    title: 'Notion vs otras herramientas de productividad: Comparativa definitiva',
-    description: 'Comparamos Notion con Trello, Asana, Todoist, Obsidian y Evernote para ayudarte a elegir la herramienta que mejor se adapta a tus necesidades.',
-    date: '2025-02-10',
-    readingTime: '7 min de lectura',
-    category: 'Comparativa',
-    emoji: '⚖️',
-  },
-  {
-    slug: 'formulas-notion-desde-cero',
-    title: 'Fórmulas en Notion desde cero: De principiante a avanzado',
-    description: 'Domina las fórmulas de Notion paso a paso. Desde operaciones básicas hasta fórmulas avanzadas con if, contains, formatDate y mucho más.',
-    date: '2025-02-25',
-    readingTime: '12 min de lectura',
-    category: 'Tutorial',
-    emoji: '🧮',
-  },
-  {
-    slug: 'plantillas-notion-mejores-templates',
-    title: '10 plantillas de Notion imprescindibles para tu día a día',
-    description: 'Las mejores plantillas de Notion para gestionar proyectos, hábitos, finanzas, lectura y más. Templates listos para usar y personalizar.',
-    date: '2025-03-12',
-    readingTime: '6 min de lectura',
-    category: 'Recursos',
-    emoji: '📋',
-  },
-];
+const posts = (await getCollection('blog'))
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 ---
 
 <BaseLayout
@@ -66,17 +22,17 @@ const posts = [
     <!-- Blog post grid -->
     <section class="blog-grid" aria-label="Artículos del blog">
       {posts.map((post) => (
-        <a href={`/blog/${post.slug}`} class="blog-card">
-          <div class="blog-card__emoji" aria-hidden="true">{post.emoji}</div>
+        <a href={`/blog/${post.id}`} class="blog-card">
+          <div class="blog-card__emoji" aria-hidden="true">{post.data.emoji}</div>
           <div class="blog-card__content">
             <div class="blog-card__meta">
-              <span class="blog-card__category">{post.category}</span>
+              <span class="blog-card__category">{post.data.category}</span>
               <span class="blog-card__separator">·</span>
-              <time datetime={post.date}>{new Date(post.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' })}</time>
+              <time datetime={post.data.publishDate}>{new Date(post.data.publishDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' })}</time>
             </div>
-            <h2 class="blog-card__title">{post.title}</h2>
-            <p class="blog-card__description">{post.description}</p>
-            <span class="blog-card__reading-time">{post.readingTime}</span>
+            <h2 class="blog-card__title">{post.data.title}</h2>
+            <p class="blog-card__description">{post.data.description}</p>
+            <span class="blog-card__reading-time">{post.data.readingTime}</span>
           </div>
         </a>
       ))}

@@ -1,5 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const latestPosts = (await getCollection('blog'))
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime())
+  .slice(0, 3);
 
 const lessons = [
   { emoji: '✏️', title: '01. Introducción al espacio de trabajo', href: '/introduccion-espacio-trabajo' },
@@ -229,27 +234,15 @@ const lessons = [
         Artículos y tutoriales para seguir aprendiendo sobre Notion.
       </p>
       <div class="blog-preview-grid">
-        <a href="/blog/como-organizar-tu-vida-con-notion" class="blog-preview-card">
-          <span class="blog-preview-card__emoji" aria-hidden="true">🗂️</span>
-          <div class="blog-preview-card__content">
-            <span class="blog-preview-card__category">Productividad</span>
-            <h3 class="blog-preview-card__title">Cómo organizar tu vida con Notion</h3>
-          </div>
-        </a>
-        <a href="/blog/bases-de-datos-notion-guia-completa" class="blog-preview-card">
-          <span class="blog-preview-card__emoji" aria-hidden="true">📊</span>
-          <div class="blog-preview-card__content">
-            <span class="blog-preview-card__category">Tutorial</span>
-            <h3 class="blog-preview-card__title">Bases de datos en Notion: Todo lo que necesitas saber</h3>
-          </div>
-        </a>
-        <a href="/blog/notion-vs-otras-herramientas-productividad" class="blog-preview-card">
-          <span class="blog-preview-card__emoji" aria-hidden="true">⚖️</span>
-          <div class="blog-preview-card__content">
-            <span class="blog-preview-card__category">Comparativa</span>
-            <h3 class="blog-preview-card__title">Notion vs otras herramientas de productividad</h3>
-          </div>
-        </a>
+        {latestPosts.map((post) => (
+          <a href={`/blog/${post.id}`} class="blog-preview-card">
+            <span class="blog-preview-card__emoji" aria-hidden="true">{post.data.emoji}</span>
+            <div class="blog-preview-card__content">
+              <span class="blog-preview-card__category">{post.data.category}</span>
+              <h3 class="blog-preview-card__title">{post.data.title}</h3>
+            </div>
+          </a>
+        ))}
       </div>
       <div style="text-align: center; margin-top: 1.5rem;">
         <a href="/blog" class="btn btn--outline">Ver todos los artículos →</a>

@@ -1,0 +1,118 @@
+---
+title: "Fórmulas en Notion desde cero: De principiante a avanzado"
+description: "Domina las fórmulas de Notion paso a paso. Desde operaciones básicas hasta fórmulas avanzadas con if, contains, formatDate y mucho más."
+publishDate: "2025-02-25"
+readingTime: "12 min de lectura"
+category: "Tutorial"
+emoji: "🧮"
+---
+
+## ¿Qué son las fórmulas en Notion?
+
+Las fórmulas en Notion son propiedades calculadas que generan valores automáticamente basándose en otras propiedades de tu base de datos. Si has usado fórmulas en Excel, el concepto es similar pero con una sintaxis propia.
+
+Con fórmulas puedes hacer cosas como calcular días restantes hasta una fecha, concatenar textos, crear estados condicionales o generar puntuaciones automáticas. Son una de las funcionalidades más potentes de Notion.
+
+## Fórmulas básicas para empezar
+
+### Operaciones matemáticas
+
+Las operaciones más simples funcionan como esperarías. Si tienes propiedades numéricas como "Precio" y "Cantidad", puedes crear una fórmula de "Total":
+
+<div class="callout">
+  <span class="callout__icon">📝</span>
+  <div class="callout__content">
+    <p><code>prop("Precio") * prop("Cantidad")</code></p>
+    <p>Esto multiplicará el valor de la propiedad "Precio" por "Cantidad" para cada fila.</p>
+  </div>
+</div>
+
+### Concatenar textos
+
+Puedes unir textos de diferentes propiedades. Por ejemplo, si tienes "Nombre" y "Apellido":
+
+<div class="callout">
+  <span class="callout__icon">📝</span>
+  <div class="callout__content">
+    <p><code>prop("Nombre") + " " + prop("Apellido")</code></p>
+  </div>
+</div>
+
+## Fórmulas condicionales con if()
+
+La función `if()` es probablemente la más usada en Notion. Te permite crear lógica condicional: "si se cumple esta condición, muestra esto; si no, muestra aquello".
+
+La estructura es: `if(condición, valor_si_verdadero, valor_si_falso)`
+
+### Ejemplo: Estado con emoji
+
+Imagina que tienes una propiedad de casilla llamada "Completada". Puedes crear una fórmula que muestre un emoji según el estado:
+
+<div class="callout">
+  <span class="callout__icon">📝</span>
+  <div class="callout__content">
+    <p><code>if(prop("Completada"), "✅ Hecho", "⏳ Pendiente")</code></p>
+  </div>
+</div>
+
+### Ejemplo: Prioridad por colores
+
+Puedes anidar varios `if()` para crear lógica más compleja. Por ejemplo, para asignar una prioridad basada en una puntuación numérica:
+
+<div class="callout">
+  <span class="callout__icon">📝</span>
+  <div class="callout__content">
+    <p><code>if(prop("Puntuación") &gt;= 8, "🔴 Alta", if(prop("Puntuación") &gt;= 5, "🟡 Media", "🟢 Baja"))</code></p>
+  </div>
+</div>
+
+## Trabajando con fechas
+
+Las fórmulas de fecha son extremadamente útiles para gestión de proyectos y seguimiento de plazos.
+
+### Días restantes
+
+Para calcular cuántos días faltan hasta una fecha límite:
+
+<div class="callout">
+  <span class="callout__icon">📝</span>
+  <div class="callout__content">
+    <p><code>dateBetween(prop("Fecha límite"), now(), "days")</code></p>
+    <p>Devuelve el número de días entre hoy y la fecha límite. Si es negativo, significa que la fecha ya pasó.</p>
+  </div>
+</div>
+
+### Formato de fecha personalizado
+
+La función `formatDate()` te permite mostrar fechas en el formato que prefieras:
+
+<div class="callout">
+  <span class="callout__icon">📝</span>
+  <div class="callout__content">
+    <p><code>formatDate(prop("Fecha"), "DD/MM/YYYY")</code></p>
+  </div>
+</div>
+
+## Funciones de texto útiles
+
+- **contains()** — Comprueba si un texto contiene una cadena. Útil para filtros.
+- **length()** — Devuelve la longitud de un texto. Ideal para limitar descripciones.
+- **replace()** — Reemplaza texto dentro de una cadena.
+- **slice()** — Extrae una parte de un texto.
+- **upper() / lower()** — Convierte a mayúsculas o minúsculas.
+
+## Combinando fórmulas: Ejemplo avanzado
+
+El verdadero poder de las fórmulas aparece cuando las combinas. Imagina un sistema de seguimiento de hábitos donde quieres mostrar una barra de progreso visual:
+
+<div class="callout">
+  <span class="callout__icon">📝</span>
+  <div class="callout__content">
+    <p><code>slice("🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩", 0, round(prop("Progreso") / 10)) + slice("⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜", 0, 10 - round(prop("Progreso") / 10))</code></p>
+    <p>Si "Progreso" es 70, mostrará: 🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜</p>
+  </div>
+</div>
+
+Este tipo de fórmulas avanzadas te permiten crear dashboards visualmente atractivos dentro de Notion sin necesidad de herramientas externas.
+
+Para más ejemplos y una explicación detallada, visita nuestra [lección de Fórmulas](/formulas) del curso.

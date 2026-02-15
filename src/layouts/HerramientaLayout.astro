@@ -1,0 +1,254 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  subtitle: string;
+  price: string;
+  priceNumeric: number;
+  tag: string;
+  tagColor: string;
+  image: string;
+  purchaseUrl: string;
+  valueProps: Array<{ icon: string; title: string; description: string }>;
+  features?: string[];
+  modules?: Array<{ emoji: string; title: string; desc: string }>;
+  testimonials?: Array<{ quote: string; author: string }>;
+  pricing: {
+    headline: string;
+    subtitle: string;
+    cards: Array<{
+      label: string;
+      price: string;
+      features: string[];
+      url: string;
+      featured: boolean;
+      internal: boolean;
+    }>;
+  };
+  faq: Array<{ question: string; answer: string }>;
+  prevProduct?: { slug: string; label: string };
+  nextProduct?: { slug: string; label: string };
+}
+
+const {
+  title,
+  description,
+  subtitle,
+  price,
+  priceNumeric,
+  tag,
+  tagColor,
+  image,
+  purchaseUrl,
+  valueProps,
+  features,
+  modules,
+  testimonials,
+  pricing,
+  faq,
+  prevProduct,
+  nextProduct,
+} = Astro.props;
+
+const siteUrl = 'https://aprendenotion.com';
+
+// Build structured data
+const structuredData: Record<string, any> = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": title,
+  "description": description,
+  "offers": {
+    "@type": "Offer",
+    "price": String(priceNumeric),
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock"
+  },
+  "brand": { "@type": "Brand", "name": "Aprende Notion" },
+};
+
+if (testimonials && testimonials.length >= 2) {
+  structuredData.aggregateRating = {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": String(testimonials.length),
+  };
+} else if (testimonials && testimonials.length === 1) {
+  structuredData.review = {
+    "@type": "Review",
+    "reviewBody": testimonials[0].quote,
+    "author": { "@type": "Person", "name": testimonials[0].author },
+  };
+}
+---
+
+<BaseLayout
+  title={`${title} — Aprende Notion`}
+  description={description}
+>
+  <div class="page-wrapper">
+
+    <!-- Product Hero -->
+    <section class="pd-hero">
+      <span class={`pd-hero__tag pd-hero__tag--${tagColor}`}>{tag}</span>
+      <h1 class="pd-hero__title">{title}</h1>
+      <p class="pd-hero__subtitle">{subtitle}</p>
+      <div class="pd-hero__image">
+        <img src={image} alt={`Vista previa de ${title}`} width="600" height="420" />
+      </div>
+    </section>
+
+    <!-- Value props -->
+    <div class="pd-value-props">
+      {valueProps.map((vp) => (
+        <div class="pd-value-prop">
+          <span class="pd-value-prop__icon" aria-hidden="true">{vp.icon}</span>
+          <div>
+            <strong>{vp.title}</strong>
+            <p>{vp.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <hr />
+
+    <!-- MDX body content (prose sections) -->
+    <section class="section">
+      <div class="section__text content">
+        <slot />
+      </div>
+    </section>
+
+    <!-- Modules grid (if present) -->
+    {modules && modules.length > 0 && (
+      <>
+        <hr />
+        <section class="section">
+          <h2 class="section__title">¿Qué incluye?</h2>
+          <p class="section__text" style="color: var(--color-text-secondary);">
+            {modules.length} módulos completos con bases de datos interconectadas, fórmulas y documentación.
+          </p>
+          <div class="pd-modules-grid">
+            {modules.map((m) => (
+              <div class="pd-module">
+                <span class="pd-module__emoji" aria-hidden="true">{m.emoji}</span>
+                <div class="pd-module__content">
+                  <h3 class="pd-module__title">{m.title}</h3>
+                  <p class="pd-module__desc">{m.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </>
+    )}
+
+    <!-- Features checklist (if present) -->
+    {features && features.length > 0 && (
+      <>
+        <hr />
+        <section class="section">
+          <h2 class="section__title">Además incluye</h2>
+          <div class="pd-checklist">
+            {features.map((f) => (
+              <div class="pd-checklist__item">
+                <span class="pd-checklist__check" aria-hidden="true">✔</span>
+                <span set:html={f} />
+              </div>
+            ))}
+          </div>
+        </section>
+      </>
+    )}
+
+    <!-- Testimonials (if present) -->
+    {testimonials && testimonials.length > 0 && (
+      <>
+        <hr />
+        <section class="section">
+          {testimonials.length > 1 ? (
+            <>
+              <h2 class="section__title">Lo que dicen los usuarios</h2>
+              <div class="pd-testimonials-grid">
+                {testimonials.map((t) => (
+                  <blockquote class="pd-testimonial">
+                    <p>"{t.quote}"</p>
+                    <footer>— <strong>{t.author}</strong></footer>
+                  </blockquote>
+                ))}
+              </div>
+            </>
+          ) : (
+            <blockquote class="pd-testimonial">
+              <p>"{testimonials[0].quote}"</p>
+              <footer>— <strong>{testimonials[0].author}</strong></footer>
+            </blockquote>
+          )}
+        </section>
+      </>
+    )}
+
+    <hr />
+
+    <!-- Pricing -->
+    <section class="section pd-pricing-section">
+      <h2 class="section__title" style="text-align: center;">{pricing.headline}</h2>
+      <p class="section__text" style="text-align: center; color: var(--color-text-secondary);">
+        {pricing.subtitle}
+      </p>
+      <div class="pd-pricing-cards">
+        {pricing.cards.map((card) => (
+          <div class={`pd-pricing-card${card.featured ? ' pd-pricing-card--featured' : ''}`}>
+            <span class="pd-pricing-card__label">{card.label}</span>
+            <div class="pd-pricing-card__price" set:html={card.price} />
+            <ul class="pd-pricing-card__features">
+              {card.features.map((f) => (
+                <li>{f}</li>
+              ))}
+            </ul>
+            {card.internal ? (
+              <a href={card.url} class="btn">&iexcl;Lo quiero!</a>
+            ) : (
+              <a href={card.url} class="btn" target="_blank" rel="noopener">&iexcl;Lo quiero!</a>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- FAQ -->
+    <section class="section">
+      <h2 class="section__title">Preguntas frecuentes</h2>
+      <div class="pd-faq">
+        {faq.map((item) => (
+          <details class="pd-faq__item">
+            <summary class="pd-faq__question">{item.question}</summary>
+            <p class="pd-faq__answer">{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="page-nav" aria-label="Navegación de productos">
+      {prevProduct ? (
+        <a href={`/herramientas/${prevProduct.slug}`} class="page-nav__link">{prevProduct.label}</a>
+      ) : (
+        <a href="/herramientas" class="page-nav__link">← Todas las herramientas</a>
+      )}
+      {nextProduct ? (
+        <a href={`/herramientas/${nextProduct.slug}`} class="page-nav__link">{nextProduct.label}</a>
+      ) : (
+        <span class="page-nav__link page-nav__link--disabled"></span>
+      )}
+    </nav>
+  </div>
+
+  <!-- Product structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+</BaseLayout>

@@ -1,0 +1,19 @@
+---
+import { getCollection, render } from 'astro:content';
+import HerramientaLayout from '../../layouts/HerramientaLayout.astro';
+
+export async function getStaticPaths() {
+  const products = await getCollection('herramientas');
+  return products.map((product) => ({
+    params: { slug: product.id },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+const { Content } = await render(product);
+---
+
+<HerramientaLayout {...product.data}>
+  <Content />
+</HerramientaLayout>
