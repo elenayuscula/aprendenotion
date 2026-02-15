@@ -28,6 +28,8 @@ const toc = [
   <p>Si por ejemplo quisiéramos crear un campo que indique la edad, seguido del número de años, tendríamos que concatenar ambos valores con la función <code>add()</code>. El problema es que uno es de tipo texto y el otro de tipo numérico:</p>
   <p><code>add("Edad: ", format(prop("Edad")))</code></p>
 
+  <img src="/images/leccion-05/input-values/edad.webp" alt="Función format() en fórmulas de Notion" />
+
   <h2 id="strings">Cadenas de texto (string)</h2>
   <p>Un <strong>string</strong> o <strong>cadena de texto</strong> es uno o más caracteres que representan texto.</p>
   <p>Puesto que en Notion puedes escribir números tanto en una propiedad de <code>Texto</code> como en una propiedad de <code>Number</code>, dependiendo de donde introduzcas esas cifras serán interpretadas como <strong>texto</strong> o como <strong>número</strong>.</p>
@@ -54,6 +56,8 @@ const toc = [
   <p>Ejemplo: comprobar si el precio total está en nuestro presupuesto de 20€:</p>
   <p><strong>Precio total:</strong> <code>add(prop("Precio"), multiply(prop("Precio"), prop("IVA")))</code></p>
   <p><strong>En presupuesto?</strong>: <code>if(prop("Precio total") &lt;= 20, true, false)</code></p>
+
+  <img src="/images/leccion-05/input-values/en-presupuesto.webp" alt="Booleanos en fórmulas de Notion" />
 
   <h2 id="date">Date</h2>
   <p>El valor <code>date</code> se crea siempre que uses una propiedad de <code>Date</code>, ya sea esta misma o las otras dos propiedades que incluyen fecha como <code>Created Time</code> o <code>Last Edited Time</code>.</p>

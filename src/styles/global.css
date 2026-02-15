@@ -767,6 +767,14 @@ img {
   line-height: 1.65;
 }
 
+.content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  margin: 1.5rem 0;
+  display: block;
+}
+
 /* Video embed */
 .video-embed {
   position: relative;

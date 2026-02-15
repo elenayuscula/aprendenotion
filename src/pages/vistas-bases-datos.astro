@@ -19,11 +19,18 @@ const toc = [
   nextLink={{ href: '/repositorio-articulos-pocket', label: 'Práctica 01. Repositorio de artículos tipo Pocket' }}
   toc={toc}
 >
+  <div class="video-embed">
+    <iframe src="https://www.youtube.com/embed/4o6mJNhXuMk" title="Diferentes bases de datos en Notion" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
   <p>Una vez conoces las diferentes propiedades que puede tener una base de datos y sus particularidades, es hora de saber un poco más sobre cada uno de los tipos de bases de datos que tenemos a nuestra disposición que, te recuerdo, son 5: Tabla, Tablero, Galería, Calendario y Lista.</p>
 
   <h2 id="tablas">Tablas</h2>
   <p>La vista de tablas es la más tradicional y más parecida a nuestro concepto de tabla de Excel de toda la vida. Te permite <strong>introducir una serie de registros, que se van apilando de arriba a abajo, y añadirles todas las propiedades que necesites</strong> (cada propiedad será una columna) de la lista que vimos anteriormente. Estas propiedades puedes esconderlas, hacerlas visibles, o cambiarlas de lugar pinchando y arrastrando sus columnas.</p>
   <p>También, al ser una versión expandida de una lista, puedes hacer que las celdas se ajusten a su contenido (marcando la opción <code>Wrap Cells</code> en el menú <code>...</code>) o que lo contengan, es decir, que se quede todo en una línea o que, por el contrario, las celdas se redimensionen para poder ver todo el contenido.</p>
+
+  <img src="/images/leccion-03/vistas/reordenacion-items.webp" alt="Reordenación de items en tablas de Notion" />
+  <img src="/images/leccion-03/vistas/wrap-cells.webp" alt="Opción Wrap Cells en tablas de Notion" />
 
   <h2 id="tableros">Tableros</h2>
   <p>Si lo que necesitas es poner un mayor foco <strong>en qué estado de un proceso determinado</strong> están tus items, la vista más útil es la de tablero, que te permitirá organizar los registros por fases y moverlos de una a otra según sus propiedades.</p>
@@ -40,6 +47,8 @@ const toc = [
   <p>Al crear una vista de tablero, las tarjetas se agrupan por columnas en base a una propiedad. Los tipos de propiedades por los que puedes agrupar tus tarjetas son <code>Select</code>, <code>Multi-select</code> y <code>Person</code>.</p>
   <p>Para cambiar la propiedad por la que se agrupen, basta ir a la parte superior derecha de la tabla y buscar <code>Group by</code> (en las tablas <code>Inline</code> esta opción está escondida en el menú <code>...</code>).</p>
 
+  <img src="/images/leccion-03/vistas/agrupar-por.webp" alt="Criterios de agrupación en tableros de Notion" />
+
   <h3>Cambiar vista previa de tarjeta</h3>
   <p>En este tipo de vista, como los ítems se visualizan en forma de tarjeta, podemos tener un mayor control en la vista de estos. Para modificar cómo los vemos en el tablero, basta con ir a <code>Properties</code> y allí verás dos desplegables: <code>Card Preview</code> y <code>Card Size</code>.</p>
   <ul>
@@ -54,8 +63,12 @@ const toc = [
   </ul>
   <p>Si marcas la opción <code>Fit Image</code>, la imagen ocupará la totalidad del marco de la tarjeta y podrás reposicionarla con la opción <code>Reposition</code>. Si dejas <code>Fit Image</code> desmarcado, la imagen se redimensionará para que toda quepa dentro del marco.</p>
 
+  <img src="/images/leccion-03/vistas/card-preview-size.webp" alt="Cambiar vista previa y tamaño de tarjeta en Notion" />
+
   <h3>Esconder columnas</h3>
   <p>Dependiendo del contexto, es posible que haya columnas que no nos interese ver. Para centrarte sólo en las columnas que te interesan, basta con pinchar en <code>...</code> en la columna que desees esconder y pulsar en <code>Hide</code>. Todas las columnas escondidas residirán en una columna con el título <code>Hidden columns</code>.</p>
+
+  <img src="/images/leccion-03/vistas/hide-columns.webp" alt="Esconder columnas en tableros de Notion" />
 
   <h2 id="galerias">Galerías</h2>
   <p>La vista de galería nos será muy útil cuando en nuestra base de datos tengamos <strong>contenido visual</strong>, como moodboards, directorios de personas, recetas o un registro de libros o CDs.</p>
@@ -66,6 +79,8 @@ const toc = [
     <li><strong><code>Page Content</code></strong>: Si en el contenido de la página hay alguna imagen, Notion la detectará y la usará como previo</li>
     <li><strong>La propiedad <code>Files</code></strong>: Si has creado esta propiedad y has subido imágenes, Notion usará esa imagen como previo</li>
   </ul>
+
+  <img src="/images/leccion-03/vistas/fit-image.webp" alt="Opción Fit Image en galerías de Notion" />
   <p>Recuerda que también puedes especificar cómo quieres que se comporte la imagen y modificar el tamaño de cada ítem en <code>Properties</code> marcando la opción <code>Card Size</code>.</p>
 
   <h2 id="calendarios">Calendarios</h2>
@@ -88,7 +103,11 @@ const toc = [
 
   <h3>Reordenar y editar items en el calendario</h3>
   <p>Podrás pinchar y arrastrar los ítems por los diferentes días para reorganizarlos. Esto hará que automáticamente esos ítems cambien de fecha. De la misma forma, cada item tiene la opción de ser alargado o acortado en el tiempo.</p>
+
+  <img src="/images/leccion-03/vistas/change-date-stretch.webp" alt="Reordenar y editar items en el calendario de Notion" />
   <p>Si alguno de tus ítems no tiene fecha, no aparecerán en el calendario pero podrás seguir accediendo a ellos a través de la opción <code>No [Propiedad]</code> en el menú superior.</p>
+
+  <img src="/images/leccion-03/vistas/ver-sin-fecha.webp" alt="Ver items sin fecha en el calendario de Notion" />
 
   <h2 id="listas">Listas</h2>
   <p>El tipo de base de datos de tipo Lista es el más minimalista de todos. Esta visualización puede resultarnos muy útil cuando queremos <strong>centrarnos únicamente en el nombre del ítem y, quizá, una o dos propiedades</strong> asignadas a él que nos ayuden a contextualizarlo.</p>

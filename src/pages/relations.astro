@@ -20,6 +20,10 @@ const toc = [
   nextLink={{ href: '/recetas', label: 'Práctica 01. Crear un repositorio de recetas' }}
   toc={toc}
 >
+  <div class="video-embed">
+    <iframe src="https://www.youtube.com/embed/FBCc7EUTKik" title="La propiedad Relation en Notion" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
   <h2 id="para-que-sirve">¿Para qué sirve relacionar unas bases de datos con otras?</h2>
   <p>Piensa por ejemplo que tienes una lista de clientes y una lista de proyectos, y quieres saber qué proyectos corresponden a cada uno de esos clientes. Podrías conectar tu base de datos de Clientes con la de Proyectos y de esta manera ambas estarían relacionadas entre sí. Al entrar en el registro de uno de tus clientes, en sus propiedades verías todos los ítems de la base de datos de Proyectos asociados a ese cliente.</p>
 
@@ -53,9 +57,17 @@ const toc = [
   <p>A partir de ahora, ambas tablas están relacionadas. Para empezar a crear esos enlaces entre ellas, es tan sencillo como pinchar en una de las columnas con la propiedad <code>Relation</code> y seleccionar el ítem de la otra base de datos que quieres relacionar.</p>
   <p>Según vayas seleccionando <strong>Tareas</strong> (con el botón de <code>+</code>), verás que van apareciendo en su columna correspondiente y, además, como la sincronización funciona en ambas direcciones, verás que en la base de datos de <strong>Tareas</strong> ahora también indica a qué proyecto pertenecen.</p>
 
+  <img src="/images/leccion-04/relations/crear-relation.gif" alt="Cómo crear una relación entre bases de datos en Notion" />
+
   <h2 id="paginas-relacionadas">Las páginas relacionadas</h2>
   <p>Cuando creas una relación entre dos bases de datos, lo que estás haciendo es añadir las páginas que formaban una de las bases de datos a una de las propiedades de la otra. Desde tu base de datos de <strong>Proyectos</strong>, además de todas las propiedades, ahora también podrás ver todas las páginas que están relacionadas con ella.</p>
   <p>Puesto que cada registro en una base de datos es a su vez una página, podrás abrir esas tareas como páginas normales y llenarlas con el contenido que necesites.</p>
+
+  <img src="/images/leccion-04/relations/abrir-pagina-relacionada.gif" alt="Abrir páginas relacionadas en Notion" />
+
+  <div class="video-embed">
+    <iframe src="https://www.youtube.com/embed/PmPDB5BnnOE" title="Relacionar bases de datos consigo mismas en Notion" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
 
   <h2 id="relacionar-consigo-misma">Relacionar una base de datos consigo misma</h2>
   <p>En ocasiones, puede que quieras que los items de una misma base de datos estén relacionados consigo mismos. En Notion, cuando haces esto, puedes elegir cómo quieres que sea esta relación:</p>
@@ -64,13 +76,19 @@ const toc = [
     <li><strong>Como subtareas de tareas</strong> (<code>Sync both ways</code>): Se crearán automáticamente dos columnas, una para tareas padre y otra para subtareas.</li>
   </ul>
 
+  <img src="/images/leccion-04/relations/relacionar-consigo-misma.webp" alt="Relacionar una base de datos consigo misma en Notion" />
+
   <h2 id="tareas-relacionadas">Tareas relacionadas (la opción fácil)</h2>
   <p>Si eliges esta opción, sólo crea una columna. Al relacionar una tarea con otra, simplemente verás al lado de la primera tarea la tarea con la que la has relacionado.</p>
   <p>El problema es que desde la segunda tarea no puedes ver que está relacionada con la primera. Para eso existe la segunda opción.</p>
 
+  <img src="/images/leccion-04/relations/tareas-relacionadas.gif" alt="Tareas relacionadas en Notion" />
+
   <h2 id="subtareas">Subtareas de tareas (o Tareas Padre y Tareas Hijo)</h2>
   <p>Al elegir la opción de <code>Sync Both Ways</code> se crean dos columnas adicionales automáticamente. El uso más común es saber qué tareas están compuestas de subtareas más pequeñas.</p>
   <p>Al relacionar la base de datos de <strong>Tareas</strong> consigo misma con esta opción, podrás ver las subtareas de una tarea y, a su vez, las tareas padre de estas subtareas.</p>
+
+  <img src="/images/leccion-04/relations/tareas-y-subtareas.webp" alt="Tareas y subtareas en Notion" />
 
   <div class="callout">
     <span class="callout__icon">☝🏻</span>
@@ -81,6 +99,7 @@ const toc = [
         <li>Esconde la propiedad de "Tarea Padre" para sólo ver las subtareas</li>
         <li>Filtra la tabla para que sólo muestre registros cuya propiedad "Subtarea" tenga algo dentro (<code>Subtarea</code> + <code>Is not Empty</code>)</li>
       </ol>
+  <img src="/images/leccion-04/relations/subtareas-optimizada.webp" alt="Subtareas optimizadas en Notion" />
     </div>
   </div>
 </LessonLayout>

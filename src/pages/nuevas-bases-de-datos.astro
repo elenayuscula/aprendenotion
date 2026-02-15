@@ -19,6 +19,10 @@ const toc = [
   nextLink={{ href: '/guia-viajes-ii', label: 'Práctica 02. Guía de viajes' }}
   toc={toc}
 >
+  <div class="video-embed">
+    <iframe src="https://www.youtube.com/embed/e_rd_MWQ-6s" title="Nuevas bases de datos en Notion" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
   <h2 id="crear-de-cero">Crear bases de datos de 0</h2>
   <p>El cambio principal aparece al crear una base de datos. Anteriormente, se usaba <code>/</code> para acceder al menú desplegable. Ahora las opciones se reducen y cambia la terminología.</p>
   <p>Anteriormente había dos opciones principales (<code>Database - Inline</code> o <code>Database - FullPage</code>). Ahora aparece una distinción entre <code>Database</code> y <code>View</code>.</p>
@@ -30,6 +34,9 @@ const toc = [
     </div>
   </div>
 
+  <img src="/images/leccion-03/nuevas-bbdd/crear-bbdd-0.webp" alt="Crear base de datos en Notion - paso 1" />
+  <img src="/images/leccion-03/nuevas-bbdd/crear-bbdd-1.webp" alt="Crear base de datos en Notion - paso 2" />
+
   <p>Cuando crees una base de datos de cero, podrás hacer exactamente lo mismo que antes: ponerle un <strong>título</strong>, crear <strong>propiedades</strong> y cambiar la <strong>vista</strong>.</p>
 
   <h2 id="panel-control">1. Controlar todo desde un mismo panel</h2>
@@ -37,9 +44,13 @@ const toc = [
   <p>Desde este panel no sólo podrás controlar el <strong>Layout</strong>, sino también las <strong>Propiedades</strong>, los <strong>Filtros</strong>, las <strong>Opciones de Ordenación</strong> (Sort) y, en general, <strong>todos los ajustes</strong> de tu base de datos.</p>
   <p>La principal diferencia está en que antes eso lo controlábamos desde un modal y ahora está fijo en la misma Vista, lo que hace la interacción mucho más intuitiva y rápida.</p>
 
+  <img src="/images/leccion-03/nuevas-bbdd/layout.webp" alt="Panel de control de bases de datos en Notion" />
+
   <h2 id="vistas-lado">2. Añadir vistas una al lado de otra</h2>
   <p>Una de las cosas más cómodas de esta nueva interfaz es que ahora podrás ir añadiendo diferentes vistas de tu base de datos una al lado de la otra, vs. tener que hacerlo a través de un desplegable como antes.</p>
   <p>Para crear una nueva vista, sólo tendrás que pinchar en el comando <code>+ Add view</code> y automáticamente podrás empezar a controlarlo todo desde el panel.</p>
+
+  <img src="/images/leccion-03/nuevas-bbdd/crear-vista-nueva.webp" alt="Añadir vistas en bases de datos de Notion" />
   <p>Lo verdaderamente revolucionario viene a la hora de enlazar bases de datos: como ahora tratamos con el concepto de <strong>Vista</strong>, vamos a poder crear una vista nueva y, en su interior, <strong>enlazar bases de datos distintas.</strong></p>
 
   <h2 id="enlazar-existentes">Enlazar bases de datos existentes</h2>
@@ -48,10 +59,14 @@ const toc = [
   <p>Ahora, para enlazar una base de datos existente, cuando tecleemos <code>/database</code>, en vez de elegir las primeras opciones, elegiremos <strong>cualquiera de las otras opciones</strong>. La vista se convierte en una especie de cuadro de mandos desde el cual podremos <strong>seleccionar la fuente original</strong>.</p>
   <p>Nos aparecerá en el panel de la derecha una lista de las últimas bases de datos que hayas modificado, pero puedes usar el campo de búsqueda para buscar cualquier base de datos que exista en ese espacio de trabajo.</p>
 
+  <img src="/images/leccion-03/nuevas-bbdd/enlazar-bbdd.webp" alt="Enlazar bases de datos existentes en Notion" />
+
   <h2 id="novedades">Novedades a la hora de trabajar sobre bases de datos</h2>
 
   <h3>1. Partir de vistas creadas previamente</h3>
   <p>Al enlazar una base de datos, Notion te da a elegir qué vista (de la base de datos original) te quieres traer. Esto nos ahorra muchísimo tiempo ya que, antes, cada vez que enlazábamos una base de datos, perdíamos todos los filtros, vistas y opciones de ordenación.</p>
+
+  <img src="/images/leccion-03/nuevas-bbdd/recuperar-vistas.webp" alt="Partir de vistas creadas previamente en Notion" />
 
   <h3>2. Cambios en la forma de filtrar</h3>
   <p>Al crear un nuevo filtro notarás dos cosas:</p>
@@ -67,17 +82,27 @@ const toc = [
   </ul>
   <p>Pulsando <code>Reset</code> volverás a como estaba todo antes.</p>
 
+  <img src="/images/leccion-03/nuevas-bbdd/guardar-filtros.webp" alt="Guardar filtros en bases de datos de Notion" />
+
   <h4>Filtros simples y filtros avanzados</h4>
   <p>Para filtros que combinan lógica de <code>AND</code> u <code>OR</code>, antes se llamaba <code>Filter Group</code> y ahora es <code>Advanced Filter</code>, pero el funcionamiento es el mismo. Puedes tomar un filtro simple y convertirlo en avanzado añadiendo reglas.</p>
   <p>Notion interpreta <strong>una regla por cada uno de los filtros que crees</strong>.</p>
+
+  <img src="/images/leccion-03/nuevas-bbdd/filtros-avanzados.webp" alt="Filtros avanzados en bases de datos de Notion" />
 
   <h3>3. Enlazar diferentes bases de datos en una misma vista</h3>
   <p>Al tratar con <strong>Vistas</strong> y no bases de datos en sí, podemos usar esas vistas para <strong>enlazar diferentes fuentes de datos</strong>. Ahora, en un mismo lienzo, podrás ver en una pestaña una base de datos y, en la pestaña de al lado, una base de datos distinta.</p>
   <p>Para hacerlo, añade una nueva vista con <code>+ Add view</code> y elige una fuente de datos diferente.</p>
 
+  <img src="/images/leccion-03/nuevas-bbdd/bbdd-distintas.webp" alt="Enlazar diferentes bases de datos en una misma vista" />
+
   <h3>4. Recuperar propiedades eliminadas</h3>
   <p>Ahora puedes <strong>recuperar propiedades eliminadas</strong> en una base de datos. Para hacerlo, abre el panel, pincha en Properties y, al final de la lista, encontrarás una sección de <code>Deleted Properties</code> donde podrás restaurarlas o eliminarlas definitivamente.</p>
 
+  <img src="/images/leccion-03/nuevas-bbdd/recuperar-propiedades.webp" alt="Recuperar propiedades eliminadas en Notion" />
+
   <h3>Extra: Esconder el título de una base de datos</h3>
   <p>Ahora puedes <strong>esconder el título de una base de datos</strong>. Basta con pinchar en el botón de <code>...</code> al lado del título y seleccionar <code>Hide database title</code>.</p>
+
+  <img src="/images/leccion-03/nuevas-bbdd/esconder-titulo.webp" alt="Esconder título de base de datos en Notion" />
 </LessonLayout>

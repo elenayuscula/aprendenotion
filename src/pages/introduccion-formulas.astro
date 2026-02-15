@@ -19,6 +19,10 @@ const toc = [
   nextLink={{ href: '/formulas-avanzadas', label: '5.02. Expresiones y condiciones anidadas' }}
   toc={toc}
 >
+  <div class="video-embed">
+    <iframe src="https://www.youtube.com/embed/6FLHs29zsUM" title="Introducción a las Fórmulas en Notion" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
   <h2 id="menu-formula">El menú Fórmula</h2>
   <p>Para crear una fórmula, primero debes añadir una propiedad de tipo <code>Formula</code> en tu base de datos. Al hacer clic en ese campo, se abre una ventana con varias secciones:</p>
   <ul>
@@ -77,10 +81,14 @@ const toc = [
   <p>Usa la función <code>prop()</code> para referenciar otras propiedades:</p>
   <p><code>prop("Precio") * prop("Cantidad")</code></p>
 
+  <img src="/images/leccion-05/intro/precio-total.webp" alt="Referencias a propiedades en fórmulas de Notion" />
+
   <h3>Valores literales</h3>
   <p>Valores fijos que escribes directamente, como cadenas de texto:</p>
   <p><code>add("Autor: ", prop("Autor"))</code></p>
   <p>Esto añade el texto "Autor: " antes del valor de la propiedad Autor en cada registro.</p>
+
+  <img src="/images/leccion-05/intro/autores.webp" alt="Valores literales en fórmulas de Notion" />
 
   <h3>Constantes</h3>
   <p>Constantes matemáticas como pi y e, disponibles en Notion aunque raramente se usan.</p>

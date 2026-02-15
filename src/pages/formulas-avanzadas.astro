@@ -16,6 +16,10 @@ const toc = [
   nextLink={{ href: '/input-values', label: '5.03. Bola extra: Tipos de valores en las fórmulas' }}
   toc={toc}
 >
+  <div class="video-embed">
+    <iframe src="https://www.youtube.com/embed/kx8Ciyu7jzk" title="Expresiones y condiciones anidadas en Notion" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
   <h2 id="anidar">Anidar inputs, operadores y funciones</h2>
   <p>Es muy normal que en nuestras fórmulas usemos <strong>funciones</strong>, <strong>operadores</strong> e <strong>input values</strong> dentro de otras funciones. Esto se conoce como anidado o <strong>nesting</strong>.</p>
   <p>Cuando combinamos inputs, operadores y/o funciones de manera que devuelvan un sólo valor, se conoce como <strong>expresión</strong>. Las expresiones pueden ser tan sencillas o complejas como queramos, siempre y cuando devuelvan un sólo valor.</p>
@@ -30,7 +34,7 @@ const toc = [
   <p>Si quisiéramos calcular el precio total de un item aplicándole un IVA diferente:</p>
   <p><code>add(prop("Precio"), multiply(prop("Precio"), prop("IVA")))</code></p>
   <p>Primero, multiplicaríamos el Precio por el IVA → <code>multiply(prop("Precio"), prop("IVA"))</code></p>
-  <p>Y ese resultado lo sumaríamos al Precio → <code>add(prop("Precio"), multiply(prop("Precio"), prop("IVA")))</code></p>
+  <p>Y ese resultado lo sumaríamos al Precio → <code>  <img src="/images/leccion-05/avanzadas/precio-con-iva.webp" alt="Anidar inputs, operadores y funciones en fórmulas de Notion" />
 
   <h2 id="condiciones-anidadas">Condiciones anidadas</h2>
   <p>El fenómeno de anidado lo encontraremos sobre todo con las funciones de tipo <code>if()</code>. Es decir, las funciones que nos sirven para comprobar si se cumple una condición o no:</p>
@@ -38,6 +42,8 @@ const toc = [
 
   <p>Un uso muy común sería el de marcar como check una propiedad si esta se encuentra en estado "Completado":</p>
   <p><code>if(prop("Status") == "completada", true, false)</code></p>
+
+  <img src="/images/leccion-05/avanzadas/tareas-completadas.webp" alt="Condición para marcar tareas completadas en Notion" />
 
   <p>También podemos usar las funciones <code>and()</code> y <code>or()</code> para comprobar dos expresiones diferentes:</p>
   <p><code>if(and(prop("Pagado"), prop("Enviado")), "Completado", "En Progreso")</code></p>
@@ -52,4 +58,7 @@ const toc = [
     <li>Si lo anterior no se cumple, si "Mood" es "apático", muestra "😕"</li>
     <li>Si no se cumple ninguna de las anteriores, muestra "😩"</li>
   </ul>
+
+  <img src="/images/leccion-05/avanzadas/estado-final.webp" alt="Estado final de condiciones anidadas en Notion" />
+  <img src="/images/leccion-05/avanzadas/moods.webp" alt="Condiciones anidadas con emojis en Notion" />
 </LessonLayout>

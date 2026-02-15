@@ -10,6 +10,10 @@ import LessonLayout from '../layouts/LessonLayout.astro';
   prevLink={{ href: '/introduccion-bases-datos', label: '3.01. Introducción a las bases de datos' }}
   nextLink={{ href: '/vistas-bases-datos', label: '3.03. Diferentes bases de datos y particularidades' }}
 >
+  <div class="video-embed">
+    <iframe src="https://www.youtube.com/embed/NtDPmBjCxR8" title="Filtros y ordenación en Notion" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
   <h2 id="filtros">Filtros</h2>
   <p>En Notion podemos filtrar nuestras bases de datos por todas las propiedades que les hayamos añadido, haciendo que se ajusten a los criterios que necesitemos.</p>
 
@@ -25,6 +29,9 @@ import LessonLayout from '../layouts/LessonLayout.astro';
     <li><strong><code>Add a filter</code></strong>, para los casos en los que necesites filtrar por pocos criterios (por ejemplo, sólo mostrar las tareas que tienen la propiedad de <code>Status</code> "activa")</li>
     <li><strong><code>Add a filter group</code></strong>: Con esta opción podrás anidar filtros combinando lógica de <code>AND</code> y <code>OR</code> hasta llegar a 3 niveles de profundidad. Podrás combinar diferentes filtros para crear vistas de tus bases de datos mucho más específicas y que cumplan muchos más criterios. Un ejemplo sería no sólo mostrar las tareas con status activo sino sólo las que estuvieran asignadas a una persona, en un periodo de tiempo determinado y con una prioridad alta.</li>
   </ul>
+
+  <img src="/images/leccion-03/filtros/filtro-simple.webp" alt="Añadir un filtro simple en Notion" />
+  <img src="/images/leccion-03/filtros/filtro-grupo.webp" alt="Añadir un grupo de filtros en Notion" />
 
   <h2 id="ordenacion">Opciones de ordenación</h2>
   <p>Además de filtrar las bases de datos para que sólo se muestren determinadas propiedades, podemos también <strong>ordenarlas ascendente o descendentemente en base a cualquiera de sus propiedades.</strong></p>
@@ -42,6 +49,8 @@ import LessonLayout from '../layouts/LessonLayout.astro';
     <li>Una vez has creado una vista nueva, es la hora de aplicar todos esos filtros y opciones de ordenación hasta que esté configurada a tu gusto.</li>
     <li>Ahora, cada vez que vuelvas a esa tabla, tendrás dos visualizaciones. La original y la que has configurado tú, y podrás elegir cuál de las dos quieres ver.</li>
   </ul>
+
+  <img src="/images/leccion-03/filtros/add-view.webp" alt="Añadir una vista de base de datos en Notion" />
 
   <div class="callout">
     <span class="callout__icon">💡</span>

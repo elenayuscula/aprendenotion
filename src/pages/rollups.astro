@@ -18,6 +18,10 @@ const toc = [
   nextLink={{ href: '/control-gastos', label: 'Práctica 02. Crear una tabla de control de gastos' }}
   toc={toc}
 >
+  <div class="video-embed">
+    <iframe src="https://www.youtube.com/embed/e6Re1I0p46I" title="La propiedad Rollup en Notion" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
   <h2 id="introduccion">Introducción</h2>
   <p>La propiedad <code>Rollup</code> es una propiedad dependiente de la de <code>Relation</code>. No se puede crear ningún Rollup sin tener previamente una relación creada con otra base de datos. La finalidad de la propiedad Rollup es "extraer" los datos de las bases de datos relacionadas y operar con ellos.</p>
   <p>Continuando con el ejemplo de <strong>Proyectos</strong> y <strong>Tareas</strong>, creando una propiedad Rollup en la base de datos de Proyectos que "llamara" a las propiedades de la base de datos de Tareas, se podría ver cuántas tareas se tienen en total, o cuántas han sido completadas.</p>
@@ -31,6 +35,8 @@ const toc = [
     <li><strong><code>Property</code></strong>: Elige de qué propiedad quieres usar los datos para realizar la operación.</li>
     <li><strong><code>Calculate</code></strong>: La operación que quieres hacer con esos datos extraídos.</li>
   </ul>
+
+  <img src="/images/leccion-04/rollups/crear-rollup.webp" alt="Cómo crear un rollup en Notion" />
 
   <h2 id="tipos">Tipos de rollup</h2>
 
@@ -66,5 +72,7 @@ const toc = [
 
   <h2 id="operaciones">Hacer operaciones con rollups</h2>
   <p>Al igual que Notion permite hacer operaciones directamente en las bases de datos sin necesidad de la propiedad Formula, se puede hacer exactamente lo mismo con los rollups.</p>
+  <img src="/images/leccion-04/rollups/rollups-progreso.webp" alt="Progreso con rollups en Notion" />
+
   <p>Esta funcionalidad solo se puede usar en bases de datos de tipo Tabla y Tablero, y se "activa" pasando el ratón por encima del final de la columna (en Tablas) o por encima del número gris (en Tableros).</p>
 </LessonLayout>
