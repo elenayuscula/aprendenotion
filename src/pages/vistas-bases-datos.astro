@@ -1,0 +1,97 @@
+---
+import LessonLayout from '../layouts/LessonLayout.astro';
+
+const toc = [
+  { label: 'Tablas', href: '#tablas' },
+  { label: 'Tableros', href: '#tableros' },
+  { label: 'Galerías', href: '#galerias' },
+  { label: 'Calendarios', href: '#calendarios' },
+  { label: 'Listas', href: '#listas' },
+];
+---
+
+<LessonLayout
+  title="3.03. Diferentes bases de datos y particularidades — Aprende Notion"
+  description="Conoce los 5 tipos de bases de datos en Notion: tablas, tableros, galerías, calendarios y listas, con sus particularidades."
+  emoji="📊"
+  lessonTitle="3.03. Diferentes bases de datos y particularidades"
+  prevLink={{ href: '/filtros-ordenacion', label: '3.02. Filtros, opciones de ordenación y visualización' }}
+  nextLink={{ href: '/repositorio-articulos-pocket', label: 'Práctica 01. Repositorio de artículos tipo Pocket' }}
+  toc={toc}
+>
+  <p>Una vez conoces las diferentes propiedades que puede tener una base de datos y sus particularidades, es hora de saber un poco más sobre cada uno de los tipos de bases de datos que tenemos a nuestra disposición que, te recuerdo, son 5: Tabla, Tablero, Galería, Calendario y Lista.</p>
+
+  <h2 id="tablas">Tablas</h2>
+  <p>La vista de tablas es la más tradicional y más parecida a nuestro concepto de tabla de Excel de toda la vida. Te permite <strong>introducir una serie de registros, que se van apilando de arriba a abajo, y añadirles todas las propiedades que necesites</strong> (cada propiedad será una columna) de la lista que vimos anteriormente. Estas propiedades puedes esconderlas, hacerlas visibles, o cambiarlas de lugar pinchando y arrastrando sus columnas.</p>
+  <p>También, al ser una versión expandida de una lista, puedes hacer que las celdas se ajusten a su contenido (marcando la opción <code>Wrap Cells</code> en el menú <code>...</code>) o que lo contengan, es decir, que se quede todo en una línea o que, por el contrario, las celdas se redimensionen para poder ver todo el contenido.</p>
+
+  <h2 id="tableros">Tableros</h2>
+  <p>Si lo que necesitas es poner un mayor foco <strong>en qué estado de un proceso determinado</strong> están tus items, la vista más útil es la de tablero, que te permitirá organizar los registros por fases y moverlos de una a otra según sus propiedades.</p>
+  <p>En este tipo de base de datos, los items que se creen tomarán el aspecto de "cards" o "tarjetas", y al pinchar en cada uno se abrirá su página correspondiente.</p>
+
+  <h3>Reagrupar columnas y tarjetas</h3>
+  <p>Igual que en las tablas, podemos reordenar nuestros items simplemente pinchando y arrastrando:</p>
+  <ul>
+    <li>Para cambiar el <strong>orden de las columnas</strong>, basta con pinchar en el nombre de la misma y moverla de un lado a otro.</li>
+    <li>Para cambiar el <strong>orden de las tarjetas</strong>, basta con pinchar una y arrastrarla arriba o hacia abajo.</li>
+  </ul>
+
+  <h3>Criterios de agrupación</h3>
+  <p>Al crear una vista de tablero, las tarjetas se agrupan por columnas en base a una propiedad. Los tipos de propiedades por los que puedes agrupar tus tarjetas son <code>Select</code>, <code>Multi-select</code> y <code>Person</code>.</p>
+  <p>Para cambiar la propiedad por la que se agrupen, basta ir a la parte superior derecha de la tabla y buscar <code>Group by</code> (en las tablas <code>Inline</code> esta opción está escondida en el menú <code>...</code>).</p>
+
+  <h3>Cambiar vista previa de tarjeta</h3>
+  <p>En este tipo de vista, como los ítems se visualizan en forma de tarjeta, podemos tener un mayor control en la vista de estos. Para modificar cómo los vemos en el tablero, basta con ir a <code>Properties</code> y allí verás dos desplegables: <code>Card Preview</code> y <code>Card Size</code>.</p>
+  <ul>
+    <li><strong><code>Card size</code></strong>: Aquí elegiremos el tamaño de nuestra tarjeta, que puede ser <code>Small</code>, <code>Medium</code> o <code>Large</code>.</li>
+    <li><strong><code>Card preview</code></strong>: En este desplegable tendremos tres opciones a elegir:
+      <ul>
+        <li><code>Page Cover</code>: Mostrará la imagen que hayas definido como portada de la página.</li>
+        <li><code>Page Content</code>: Mostrará un previo del cuerpo de la página. Si hay alguna imagen, mostrará esta.</li>
+        <li><code>Files</code>: Si has añadido la propiedad de <code>Files & Media</code>, tendrás la opción de elegir esa imagen como vista previa.</li>
+      </ul>
+    </li>
+  </ul>
+  <p>Si marcas la opción <code>Fit Image</code>, la imagen ocupará la totalidad del marco de la tarjeta y podrás reposicionarla con la opción <code>Reposition</code>. Si dejas <code>Fit Image</code> desmarcado, la imagen se redimensionará para que toda quepa dentro del marco.</p>
+
+  <h3>Esconder columnas</h3>
+  <p>Dependiendo del contexto, es posible que haya columnas que no nos interese ver. Para centrarte sólo en las columnas que te interesan, basta con pinchar en <code>...</code> en la columna que desees esconder y pulsar en <code>Hide</code>. Todas las columnas escondidas residirán en una columna con el título <code>Hidden columns</code>.</p>
+
+  <h2 id="galerias">Galerías</h2>
+  <p>La vista de galería nos será muy útil cuando en nuestra base de datos tengamos <strong>contenido visual</strong>, como moodboards, directorios de personas, recetas o un registro de libros o CDs.</p>
+  <p>En este tipo de bases de datos, los items se mostrarán como tarjetas cuadradas con una imagen representativa. Para que una galería "funcione", será <strong>indispensable que en cada item haya algún tipo de imagen</strong> que Notion pueda usar para convertirla en la portada de tu tarjeta.</p>
+  <p>Notion podrá tomar esta imagen de tres fuentes diferentes:</p>
+  <ul>
+    <li><strong><code>Page Cover</code></strong>: La imagen que hayas definido como portada de la página</li>
+    <li><strong><code>Page Content</code></strong>: Si en el contenido de la página hay alguna imagen, Notion la detectará y la usará como previo</li>
+    <li><strong>La propiedad <code>Files</code></strong>: Si has creado esta propiedad y has subido imágenes, Notion usará esa imagen como previo</li>
+  </ul>
+  <p>Recuerda que también puedes especificar cómo quieres que se comporte la imagen y modificar el tamaño de cada ítem en <code>Properties</code> marcando la opción <code>Card Size</code>.</p>
+
+  <h2 id="calendarios">Calendarios</h2>
+  <p>Esta vista de base de datos es muy interesante cuando quieres <strong>poner el foco en cómo tus ítems se conectan con fechas</strong>. Para que una base de datos pueda convertirse en calendario es esencial que, al menos, una de sus propiedades sea de <code>Date</code>.</p>
+  <p>Esta propiedad de Date será la que Notion use como referencia para colocar los ítems como si fueran eventos en un calendario, que <strong>pueden durar un sólo día o alargarse en el tiempo</strong>, dependiendo de si su propiedad de <code>Date</code> se refiere a un día concreto o un rango de tiempo.</p>
+  <p>Para añadir más ítems en un calendario, basta con pasar el ratón por encima del día en cuestión y automáticamente se creará un nuevo ítem con ese día ya generado en la propiedad <code>Date</code>.</p>
+
+  <h3>Criterio de agrupación de items en el calendario</h3>
+  <p>Para que la vista de Calendario funcione necesitas que tus ítems tengan al menos una propiedad <code>Date</code>, pero puede ser cualquier propiedad que haga uso de una fecha:</p>
+  <ul>
+    <li><code>Date</code></li>
+    <li><code>Created time</code></li>
+    <li><code>Last edited time</code></li>
+  </ul>
+  <p>Si en tu ítem tienes más de una propiedad de Fecha, en los calendarios podrás decidir qué propiedad será la referencia:</p>
+  <ul>
+    <li>Si el calendario es <code>Full Page</code>, en la parte superior derecha, al lado de <code>Properties</code>, habrá un texto <code>By [Propiedad]</code> donde podrás seleccionar qué tipo de propiedad de fecha quieres que tome como referencia.</li>
+    <li>Si el calendario es <code>Inline</code>, verás esta opción escondida tras el menú <code>...</code>, en <code>Calendar by</code>.</li>
+  </ul>
+
+  <h3>Reordenar y editar items en el calendario</h3>
+  <p>Podrás pinchar y arrastrar los ítems por los diferentes días para reorganizarlos. Esto hará que automáticamente esos ítems cambien de fecha. De la misma forma, cada item tiene la opción de ser alargado o acortado en el tiempo.</p>
+  <p>Si alguno de tus ítems no tiene fecha, no aparecerán en el calendario pero podrás seguir accediendo a ellos a través de la opción <code>No [Propiedad]</code> en el menú superior.</p>
+
+  <h2 id="listas">Listas</h2>
+  <p>El tipo de base de datos de tipo Lista es el más minimalista de todos. Esta visualización puede resultarnos muy útil cuando queremos <strong>centrarnos únicamente en el nombre del ítem y, quizá, una o dos propiedades</strong> asignadas a él que nos ayuden a contextualizarlo.</p>
+  <p>Que sea minimalista no la hace menos útil ya que es sólo una visualización. Dentro de cada ítem pueden seguir existiendo multitud de propiedades que amplíen las funcionalidades y el contexto de dicha página.</p>
+  <p>Como en cualquier otra base de datos, podrás elegir qué propiedades visualizar en el menú <code>Properties</code> y reordenar los ítems simplemente pinchando y arrastrándolos. Todas las opciones de ordenación y filtrado siguen aplicando.</p>
+</LessonLayout>

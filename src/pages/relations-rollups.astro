@@ -2,10 +2,10 @@
 import LessonLayout from '../layouts/LessonLayout.astro';
 
 const modules = [
-  { icon: 'blue', title: '4.01. La propiedad "Relation"', tag: 'Contenido' },
-  { icon: 'green', title: 'Práctica 01. Crear un repositorio de recetas', tag: 'Práctica' },
-  { icon: 'blue', title: '4.02. La propiedad "Rollup"', tag: 'Contenido' },
-  { icon: 'green', title: 'Práctica 02. Crear una tabla de control de gastos', tag: 'Práctica' },
+  { icon: 'blue', title: '4.01. La propiedad "Relation"', tag: 'Contenido', href: '/relations' },
+  { icon: 'green', title: 'Práctica 01. Crear un repositorio de recetas', tag: 'Práctica', href: '/recetas' },
+  { icon: 'blue', title: '4.02. La propiedad "Rollup"', tag: 'Contenido', href: '/rollups' },
+  { icon: 'green', title: 'Práctica 02. Crear una tabla de control de gastos', tag: 'Práctica', href: '/control-gastos' },
 ];
 ---
 
@@ -27,11 +27,11 @@ const modules = [
 
   <div class="module-list">
     {modules.map((mod) => (
-      <div class="module-item">
+      <a href={mod.href} class="module-item">
         <span class={`module-item__icon module-item__icon--${mod.icon}`}></span>
         <span class="module-item__title">{mod.title}</span>
         <span class="module-item__tag">{mod.tag}</span>
-      </div>
+      </a>
     ))}
   </div>
 </LessonLayout>

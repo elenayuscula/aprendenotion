@@ -1,0 +1,110 @@
+---
+import LessonLayout from '../layouts/LessonLayout.astro';
+
+const toc = [
+  { label: 'El menú Fórmula', href: '#menu-formula' },
+  { label: 'De qué se compone una fórmula', href: '#composicion' },
+  { label: '¿Qué queremos hacer? → Acciones', href: '#acciones' },
+  { label: '¿A qué queremos hacerlo? → Input Values', href: '#input-values' },
+  { label: '¿Cuándo queremos hacerlo? → Condiciones', href: '#condiciones' },
+];
+---
+
+<LessonLayout
+  title="5.01. Introducción a las Fórmulas en Notion — Aprende Notion"
+  description="Aprende los fundamentos de las fórmulas en Notion: operadores, funciones, input values y condiciones."
+  emoji="➗"
+  lessonTitle="5.01. Introducción a las Fórmulas en Notion"
+  prevLink={{ href: '/formulas', label: '➗ 5. Fórmulas' }}
+  nextLink={{ href: '/formulas-avanzadas', label: '5.02. Expresiones y condiciones anidadas' }}
+  toc={toc}
+>
+  <h2 id="menu-formula">El menú Fórmula</h2>
+  <p>Para crear una fórmula, primero debes añadir una propiedad de tipo <code>Formula</code> en tu base de datos. Al hacer clic en ese campo, se abre una ventana con varias secciones:</p>
+  <ul>
+    <li><strong>Propiedades</strong>: Lista de todas las propiedades de tu base de datos. Al hacer clic, se insertan automáticamente con la sintaxis correcta, como <code>prop("Fecha")</code>.</li>
+    <li><strong>Constants</strong>: Constantes matemáticas (pi, e) que puedes añadir a tu fórmula.</li>
+    <li><strong>Operadores</strong>: Cálculos simples con indicadores visuales sobre el tipo de propiedad compatible.</li>
+    <li><strong>Funciones</strong>: Fórmulas predefinidas más complejas para realizar acciones avanzadas.</li>
+  </ul>
+
+  <h2 id="composicion">De qué se compone una fórmula</h2>
+  <p>Antes de crear fórmulas, debes plantearte cuatro preguntas clave:</p>
+  <ol>
+    <li><strong>¿Qué queremos hacer?</strong> Las acciones u operaciones sobre propiedades</li>
+    <li><strong>¿A qué queremos hacerlo?</strong> Los valores sobre los que aplicar la fórmula</li>
+    <li><strong>¿Cuándo queremos hacerlo?</strong> Las condiciones que deben cumplirse</li>
+    <li>¿Qué hacer si la condición no se cumple?</li>
+  </ol>
+
+  <h2 id="acciones">¿Qué queremos hacer? → Acciones</h2>
+
+  <h3>Operadores</h3>
+  <p>Existen tres tipos de operadores:</p>
+
+  <p><strong>Operadores aritméticos</strong> para cálculos matemáticos simples:</p>
+  <ul>
+    <li>Sumar: <code>+</code></li>
+    <li>Restar: <code>-</code></li>
+    <li>Multiplicar: <code>*</code></li>
+    <li>Dividir: <code>/</code></li>
+    <li>Porcentaje: <code>%</code></li>
+  </ul>
+
+  <p><strong>Operadores de concatenación</strong> para combinar cadenas de texto:</p>
+  <ul>
+    <li><code>2 + 2</code> → <code>4</code></li>
+    <li><code>"Número de items: " + "5"</code> → <code>"Número de items: 5"</code></li>
+  </ul>
+
+  <div class="callout">
+    <span class="callout__icon">💡</span>
+    <div class="callout__content">
+      <p>Cuando colocas un número entre comillas, deja de ser un número y se convierte en una cadena de texto (string).</p>
+    </div>
+  </div>
+
+  <h3>Funciones</h3>
+  <p>Las funciones ofrecen acciones predefinidas sobre valores llamados <strong>argumentos</strong>, separados por comas:</p>
+  <p><code>function()</code></p>
+  <p>Ejemplo: <code>add(2, 2)</code></p>
+  <p>Cada función requiere un número específico de argumentos, algunos opcionales, y cada argumento debe ser del tipo correcto (números, texto, etc.). Si pasas un tipo incorrecto, la fórmula fallará.</p>
+
+  <h2 id="input-values">¿A qué queremos hacerlo? → Input Values</h2>
+  <p>Los input values pueden ser de tres tipos:</p>
+
+  <h3>Referencias a Propiedades</h3>
+  <p>Usa la función <code>prop()</code> para referenciar otras propiedades:</p>
+  <p><code>prop("Precio") * prop("Cantidad")</code></p>
+
+  <h3>Valores literales</h3>
+  <p>Valores fijos que escribes directamente, como cadenas de texto:</p>
+  <p><code>add("Autor: ", prop("Autor"))</code></p>
+  <p>Esto añade el texto "Autor: " antes del valor de la propiedad Autor en cada registro.</p>
+
+  <h3>Constantes</h3>
+  <p>Constantes matemáticas como pi y e, disponibles en Notion aunque raramente se usan.</p>
+
+  <h2 id="condiciones">¿Cuándo queremos hacerlo? → Condiciones</h2>
+  <p>Para ejecutar acciones solo si se cumplen ciertas condiciones, usa la función <code>if()</code> con tres argumentos:</p>
+  <ol>
+    <li>Una expresión que evalúa si algo es <code>true</code> o <code>false</code></li>
+    <li>El valor a devolver si es <code>true</code></li>
+    <li>El valor a devolver si es <code>false</code></li>
+  </ol>
+
+  <h3>Operadores de comparación</h3>
+  <p>Existen seis operadores para comparar valores:</p>
+  <ul>
+    <li><code>==</code> — Igual a — <code>2 == 2 → true</code></li>
+    <li><code>!=</code> — No es igual a — <code>2 != 2 → false</code></li>
+    <li><code>&gt;</code> — Mayor que — <code>2 &gt; 2 → false</code></li>
+    <li><code>&lt;</code> — Menor que — <code>2 &lt; 3 → true</code></li>
+    <li><code>&gt;=</code> — Mayor o igual que — <code>2 &gt;= 2 → true</code></li>
+    <li><code>&lt;=</code> — Menor o igual que — <code>2 &lt;= 3 → true</code></li>
+  </ul>
+
+  <p><strong>Ejemplo práctico:</strong></p>
+  <p><code>if(prop("Status") == "activa", "🟢", "🔴")</code></p>
+  <p>Esta fórmula comprueba si Status es igual a "activa". Si es verdadero, devuelve 🟢; si es falso, devuelve 🔴.</p>
+</LessonLayout>

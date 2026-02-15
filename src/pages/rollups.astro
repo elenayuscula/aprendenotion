@@ -1,0 +1,70 @@
+---
+import LessonLayout from '../layouts/LessonLayout.astro';
+
+const toc = [
+  { label: 'Introducción', href: '#introduccion' },
+  { label: 'Cómo crear un rollup', href: '#como-crear' },
+  { label: 'Tipos de rollup', href: '#tipos' },
+  { label: 'Hacer operaciones con rollups', href: '#operaciones' },
+];
+---
+
+<LessonLayout
+  title="4.02. La propiedad Rollup — Aprende Notion"
+  description="Aprende a usar la propiedad Rollup en Notion para extraer y operar con datos de bases de datos relacionadas."
+  emoji="🕸️"
+  lessonTitle='4.02. La propiedad "Rollup"'
+  prevLink={{ href: '/recetas', label: 'Práctica 01. Crear un repositorio de recetas' }}
+  nextLink={{ href: '/control-gastos', label: 'Práctica 02. Crear una tabla de control de gastos' }}
+  toc={toc}
+>
+  <h2 id="introduccion">Introducción</h2>
+  <p>La propiedad <code>Rollup</code> es una propiedad dependiente de la de <code>Relation</code>. No se puede crear ningún Rollup sin tener previamente una relación creada con otra base de datos. La finalidad de la propiedad Rollup es "extraer" los datos de las bases de datos relacionadas y operar con ellos.</p>
+  <p>Continuando con el ejemplo de <strong>Proyectos</strong> y <strong>Tareas</strong>, creando una propiedad Rollup en la base de datos de Proyectos que "llamara" a las propiedades de la base de datos de Tareas, se podría ver cuántas tareas se tienen en total, o cuántas han sido completadas.</p>
+
+  <h2 id="como-crear">Cómo crear un rollup</h2>
+  <p>Lo primero para que un Rollup funcione es que exista una propiedad <code>Relation</code> creada. En el ejemplo, ya existe la base de datos de <strong>Tareas</strong> relacionada con <strong>Proyectos</strong>, así que se crea una nueva propiedad del tipo <code>Rollup</code>.</p>
+
+  <p>Una vez creada la propiedad, al pinchar en la columna correspondiente, se abre un menú con tres desplegables:</p>
+  <ul>
+    <li><strong><code>Relation</code></strong>: Selecciona de cuál de las propiedades relacionadas quieres extraer la información.</li>
+    <li><strong><code>Property</code></strong>: Elige de qué propiedad quieres usar los datos para realizar la operación.</li>
+    <li><strong><code>Calculate</code></strong>: La operación que quieres hacer con esos datos extraídos.</li>
+  </ul>
+
+  <h2 id="tipos">Tipos de rollup</h2>
+
+  <h3>Operaciones generales:</h3>
+  <ul>
+    <li><strong><code>Show Original</code></strong>: Muestra las páginas relacionadas. Marca esta opción para ver lo mismo que el indicador de la propiedad Relation.</li>
+    <li><strong><code>Count All</code></strong>: Cuenta todos los ítems que hay en esa propiedad.</li>
+    <li><strong><code>Count Unique Values</code></strong>: Cuenta solo el número de ítems únicos.</li>
+    <li><strong><code>Count Empty</code></strong>: Cuenta el número de páginas relacionadas cuyo valor está vacío.</li>
+    <li><strong><code>Count Not Empty</code></strong>: Cuenta las páginas que tienen un valor en ese campo.</li>
+    <li><strong><code>Percent Empty</code></strong>: Igual que Count Empty pero muestra un porcentaje.</li>
+    <li><strong><code>Percent Not Empty</code></strong>: Igual que Count Not Empty pero muestra un porcentaje.</li>
+  </ul>
+
+  <h3>Operaciones para propiedades numéricas:</h3>
+  <p>Solo disponibles si la operación es sobre una propiedad de tipo <code>Number</code>:</p>
+  <ul>
+    <li><strong><code>Sum</code></strong>: Suma el valor de las propiedades numéricas de las páginas relacionadas.</li>
+    <li><strong><code>Average</code></strong>: Saca la media.</li>
+    <li><strong><code>Median</code></strong>: Encuentra la mediana.</li>
+    <li><strong><code>Min</code></strong>: Muestra el número más pequeño.</li>
+    <li><strong><code>Max</code></strong>: Muestra el número más alto.</li>
+    <li><strong><code>Range</code></strong>: Muestra el rango entre el más alto y el más bajo.</li>
+  </ul>
+
+  <h3>Operaciones para propiedades de fecha:</h3>
+  <p>Solo aparecerán cuando actúes sobre propiedades de tipo <code>Date</code>:</p>
+  <ul>
+    <li><strong><code>Earliest Date</code></strong>: Muestra la fecha más temprana.</li>
+    <li><strong><code>Latest Date</code></strong>: Muestra la última fecha.</li>
+    <li><strong><code>Date Range</code></strong>: Muestra el rango de fechas (número de días) entre la más temprana y la última.</li>
+  </ul>
+
+  <h2 id="operaciones">Hacer operaciones con rollups</h2>
+  <p>Al igual que Notion permite hacer operaciones directamente en las bases de datos sin necesidad de la propiedad Formula, se puede hacer exactamente lo mismo con los rollups.</p>
+  <p>Esta funcionalidad solo se puede usar en bases de datos de tipo Tabla y Tablero, y se "activa" pasando el ratón por encima del final de la columna (en Tablas) o por encima del número gris (en Tableros).</p>
+</LessonLayout>

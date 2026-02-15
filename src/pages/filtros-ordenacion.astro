@@ -1,0 +1,52 @@
+---
+import LessonLayout from '../layouts/LessonLayout.astro';
+---
+
+<LessonLayout
+  title="3.02. Filtros, opciones de ordenación y visualización — Aprende Notion"
+  description="Aprende a filtrar, ordenar y crear vistas personalizadas en las bases de datos de Notion."
+  emoji="📊"
+  lessonTitle="3.02. Filtros, opciones de ordenación y visualización"
+  prevLink={{ href: '/introduccion-bases-datos', label: '3.01. Introducción a las bases de datos' }}
+  nextLink={{ href: '/vistas-bases-datos', label: '3.03. Diferentes bases de datos y particularidades' }}
+>
+  <h2 id="filtros">Filtros</h2>
+  <p>En Notion podemos filtrar nuestras bases de datos por todas las propiedades que les hayamos añadido, haciendo que se ajusten a los criterios que necesitemos.</p>
+
+  <h3 id="anadir-filtro">Añadir un filtro</h3>
+  <p>Para filtrar los items en una base de datos, sólo tienes que:</p>
+  <ul>
+    <li>Pulsar en la palabra <code>Filter</code> en la parte superior derecha de la base de datos si estás en una base de datos <code>Full Page</code>. Si es <code>Inline</code>, la opción de filtrar la encontrarás bajo el menú <code>...</code>.</li>
+    <li>Pinchar en la opción <code>Add a filter</code></li>
+  </ul>
+
+  <p>Se abrirá un desplegable con dos opciones:</p>
+  <ul>
+    <li><strong><code>Add a filter</code></strong>, para los casos en los que necesites filtrar por pocos criterios (por ejemplo, sólo mostrar las tareas que tienen la propiedad de <code>Status</code> "activa")</li>
+    <li><strong><code>Add a filter group</code></strong>: Con esta opción podrás anidar filtros combinando lógica de <code>AND</code> y <code>OR</code> hasta llegar a 3 niveles de profundidad. Podrás combinar diferentes filtros para crear vistas de tus bases de datos mucho más específicas y que cumplan muchos más criterios. Un ejemplo sería no sólo mostrar las tareas con status activo sino sólo las que estuvieran asignadas a una persona, en un periodo de tiempo determinado y con una prioridad alta.</li>
+  </ul>
+
+  <h2 id="ordenacion">Opciones de ordenación</h2>
+  <p>Además de filtrar las bases de datos para que sólo se muestren determinadas propiedades, podemos también <strong>ordenarlas ascendente o descendentemente en base a cualquiera de sus propiedades.</strong></p>
+  <p>Por ejemplo, podríamos ordenarlas para que aparecieran antes las más prioritarias, o las últimas editadas o por orden alfabético.</p>
+  <p>Como en los filtros, <strong>podemos añadir más de un tipo de ordenación</strong> y ponerlas unas debajo de otras, arrastrándolas para cambiar el orden en el que deseemos que esta ordenación se aplique.</p>
+  <p>Una vez hemos jugado con las propiedades de nuestras bases de datos para filtrarlas y ordenarlas por los criterios que queramos, lo mejor es que <strong>podemos "guardar" esa visualización y recurrir a ella siempre que accedamos a esa base de datos</strong>.</p>
+
+  <h2 id="vistas">Vistas de base de datos</h2>
+  <p>Una base de datos se visualizará, por defecto, en la forma que le hayas dado al crearla. Es decir, si has elegido crear una tabla, esta será la vista por defecto. Pero, como ya sabes, en Notion podemos convertir los bloques y una tabla puede convertirse en una lista, o una galería o un tablero. Esto es lo que llamamos <code>Vistas</code>.</p>
+
+  <p>Para configurar una nueva vista:</p>
+  <ul>
+    <li>En la parte superior izquierda de tu base de datos, justo al lado del nombre que le has puesto, hay una opción que pone <code>+ Add a view</code></li>
+    <li>Elige la opción que quieras de entre todas las que hay y ponle un nombre.</li>
+    <li>Una vez has creado una vista nueva, es la hora de aplicar todos esos filtros y opciones de ordenación hasta que esté configurada a tu gusto.</li>
+    <li>Ahora, cada vez que vuelvas a esa tabla, tendrás dos visualizaciones. La original y la que has configurado tú, y podrás elegir cuál de las dos quieres ver.</li>
+  </ul>
+
+  <div class="callout">
+    <span class="callout__icon">💡</span>
+    <div class="callout__content">
+      <p>Esta funcionalidad va a ser muy interesante un poco más adelante cuando veamos que las bases de datos se pueden enlazar y ver desde cualquier punto de nuestro espacio de trabajo, porque podremos usar la misma base de datos configurada de diferentes maneras para que nos muestre datos diferentes dependiendo del contexto.</p>
+    </div>
+  </div>
+</LessonLayout>

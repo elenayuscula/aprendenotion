@@ -1,0 +1,83 @@
+---
+import LessonLayout from '../layouts/LessonLayout.astro';
+
+const toc = [
+  { label: 'Crear bases de datos de 0', href: '#crear-de-cero' },
+  { label: 'Controlar todo desde un mismo panel', href: '#panel-control' },
+  { label: 'Añadir vistas una al lado de otra', href: '#vistas-lado' },
+  { label: 'Enlazar bases de datos existentes', href: '#enlazar-existentes' },
+  { label: 'Novedades a la hora de trabajar', href: '#novedades' },
+];
+---
+
+<LessonLayout
+  title="Nuevas bases de datos — Aprende Notion"
+  description="Descubre las novedades en las bases de datos de Notion: panel de control unificado, vistas lado a lado, nuevos filtros y más."
+  emoji="📊"
+  lessonTitle="Nuevas bases de datos"
+  prevLink={{ href: '/templates', label: '3.04. Bola extra: Cálculos, templates y enlazar bases de datos' }}
+  nextLink={{ href: '/guia-viajes-ii', label: 'Práctica 02. Guía de viajes' }}
+  toc={toc}
+>
+  <h2 id="crear-de-cero">Crear bases de datos de 0</h2>
+  <p>El cambio principal aparece al crear una base de datos. Anteriormente, se usaba <code>/</code> para acceder al menú desplegable. Ahora las opciones se reducen y cambia la terminología.</p>
+  <p>Anteriormente había dos opciones principales (<code>Database - Inline</code> o <code>Database - FullPage</code>). Ahora aparece una distinción entre <code>Database</code> y <code>View</code>.</p>
+
+  <div class="callout">
+    <span class="callout__icon">💡</span>
+    <div class="callout__content">
+      <p>Todas siguen siendo bases de datos, pero el cambio de terminología tiene sentido porque si eliges <code>View</code>, estarás creando una vista — una especie de marco o lienzo donde inyectarás esas bases de datos.</p>
+    </div>
+  </div>
+
+  <p>Cuando crees una base de datos de cero, podrás hacer exactamente lo mismo que antes: ponerle un <strong>título</strong>, crear <strong>propiedades</strong> y cambiar la <strong>vista</strong>.</p>
+
+  <h2 id="panel-control">1. Controlar todo desde un mismo panel</h2>
+  <p>Lo que antes era cambiar el modo de visualización o la vista de una tabla ahora directamente se llama <strong>Layout</strong> y se controla desde el mismo panel de la derecha.</p>
+  <p>Desde este panel no sólo podrás controlar el <strong>Layout</strong>, sino también las <strong>Propiedades</strong>, los <strong>Filtros</strong>, las <strong>Opciones de Ordenación</strong> (Sort) y, en general, <strong>todos los ajustes</strong> de tu base de datos.</p>
+  <p>La principal diferencia está en que antes eso lo controlábamos desde un modal y ahora está fijo en la misma Vista, lo que hace la interacción mucho más intuitiva y rápida.</p>
+
+  <h2 id="vistas-lado">2. Añadir vistas una al lado de otra</h2>
+  <p>Una de las cosas más cómodas de esta nueva interfaz es que ahora podrás ir añadiendo diferentes vistas de tu base de datos una al lado de la otra, vs. tener que hacerlo a través de un desplegable como antes.</p>
+  <p>Para crear una nueva vista, sólo tendrás que pinchar en el comando <code>+ Add view</code> y automáticamente podrás empezar a controlarlo todo desde el panel.</p>
+  <p>Lo verdaderamente revolucionario viene a la hora de enlazar bases de datos: como ahora tratamos con el concepto de <strong>Vista</strong>, vamos a poder crear una vista nueva y, en su interior, <strong>enlazar bases de datos distintas.</strong></p>
+
+  <h2 id="enlazar-existentes">Enlazar bases de datos existentes</h2>
+  <p>Antes, cuando queríamos enlazar una base de datos cuya fuente original viviera en otro punto del espacio de trabajo, teníamos que usar el comando <code>Create linked database</code>.</p>
+  <p>Con esta actualización, ese comando desaparece porque centralizamos todo en el concepto de <strong>Vista</strong> (<code>View</code>).</p>
+  <p>Ahora, para enlazar una base de datos existente, cuando tecleemos <code>/database</code>, en vez de elegir las primeras opciones, elegiremos <strong>cualquiera de las otras opciones</strong>. La vista se convierte en una especie de cuadro de mandos desde el cual podremos <strong>seleccionar la fuente original</strong>.</p>
+  <p>Nos aparecerá en el panel de la derecha una lista de las últimas bases de datos que hayas modificado, pero puedes usar el campo de búsqueda para buscar cualquier base de datos que exista en ese espacio de trabajo.</p>
+
+  <h2 id="novedades">Novedades a la hora de trabajar sobre bases de datos</h2>
+
+  <h3>1. Partir de vistas creadas previamente</h3>
+  <p>Al enlazar una base de datos, Notion te da a elegir qué vista (de la base de datos original) te quieres traer. Esto nos ahorra muchísimo tiempo ya que, antes, cada vez que enlazábamos una base de datos, perdíamos todos los filtros, vistas y opciones de ordenación.</p>
+
+  <h3>2. Cambios en la forma de filtrar</h3>
+  <p>Al crear un nuevo filtro notarás dos cosas:</p>
+  <ol>
+    <li>Por cada nuevo filtro que apliques, Notion lo interpretará como <strong>un filtro independiente</strong> y se irán poniendo uno al lado de otro en la parte superior de tu tabla.</li>
+    <li>Al añadir un nuevo filtro, aparecerá con <strong>un circulito naranja</strong> que indica que tendrás que elegir si guardas los cambios o no.</li>
+  </ol>
+
+  <p>Puedes guardar de dos maneras:</p>
+  <ul>
+    <li><strong><code>Save for everyone</code></strong> → Guarda los cambios <strong>en la misma vista</strong>.</li>
+    <li><strong><code>Save as new view</code></strong> → Se crea <strong>una vista nueva</strong> con esos cambios y la anterior se queda como estaba.</li>
+  </ul>
+  <p>Pulsando <code>Reset</code> volverás a como estaba todo antes.</p>
+
+  <h4>Filtros simples y filtros avanzados</h4>
+  <p>Para filtros que combinan lógica de <code>AND</code> u <code>OR</code>, antes se llamaba <code>Filter Group</code> y ahora es <code>Advanced Filter</code>, pero el funcionamiento es el mismo. Puedes tomar un filtro simple y convertirlo en avanzado añadiendo reglas.</p>
+  <p>Notion interpreta <strong>una regla por cada uno de los filtros que crees</strong>.</p>
+
+  <h3>3. Enlazar diferentes bases de datos en una misma vista</h3>
+  <p>Al tratar con <strong>Vistas</strong> y no bases de datos en sí, podemos usar esas vistas para <strong>enlazar diferentes fuentes de datos</strong>. Ahora, en un mismo lienzo, podrás ver en una pestaña una base de datos y, en la pestaña de al lado, una base de datos distinta.</p>
+  <p>Para hacerlo, añade una nueva vista con <code>+ Add view</code> y elige una fuente de datos diferente.</p>
+
+  <h3>4. Recuperar propiedades eliminadas</h3>
+  <p>Ahora puedes <strong>recuperar propiedades eliminadas</strong> en una base de datos. Para hacerlo, abre el panel, pincha en Properties y, al final de la lista, encontrarás una sección de <code>Deleted Properties</code> donde podrás restaurarlas o eliminarlas definitivamente.</p>
+
+  <h3>Extra: Esconder el título de una base de datos</h3>
+  <p>Ahora puedes <strong>esconder el título de una base de datos</strong>. Basta con pinchar en el botón de <code>...</code> al lado del título y seleccionar <code>Hide database title</code>.</p>
+</LessonLayout>

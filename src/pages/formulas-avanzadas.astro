@@ -1,0 +1,55 @@
+---
+import LessonLayout from '../layouts/LessonLayout.astro';
+
+const toc = [
+  { label: 'Anidar inputs, operadores y funciones', href: '#anidar' },
+  { label: 'Condiciones anidadas', href: '#condiciones-anidadas' },
+];
+---
+
+<LessonLayout
+  title="5.02. Expresiones y condiciones anidadas — Aprende Notion"
+  description="Aprende a anidar expresiones, operadores, funciones y condiciones en las fórmulas de Notion."
+  emoji="➗"
+  lessonTitle="5.02. Expresiones y condiciones anidadas"
+  prevLink={{ href: '/introduccion-formulas', label: '5.01. Introducción a las Fórmulas en Notion' }}
+  nextLink={{ href: '/input-values', label: '5.03. Bola extra: Tipos de valores en las fórmulas' }}
+  toc={toc}
+>
+  <h2 id="anidar">Anidar inputs, operadores y funciones</h2>
+  <p>Es muy normal que en nuestras fórmulas usemos <strong>funciones</strong>, <strong>operadores</strong> e <strong>input values</strong> dentro de otras funciones. Esto se conoce como anidado o <strong>nesting</strong>.</p>
+  <p>Cuando combinamos inputs, operadores y/o funciones de manera que devuelvan un sólo valor, se conoce como <strong>expresión</strong>. Las expresiones pueden ser tan sencillas o complejas como queramos, siempre y cuando devuelvan un sólo valor.</p>
+  <p>Esto implica que los argumentos de una función no tienen por qué ser sólo una referencia a una propiedad o un valor literal; <strong>cualquier expresión puede ser a su vez un argumento</strong> siempre y cuando devuelva un valor único y éste sea del tipo correcto.</p>
+
+  <p>Por ejemplo, la sencilla fórmula <code>add(100, 20)</code> nos devolverá el resultado de sumar 100 y 20.</p>
+  <p>Pero podríamos convertirla en una expresión más complicada:</p>
+  <p><code>add(100, multiply(10, 2))</code></p>
+  <p>En este caso, el segundo argumento es el resultado de una función <code>multiply()</code> a la que hemos pasado como argumentos <code>10</code> y <code>2</code>. Ambas operaciones darán como resultado: <code>120</code>.</p>
+
+  <p>Un ejemplo algo más complicado, introduciendo como valores las referencias a otras propiedades:</p>
+  <p>Si quisiéramos calcular el precio total de un item aplicándole un IVA diferente:</p>
+  <p><code>add(prop("Precio"), multiply(prop("Precio"), prop("IVA")))</code></p>
+  <p>Primero, multiplicaríamos el Precio por el IVA → <code>multiply(prop("Precio"), prop("IVA"))</code></p>
+  <p>Y ese resultado lo sumaríamos al Precio → <code>add(prop("Precio"), multiply(prop("Precio"), prop("IVA")))</code></p>
+
+  <h2 id="condiciones-anidadas">Condiciones anidadas</h2>
+  <p>El fenómeno de anidado lo encontraremos sobre todo con las funciones de tipo <code>if()</code>. Es decir, las funciones que nos sirven para comprobar si se cumple una condición o no:</p>
+  <p><code>if(2 == 1, "Igual", "No es igual")</code> → <code>"No es igual"</code></p>
+
+  <p>Un uso muy común sería el de marcar como check una propiedad si esta se encuentra en estado "Completado":</p>
+  <p><code>if(prop("Status") == "completada", true, false)</code></p>
+
+  <p>También podemos usar las funciones <code>and()</code> y <code>or()</code> para comprobar dos expresiones diferentes:</p>
+  <p><code>if(and(prop("Pagado"), prop("Enviado")), "Completado", "En Progreso")</code></p>
+  <p>En esta fórmula estamos comprobando si un producto está tanto "Pagado" como "Enviado", en cuyo caso aparecería como "Completado". En caso contrario, "En progreso".</p>
+
+  <p>Por último, es posible que queramos mayor granularidad que un true o false. Podemos anidar condiciones:</p>
+  <p><code>if(prop("Mood") == "feliz", "😀", if(prop("Mood") == "apático", "😕", "😩"))</code></p>
+
+  <p>Esto se traduciría en:</p>
+  <ul>
+    <li>Si "Mood" es "feliz", muestra "😀"</li>
+    <li>Si lo anterior no se cumple, si "Mood" es "apático", muestra "😕"</li>
+    <li>Si no se cumple ninguna de las anteriores, muestra "😩"</li>
+  </ul>
+</LessonLayout>

@@ -1,0 +1,61 @@
+---
+import LessonLayout from '../layouts/LessonLayout.astro';
+
+const toc = [
+  { label: 'Números', href: '#numeros' },
+  { label: 'Cadenas de texto (string)', href: '#strings' },
+  { label: 'Booleanos (true/false)', href: '#booleanos' },
+  { label: 'Date', href: '#date' },
+];
+---
+
+<LessonLayout
+  title="5.03. Bola extra: Tipos de valores en las fórmulas — Aprende Notion"
+  description="Aprende los tipos de valores que puedes usar en las fórmulas de Notion: números, strings, booleanos y fechas."
+  emoji="➗"
+  lessonTitle="5.03. Bola extra: Tipos de valores en las fórmulas de Notion"
+  prevLink={{ href: '/formulas-avanzadas', label: '5.02. Expresiones y condiciones anidadas' }}
+  nextLink={{ href: '/barras-de-progreso-notion', label: '5.04. Bola extra: Barras de progreso en Notion' }}
+  toc={toc}
+>
+  <p>Cuando trabajemos con fórmulas, tendremos que tener presentes los tipos de valores que podemos usar con ellas. Haremos un repaso general de todos los que podemos usar.</p>
+
+  <h2 id="numeros">Números</h2>
+  <p>Un valor numérico, que puede ser íntegro o contener decimales, y tanto positivo como negativo. Los valores dentro de la propiedad <code>Number</code> en Notion son de tipo numérico, por lo que cuando hagamos referencia a esa propiedad en una función, tendremos que tener en cuenta que nos devolverá un valor <strong>numérico</strong>.</p>
+
+  <h3>Convertir un valor numérico a una cadena de texto → <code>format()</code></h3>
+  <p>Si lo que necesitamos es que un número sea interpretado como una <strong>cadena de texto</strong>, podremos convertirlo usando la función <code>format()</code>.</p>
+  <p>Si por ejemplo quisiéramos crear un campo que indique la edad, seguido del número de años, tendríamos que concatenar ambos valores con la función <code>add()</code>. El problema es que uno es de tipo texto y el otro de tipo numérico:</p>
+  <p><code>add("Edad: ", format(prop("Edad")))</code></p>
+
+  <h2 id="strings">Cadenas de texto (string)</h2>
+  <p>Un <strong>string</strong> o <strong>cadena de texto</strong> es uno o más caracteres que representan texto.</p>
+  <p>Puesto que en Notion puedes escribir números tanto en una propiedad de <code>Texto</code> como en una propiedad de <code>Number</code>, dependiendo de donde introduzcas esas cifras serán interpretadas como <strong>texto</strong> o como <strong>número</strong>.</p>
+
+  <div class="callout">
+    <span class="callout__icon">⚠️</span>
+    <div class="callout__content">
+      <p>Asegúrate de que siempre que introduzcas caracteres numéricos, lo hagas en la propiedad <code>Number</code> ya que haciéndolo en una de <code>Text</code> te impedirá usarlos en ningún cálculo.</p>
+    </div>
+  </div>
+
+  <p>Cuando vayas a usar una cadena de texto en una fórmula, recuerda introducir siempre los caracteres entre comillas. Así, <code>"26"</code> es un <strong>string</strong>, mientras que <code>26</code> es un <strong>número</strong>.</p>
+
+  <h3>Convertir una cadena de texto a un número</h3>
+  <p>Para convertir una propiedad de tipo texto en una numérica, existe la función <code>toNumber()</code>:</p>
+  <p><code>toNumber("2")</code> → <code>2</code></p>
+  <p>Para sumar una propiedad numérica y una de texto:</p>
+  <p><code>2 + toNumber("2")</code> → <code>4</code></p>
+
+  <h2 id="booleanos">Booleanos (valores de <code>true</code> o <code>false</code>)</h2>
+  <p>Los valores booleanos son valores que sólo pueden ser <strong>true</strong> o <strong>false</strong>. Cuando usamos <strong>operadores de comparación</strong> para comprobar si se cumple una condición, el valor que nos devolverá será de este tipo.</p>
+  <p>En Notion, los valores booleanos se representan como <strong>checkbox</strong>. Marcado si el valor es <strong>true</strong>, desmarcado si el valor es <strong>false</strong>.</p>
+
+  <p>Ejemplo: comprobar si el precio total está en nuestro presupuesto de 20€:</p>
+  <p><strong>Precio total:</strong> <code>add(prop("Precio"), multiply(prop("Precio"), prop("IVA")))</code></p>
+  <p><strong>En presupuesto?</strong>: <code>if(prop("Precio total") &lt;= 20, true, false)</code></p>
+
+  <h2 id="date">Date</h2>
+  <p>El valor <code>date</code> se crea siempre que uses una propiedad de <code>Date</code>, ya sea esta misma o las otras dos propiedades que incluyen fecha como <code>Created Time</code> o <code>Last Edited Time</code>.</p>
+  <p>Todas estas propiedades también podrán ser utilizadas como <strong>argumentos</strong> de funciones en una fórmula. Adicionalmente, escribiendo en un campo de fórmula la función <code>now()</code>, nos devolverá la fecha y hora exactas.</p>
+</LessonLayout>

@@ -1,0 +1,95 @@
+---
+import LessonLayout from '../layouts/LessonLayout.astro';
+
+const toc = [
+  { label: 'Requisitos previos', href: '#requisitos' },
+  { label: 'if()', href: '#if' },
+  { label: 'slice()', href: '#slice' },
+  { label: 'round()', href: '#round' },
+  { label: 'format()', href: '#format' },
+  { label: 'Caracteres para la barra', href: '#caracteres' },
+  { label: 'Construcción de la fórmula completa', href: '#formula-completa' },
+  { label: 'Desglose de la fórmula', href: '#desglose' },
+];
+---
+
+<LessonLayout
+  title="5.04. Bola extra: Barras de progreso en Notion — Aprende Notion"
+  description="Aprende a crear barras de progreso visuales en Notion usando fórmulas con if(), slice(), round() y format()."
+  emoji="➗"
+  lessonTitle="5.04. Bola extra: Cómo crear barras de progreso en Notion"
+  prevLink={{ href: '/input-values', label: '5.03. Bola extra: Tipos de valores' }}
+  nextLink={{ href: '/api-notion', label: '🔌 6. La API de Notion' }}
+  toc={toc}
+>
+  <h2 id="requisitos">Requisitos previos</h2>
+  <p>Para crear barras de progreso en Notion necesitas:</p>
+  <ol>
+    <li><strong>Mínimo dos bases de datos relacionadas</strong> entre sí. Usarás esta relación para extraer el porcentaje de tareas asociadas a un proyecto que estén completadas.</li>
+    <li><strong>Cuatro funciones diferentes:</strong>
+      <ul>
+        <li><code>if()</code> como condicional</li>
+        <li><code>slice()</code> para pintar la barra</li>
+        <li><code>round()</code> para redondear cifras</li>
+        <li><code>format()</code> para convertir números a texto</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h2 id="if">if()</h2>
+  <p>Esta función comprueba si se cumple una condición concreta. Necesita tres argumentos:</p>
+  <ol>
+    <li>Una expresión que evalúa si un valor es cierto (<code>true</code>) o falso (<code>false</code>)</li>
+    <li>El valor a devolver si el resultado es <code>true</code></li>
+    <li>El valor a devolver si el resultado es <code>false</code></li>
+  </ol>
+  <p><strong>Sintaxis:</strong> <code>[comparación] ? [qué ocurre si es true] : [qué ocurre si es false]</code></p>
+
+  <h2 id="slice">slice()</h2>
+  <p>Devuelve el segmento de un string que le indiques. Toma tres argumentos:</p>
+  <ol>
+    <li>El string original</li>
+    <li>El punto de origen (siendo el primer carácter 0)</li>
+    <li>El punto final (opcional)</li>
+  </ol>
+  <p><strong>Ejemplo:</strong> <code>slice("manzana, pera, sandía, kiwi", 9, 21)</code> → <code>pera, sandía</code></p>
+  <p>Se utilizará doblemente en la fórmula: para pintar la barra rellena según el porcentaje completado y para añadir la parte vacía.</p>
+
+  <h2 id="round">round()</h2>
+  <p>Redondea un número decimal a su entero más cercano.</p>
+  <p><strong>Ejemplo:</strong> <code>round(1.3)</code> → <code>1</code></p>
+
+  <h2 id="format">format()</h2>
+  <p>Convierte un número en texto (string).</p>
+  <p><strong>Ejemplo:</strong> <code>format(20)</code> → <code>"20"</code></p>
+  <p>Esta función es necesaria cuando necesitas que un número sea interpretado como texto para concatenar cadenas.</p>
+
+  <h2 id="caracteres">Caracteres para la barra de progreso</h2>
+  <p>Necesitas dos caracteres con estados diferentes:</p>
+  <ul>
+    <li><strong>Completado:</strong> █ (o ▓)</li>
+    <li><strong>Sin completar:</strong> ░</li>
+  </ul>
+
+  <h2 id="formula-completa">Construcción de la fórmula completa</h2>
+  <p>Con los elementos configurados (dos bases de datos relacionadas, propiedad Rollup con porcentaje llamada "Completadas", y caracteres elegidos), la fórmula es:</p>
+  <code>(prop("Completadas") &gt;= 1) ? "✅" : (slice("▓▓▓▓▓▓▓▓▓▓", 0, round(prop("Completadas") * 10)) + slice("░░░░░░░░░░", 0, round((1 - prop("Completadas")) * 10)) + " " + if(prop("Completadas") == 0, "0", format(round(prop("Completadas") * 100))) + "%")</code>
+
+  <h2 id="desglose">Desglose de la fórmula</h2>
+
+  <h3>Si el porcentaje es 100% → check (✅)</h3>
+  <p>El condicional inicial verifica si "Completadas" es mayor o igual a 1 (equivalente al 100%). Si se cumple, muestra un check.</p>
+
+  <h3>Si el porcentaje es menor al 100% → barra de progreso</h3>
+
+  <p><strong>Parte rellena:</strong></p>
+  <p><code>slice("▓▓▓▓▓▓▓▓▓▓", 0, round(prop("Completadas") * 10))</code></p>
+  <p>Utiliza <code>slice()</code> con el string de caracteres rellenos. El punto final es el resultado de multiplicar el porcentaje por 10 y redondearlo. Ejemplo: 80% → 8 caracteres.</p>
+
+  <p><strong>Parte vacía:</strong></p>
+  <p><code>slice("░░░░░░░░░░", 0, round((1 - prop("Completadas")) * 10))</code></p>
+  <p>Sigue la misma lógica pero restando el porcentaje a 1 para extraer la parte no completada.</p>
+
+  <p><strong>Mostrar el porcentaje en números:</strong></p>
+  <p>Un espacio separa la barra del porcentaje. Usa <code>if()</code> para mostrar "0" si no hay tareas completadas. Si hay progreso, multiplica por 100, redondea con <code>round()</code>, convierte a texto con <code>format()</code> y añade el símbolo <code>%</code> al final.</p>
+</LessonLayout>

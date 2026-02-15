@@ -2,13 +2,13 @@
 import LessonLayout from '../layouts/LessonLayout.astro';
 
 const modules = [
-  { icon: 'blue', title: '3.01. Introducción a las bases de datos', tag: 'Contenido' },
-  { icon: 'yellow', title: '3.02. Filtros, opciones de ordenación y visualización', tag: 'Contenido' },
-  { icon: 'red', title: '3.03. Diferentes bases de datos y particularidades', tag: 'Contenido' },
-  { icon: 'green', title: 'Práctica 01. Crear un repositorio de artículos tipo Pocket con Notion Web Clipper', tag: 'Práctica' },
-  { icon: 'purple', title: '3.04. Bola extra: Hacer cálculos, crear templates y enlazar bases de datos', tag: 'Bola extra' },
-  { icon: 'yellow', title: 'Nuevas bases de datos', tag: 'Nuevo' },
-  { icon: 'green', title: 'Práctica 02. Guía de viajes. Listando actividades en bases de datos', tag: 'Práctica' },
+  { icon: 'blue', title: '3.01. Introducción a las bases de datos', tag: 'Contenido', href: '/introduccion-bases-datos' },
+  { icon: 'yellow', title: '3.02. Filtros, opciones de ordenación y visualización', tag: 'Contenido', href: '/filtros-ordenacion' },
+  { icon: 'red', title: '3.03. Diferentes bases de datos y particularidades', tag: 'Contenido', href: '/vistas-bases-datos' },
+  { icon: 'green', title: 'Práctica 01. Crear un repositorio de artículos tipo Pocket con Notion Web Clipper', tag: 'Práctica', href: '/repositorio-articulos-pocket' },
+  { icon: 'purple', title: '3.04. Bola extra: Hacer cálculos, crear templates y enlazar bases de datos', tag: 'Bola extra', href: '/templates' },
+  { icon: 'yellow', title: 'Nuevas bases de datos', tag: 'Nuevo', href: '/nuevas-bases-de-datos' },
+  { icon: 'green', title: 'Práctica 02. Guía de viajes. Listando actividades en bases de datos', tag: 'Práctica', href: '/guia-viajes-ii' },
 ];
 ---
 
@@ -25,11 +25,11 @@ const modules = [
 
   <div class="module-list">
     {modules.map((mod) => (
-      <div class="module-item">
+      <a href={mod.href} class="module-item">
         <span class={`module-item__icon module-item__icon--${mod.icon}`}></span>
         <span class="module-item__title">{mod.title}</span>
         <span class="module-item__tag">{mod.tag}</span>
-      </div>
+      </a>
     ))}
   </div>
 </LessonLayout>

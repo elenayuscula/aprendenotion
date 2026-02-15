@@ -1,0 +1,66 @@
+---
+import LessonLayout from '../layouts/LessonLayout.astro';
+
+const toc = [
+  { label: 'Una aclaración sobre las integraciones', href: '#aclaracion' },
+  { label: 'Crear una integración en Notion', href: '#crear-integracion' },
+  { label: 'Instalar integraciones de otras herramientas', href: '#instalar' },
+  { label: 'Invitar al bot a nuestras páginas', href: '#invitar-bot' },
+];
+---
+
+<LessonLayout
+  title="6.01. Crear integraciones con la API de Notion — Aprende Notion"
+  description="Aprende a crear integraciones con la API de Notion: crear bots, instalar integraciones de terceros e invitar bots a tus páginas."
+  emoji="🔌"
+  lessonTitle="6.01. Crear integraciones con la API de Notion"
+  prevLink={{ href: '/api-notion', label: '🔌 6. La API de Notion' }}
+  nextLink={{ href: '/prctica', label: 'Práctica' }}
+  toc={toc}
+>
+  <h2 id="aclaracion">Una aclaración sobre las integraciones con otras aplicaciones</h2>
+  <p>Una integración es la manera que tiene una API de conectarse con otra. Esta conexión se realiza a través de un <strong>bot</strong>, un usuario virtual al que invitaremos a nuestros proyectos y que será el encargado de extraer o insertar los datos de las páginas o bases de datos a las que le demos acceso.</p>
+
+  <h2 id="crear-integracion">Crear una integración en Notion (crear el bot)</h2>
+  <p>Para crear nuestra primera integración en Notion:</p>
+  <ul>
+    <li>En la barra lateral, busca <code>Settings & Members</code> &gt; <code>Integrations</code></li>
+    <li>Aquí verás todas las integraciones que hayas instalado en ese espacio</li>
+    <li>Haz click en <code>Develop your own integrations</code></li>
+    <li>Se abrirá la página de <code>My Integrations</code>, un espacio dedicado a crear y gestionar las integraciones que vayas creando</li>
+  </ul>
+
+  <p>En esta página puedes configurar tu bot. Basta con ponerle un nombre, una imagen y, muy importante, decidir <strong>a qué espacio de trabajo</strong> va a tener acceso ese bot.</p>
+
+  <p>Una vez configurada la integración, se te abrirá una página con los detalles:</p>
+  <ul>
+    <li><strong><code>Internal Integration Token</code></strong>: Es la clave que permitirá al bot conectarse con otras herramientas y que estas puedan leer los datos de nuestras páginas o bases de datos.</li>
+    <li><strong><code>Integration Type</code></strong>: Por defecto viene marcada Internal Integration ya que todas las que crees serán de uso privado.</li>
+  </ul>
+
+  <h2 id="instalar">Instalar integraciones de otras herramientas</h2>
+  <p>Notion ha llegado a acuerdos con aplicaciones como <strong>Zapier</strong>, <strong>Typeform</strong> y <strong>Automate.io</strong>. Hay dos formas distintas de conectar con ellas.</p>
+
+  <h3>Instalación desde la plataforma externa</h3>
+  <p>En el caso de Automate.io, al escribir "Notion" en el campo de búsqueda para crear tu primera automatización, ya te pedirá acceso a tu espacio de trabajo. Desde ahí tendrás que elegir qué páginas son a las que das acceso.</p>
+
+  <h3>Instalación con el token interno</h3>
+  <p>Otras plataformas, como Zapier, te pedirán un token interno para poder conectarse a tu espacio de trabajo. Este token es el que se generó cuando creaste tu bot.</p>
+  <p>Puedes acceder a él desde:</p>
+  <ul>
+    <li>El espacio <code>My Integrations</code></li>
+    <li>A través de <code>Settings & Members</code> &gt; <code>Integrations</code>. Allí verás el bot que has creado → Selecciona los tres puntos <code>...</code> y <code>Copy internal Integration Token</code></li>
+  </ul>
+  <p>Pega esta clave cuando la plataforma te lo pida.</p>
+
+  <h2 id="invitar-bot">Invitar al bot a nuestras páginas</h2>
+  <p>En el caso de que la herramienta no nos haya hecho seleccionar las páginas a las que queremos darle acceso, tendremos que "invitar" manualmente a nuestro bot.</p>
+  <p>Como este bot es un usuario virtual, le invitaremos igual que haríamos con cualquier compañero de equipo:</p>
+  <ul>
+    <li>Vamos a la página que queramos conectar y pinchamos en <code>Share</code></li>
+    <li>Hacemos click en <code>Add people, emails, groups, or integrations</code></li>
+    <li>Se abrirá una ventana con las demás personas que tengan acceso y, más abajo, verás tus integraciones bajo el título <code>Select an Integration</code></li>
+    <li>Selecciona la integración (o bot) que quieras invitar a esta página</li>
+  </ul>
+  <p>Una vez hecho, verás esa nueva integración en el menú <code>Share</code> de esa página.</p>
+</LessonLayout>

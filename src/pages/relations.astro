@@ -1,0 +1,86 @@
+---
+import LessonLayout from '../layouts/LessonLayout.astro';
+
+const toc = [
+  { label: '¿Para qué sirve relacionar bases de datos?', href: '#para-que-sirve' },
+  { label: '¿Cómo se crea una relación?', href: '#como-crear' },
+  { label: 'Las páginas relacionadas', href: '#paginas-relacionadas' },
+  { label: 'Relacionar una base de datos consigo misma', href: '#relacionar-consigo-misma' },
+  { label: 'Tareas relacionadas', href: '#tareas-relacionadas' },
+  { label: 'Subtareas de tareas', href: '#subtareas' },
+];
+---
+
+<LessonLayout
+  title="4.01. La propiedad Relation — Aprende Notion"
+  description="Aprende a usar la propiedad Relation en Notion para conectar bases de datos entre sí y organizar tu información de forma eficiente."
+  emoji="🕸️"
+  lessonTitle='4.01. La propiedad "Relation"'
+  prevLink={{ href: '/relations-rollups', label: '🕸️ 4. Relations & Rollups' }}
+  nextLink={{ href: '/recetas', label: 'Práctica 01. Crear un repositorio de recetas' }}
+  toc={toc}
+>
+  <h2 id="para-que-sirve">¿Para qué sirve relacionar unas bases de datos con otras?</h2>
+  <p>Piensa por ejemplo que tienes una lista de clientes y una lista de proyectos, y quieres saber qué proyectos corresponden a cada uno de esos clientes. Podrías conectar tu base de datos de Clientes con la de Proyectos y de esta manera ambas estarían relacionadas entre sí. Al entrar en el registro de uno de tus clientes, en sus propiedades verías todos los ítems de la base de datos de Proyectos asociados a ese cliente.</p>
+
+  <h3>Más ejemplos de bases de datos relacionadas:</h3>
+  <ul>
+    <li>Una base de datos de <strong>Ingredientes</strong> conectada a una base de datos de <strong>Recetas</strong> para ver de qué ingredientes está compuesta cada receta.</li>
+    <li>Una base de datos de <strong>Contactos</strong> relacionada con otra de <strong>Empresas</strong> para tener un control de dónde trabajan cada uno.</li>
+    <li>Una base de datos de <strong>Reuniones</strong> con una base de datos de <strong>Clientes</strong> para ver todas las reuniones con cada cliente.</li>
+    <li>Una base de datos de <strong>Restaurantes</strong> conectada con otra de <strong>Barrios</strong>, para ver todos los restaurantes de un mismo barrio.</li>
+  </ul>
+
+  <p>Otra manera de pensar en esta propiedad es con el concepto de "Contenedor". La base de datos de clientes contiene proyectos. Los proyectos pueden a su vez contener tareas. Y estas agrupaciones pueden darse a lo largo de todo tu espacio de trabajo.</p>
+
+  <div class="callout">
+    <span class="callout__icon">💡</span>
+    <div class="callout__content">
+      <p>Esta funcionalidad de agrupar y relacionar, combinada con los filtros que ya conocemos o con los Rollups que veremos más adelante, nos abren un amplio mundo de posibilidades de manipulación y organización dentro de las bases de datos de nuestro espacio de trabajo.</p>
+    </div>
+  </div>
+
+  <h2 id="como-crear">¿Cómo se crea una relación entre bases de datos?</h2>
+  <p>Para relacionar bases de datos necesitarás <strong>por lo menos dos bases de datos</strong>. En este caso vamos a relacionar una serie de tareas con sus proyectos.</p>
+
+  <p><strong>Pasos para crear una relación:</strong></p>
+  <ul>
+    <li>En la base de datos de <strong>Proyectos</strong>, crearás una nueva propiedad de tipo <code>Relation</code> a la que llamarás "Tareas".</li>
+    <li>En el momento en que crees una propiedad del tipo <code>Relation</code>, se te abrirá un mensaje preguntándote a qué base de datos quieres enlazar dicha propiedad. Aquí es donde tienes que elegir la base de datos que quieres que esté conectada. En este caso, <strong>Tareas</strong>.</li>
+    <li>Al crear esta relación, automáticamente se crea una propiedad nueva en tu base de datos de <strong>Tareas</strong>, que pondrá algo parecido a <code>Related to Proyectos (Tareas)</code>. Cambia el nombre de esta columna a uno más descriptivo (por ejemplo, <strong>Proyectos</strong>).</li>
+  </ul>
+
+  <p>A partir de ahora, ambas tablas están relacionadas. Para empezar a crear esos enlaces entre ellas, es tan sencillo como pinchar en una de las columnas con la propiedad <code>Relation</code> y seleccionar el ítem de la otra base de datos que quieres relacionar.</p>
+  <p>Según vayas seleccionando <strong>Tareas</strong> (con el botón de <code>+</code>), verás que van apareciendo en su columna correspondiente y, además, como la sincronización funciona en ambas direcciones, verás que en la base de datos de <strong>Tareas</strong> ahora también indica a qué proyecto pertenecen.</p>
+
+  <h2 id="paginas-relacionadas">Las páginas relacionadas</h2>
+  <p>Cuando creas una relación entre dos bases de datos, lo que estás haciendo es añadir las páginas que formaban una de las bases de datos a una de las propiedades de la otra. Desde tu base de datos de <strong>Proyectos</strong>, además de todas las propiedades, ahora también podrás ver todas las páginas que están relacionadas con ella.</p>
+  <p>Puesto que cada registro en una base de datos es a su vez una página, podrás abrir esas tareas como páginas normales y llenarlas con el contenido que necesites.</p>
+
+  <h2 id="relacionar-consigo-misma">Relacionar una base de datos consigo misma</h2>
+  <p>En ocasiones, puede que quieras que los items de una misma base de datos estén relacionados consigo mismos. En Notion, cuando haces esto, puedes elegir cómo quieres que sea esta relación:</p>
+  <ul>
+    <li><strong>Como tareas relacionadas</strong> (<code>No syncing</code>): Se crea solo la propiedad de <code>Relation</code> que hayas elegido.</li>
+    <li><strong>Como subtareas de tareas</strong> (<code>Sync both ways</code>): Se crearán automáticamente dos columnas, una para tareas padre y otra para subtareas.</li>
+  </ul>
+
+  <h2 id="tareas-relacionadas">Tareas relacionadas (la opción fácil)</h2>
+  <p>Si eliges esta opción, sólo crea una columna. Al relacionar una tarea con otra, simplemente verás al lado de la primera tarea la tarea con la que la has relacionado.</p>
+  <p>El problema es que desde la segunda tarea no puedes ver que está relacionada con la primera. Para eso existe la segunda opción.</p>
+
+  <h2 id="subtareas">Subtareas de tareas (o Tareas Padre y Tareas Hijo)</h2>
+  <p>Al elegir la opción de <code>Sync Both Ways</code> se crean dos columnas adicionales automáticamente. El uso más común es saber qué tareas están compuestas de subtareas más pequeñas.</p>
+  <p>Al relacionar la base de datos de <strong>Tareas</strong> consigo misma con esta opción, podrás ver las subtareas de una tarea y, a su vez, las tareas padre de estas subtareas.</p>
+
+  <div class="callout">
+    <span class="callout__icon">☝🏻</span>
+    <div class="callout__content">
+      <p><strong>Tip:</strong> Si vas a usar esta funcionalidad para gestionar subtareas:</p>
+      <ol>
+        <li>Marca las subtareas con una pista visual al comienzo (por ejemplo <strong>→</strong>)</li>
+        <li>Esconde la propiedad de "Tarea Padre" para sólo ver las subtareas</li>
+        <li>Filtra la tabla para que sólo muestre registros cuya propiedad "Subtarea" tenga algo dentro (<code>Subtarea</code> + <code>Is not Empty</code>)</li>
+      </ol>
+    </div>
+  </div>
+</LessonLayout>

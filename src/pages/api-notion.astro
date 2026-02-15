@@ -2,8 +2,8 @@
 import LessonLayout from '../layouts/LessonLayout.astro';
 
 const modules = [
-  { icon: 'blue', title: '6.01. Crear integraciones con la API de Notion', tag: 'Contenido' },
-  { icon: 'green', title: 'Práctica', tag: 'Práctica' },
+  { icon: 'blue', title: '6.01. Crear integraciones con la API de Notion', tag: 'Contenido', href: '/crear-integraciones-api-notion' },
+  { icon: 'green', title: 'Práctica', tag: 'Práctica', href: '/prctica' },
 ];
 ---
 
@@ -26,11 +26,11 @@ const modules = [
 
   <div class="module-list">
     {modules.map((mod) => (
-      <div class="module-item">
+      <a href={mod.href} class="module-item">
         <span class={`module-item__icon module-item__icon--${mod.icon}`}></span>
         <span class="module-item__title">{mod.title}</span>
         <span class="module-item__tag">{mod.tag}</span>
-      </div>
+      </a>
     ))}
   </div>
 </LessonLayout>

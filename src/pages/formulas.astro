@@ -2,10 +2,10 @@
 import LessonLayout from '../layouts/LessonLayout.astro';
 
 const modules = [
-  { icon: 'blue', title: '5.01 Introducción a las Fórmulas en Notion', tag: 'Contenido' },
-  { icon: 'yellow', title: '5.02 Expresiones y condiciones anidadas', tag: 'Contenido' },
-  { icon: 'purple', title: '5.03 Bola extra: Tipos de valores en las fórmulas de Notion', tag: 'Bola extra' },
-  { icon: 'purple', title: '5.04 Bola extra: Cómo crear barras de progreso en Notion', tag: 'Bola extra' },
+  { icon: 'blue', title: '5.01 Introducción a las Fórmulas en Notion', tag: 'Contenido', href: '/introduccion-formulas' },
+  { icon: 'yellow', title: '5.02 Expresiones y condiciones anidadas', tag: 'Contenido', href: '/formulas-avanzadas' },
+  { icon: 'purple', title: '5.03 Bola extra: Tipos de valores en las fórmulas de Notion', tag: 'Bola extra', href: '/input-values' },
+  { icon: 'purple', title: '5.04 Bola extra: Cómo crear barras de progreso en Notion', tag: 'Bola extra', href: '/barras-de-progreso-notion' },
 ];
 ---
 
@@ -21,11 +21,11 @@ const modules = [
 
   <div class="module-list">
     {modules.map((mod) => (
-      <div class="module-item">
+      <a href={mod.href} class="module-item">
         <span class={`module-item__icon module-item__icon--${mod.icon}`}></span>
         <span class="module-item__title">{mod.title}</span>
         <span class="module-item__tag">{mod.tag}</span>
-      </div>
+      </a>
     ))}
   </div>
 </LessonLayout>

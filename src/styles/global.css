@@ -649,6 +649,8 @@ img {
   padding: 0.875rem 1.25rem;
   background-color: var(--color-bg);
   text-decoration: none;
+  color: inherit;
+  cursor: pointer;
   transition: background-color var(--transition);
 }
 

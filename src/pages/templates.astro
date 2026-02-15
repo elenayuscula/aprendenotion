@@ -1,0 +1,88 @@
+---
+import LessonLayout from '../layouts/LessonLayout.astro';
+
+const toc = [
+  { label: 'Cálculos en nuestras bases de datos', href: '#calculos' },
+  { label: 'Templates dentro de bases de datos', href: '#templates' },
+  { label: 'Enlazar bases de datos', href: '#enlazar' },
+];
+---
+
+<LessonLayout
+  title="3.04. Bola extra: Cálculos, templates y enlazar bases de datos — Aprende Notion"
+  description="Aprende a hacer cálculos, crear templates y enlazar bases de datos en Notion para sacar el máximo partido a tu espacio de trabajo."
+  emoji="📊"
+  lessonTitle="3.04. Bola extra: Hacer cálculos, crear templates y enlazar bases de datos"
+  prevLink={{ href: '/repositorio-articulos-pocket', label: 'Práctica 01. Repositorio de artículos tipo Pocket' }}
+  nextLink={{ href: '/nuevas-bases-de-datos', label: 'Nuevas bases de datos' }}
+  toc={toc}
+>
+  <h2 id="calculos">Cálculos en nuestras bases de datos</h2>
+  <p>En las bases de datos del tipo Tabla o Tablero, se pueden realizar operaciones con la información de los ítems.</p>
+
+  <p><strong>Para acceder:</strong></p>
+  <ul>
+    <li>En una <code>Table</code>: pasar el ratón por la parte inferior de la tabla. Aparece la palabra <code>Calculate</code> debajo de cada columna de propiedades.</li>
+    <li>En un <code>Tablero</code>: la opción está al lado del nombre de la propiedad usada para crear las columnas. Hay un número gris que, al pinchar, abre un menú.</li>
+  </ul>
+
+  <p><strong>Opciones de cálculo disponibles:</strong></p>
+  <ul>
+    <li><strong><code>Count All</code></strong>: Cuenta el número de ítems en esa columna o fila.</li>
+    <li><strong><code>Count Values</code></strong>: Abre un desplegable con todas las propiedades y cuenta valores de la propiedad elegida.</li>
+    <li><strong><code>Count Unique Values</code></strong>: Cuenta sin duplicados.</li>
+    <li><strong><code>Count Empty</code></strong>: Cuenta filas sin valor en esa columna.</li>
+    <li><strong><code>Count Not Empty</code></strong>: Cuenta filas con valor en esa columna.</li>
+    <li><strong><code>Percent Empty</code></strong>: Porcentaje de filas sin esa propiedad rellenada.</li>
+    <li><strong><code>Percent Not Empty</code></strong>: Porcentaje de items con esa propiedad rellenada.</li>
+    <li><strong><code>Earliest Date</code></strong>: Muestra cuándo fue creado el ítem más antiguo.</li>
+    <li><strong><code>Latest Date</code></strong>: Indica cuándo fue creado el último ítem.</li>
+    <li><strong><code>Date Range</code></strong>: Muestra el tiempo transcurrido entre primer y último ítem.</li>
+  </ul>
+
+  <p><strong>Para propiedades numéricas (<code>Number</code>):</strong></p>
+  <ul>
+    <li><strong><code>Sum</code></strong>: Suma los números de la columna.</li>
+    <li><strong><code>Average</code></strong>: Media de los números.</li>
+    <li><strong><code>Median</code></strong>: Mediana de los números.</li>
+    <li><strong><code>Min</code></strong>: Número más bajo.</li>
+    <li><strong><code>Max</code></strong>: Número más alto.</li>
+    <li><strong><code>Range</code></strong>: Diferencia entre máximo y mínimo.</li>
+  </ul>
+
+  <h2 id="templates">Templates dentro de bases de datos</h2>
+  <p>Los templates son plantillas con contenido predefinido para evitar reescribir lo mismo en documentos con estructura idéntica.</p>
+
+  <p><strong>Dos formas de crear templates:</strong></p>
+  <ol>
+    <li>Pulsar la flecha hacia abajo del botón azul <code>New</code> en la parte superior derecha. Al abrir se muestra <code>+ New template</code>.</li>
+    <li>Al abrir un ítem recién creado (vacío), aparece una opción para crear un nuevo template en el cuerpo de texto.</li>
+  </ol>
+
+  <p>Dentro del template se puede escribir contenido, añadir secciones, definir propiedades fijas y establecer la estructura típica (ej: reuniones con fecha, personas, temas a tratar, próximos pasos).</p>
+
+  <h3>Editar, compartir y marcar templates como favoritos</h3>
+  <p>Para editar: volver al botón <code>New</code>, abrir el desplegable y pasar el ratón sobre el template deseado. Aparece un menú <code>...</code> con opciones para eliminar, duplicar o editar.</p>
+  <p>Al editar aparece un mensaje amarillo indicando que se está editando un template. Los cambios se aplican al template y serán efectivos la próxima vez que se cree uno.</p>
+
+  <p><strong>Características:</strong></p>
+  <ul>
+    <li>Se pueden crear múltiples templates por base de datos.</li>
+    <li>Cada base de datos tiene sus propios templates (no reutilizables en otras).</li>
+    <li>Los templates se pueden compartir con otros miembros del equipo usando el botón <code>Share</code>.</li>
+    <li>Desde el menú <code>...</code> se pueden marcar como Favorito (aparecen pinneados en <code>Favorites</code> del sidebar).</li>
+  </ul>
+
+  <h2 id="enlazar">Enlazar bases de datos</h2>
+  <p>Las bases de datos se pueden enlazar para visualizarlas en diferentes puntos del espacio de trabajo, evitando estar moviéndose y cambiando de páginas constantemente cuando queremos consultar datos.</p>
+
+  <p><strong>Usando el bloque <code>Linked Database</code>:</strong></p>
+  <ol>
+    <li>Escribir <code>/linked</code> y pulsar <code>Enter</code>.</li>
+    <li>Escribir el nombre de la base de datos a enlazar.</li>
+    <li>Cambiar la visualización a la necesaria (ej: <code>Calendario</code>).</li>
+    <li>Jugar con filtros y opciones de ordenación según contexto.</li>
+  </ol>
+
+  <p><strong>Alternativa:</strong> Pinchar en el menú <code>⋮⋮</code> a la izquierda de la tabla, pulsar <code>Copy link</code>, pegar donde se desee. Aparece un mensaje con opción <code>Create linked database</code>.</p>
+</LessonLayout>

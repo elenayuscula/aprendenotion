@@ -1,0 +1,83 @@
+---
+import LessonLayout from '../layouts/LessonLayout.astro';
+---
+
+<LessonLayout
+  title="3.01. Introducción a las bases de datos — Aprende Notion"
+  description="Aprende qué hace especiales a las bases de datos de Notion, cómo crearlas, la diferencia entre inline y full page, y sus propiedades."
+  emoji="📊"
+  lessonTitle="3.01. Introducción a las bases de datos"
+  prevLink={{ href: '/bases-datos', label: '📊 03. Bases de Datos' }}
+  nextLink={{ href: '/filtros-ordenacion', label: '3.02. Filtros, opciones de ordenación y visualización' }}
+>
+  <h2 id="que-hace-especial">Qué hace de las bases de datos en Notion algo especial</h2>
+  <p>Las bases de datos en Notion destacan por tres funcionalidades principales:</p>
+  <ol>
+    <li><strong>Propiedades customizables:</strong> Se pueden añadir diferentes propiedades a un elemento que complementen la información con fechas, URLs, marcas de edición, propietarios, etc. Estas propiedades permiten posteriormente filtrar u ordenar los elementos.</li>
+    <li><strong>Cada elemento como página independiente:</strong> Todo ítem creado en una base de datos es a su vez su propia página, permitiendo añadir bloques adicionales, páginas anidadas o más bases de datos.</li>
+    <li><strong>Múltiples modos de visualización:</strong> Existen 5 tipos diferentes de vistas:
+      <ul>
+        <li>Listas</li>
+        <li>Tablas</li>
+        <li>Galerías</li>
+        <li>Tableros</li>
+        <li>Calendario</li>
+      </ul>
+    </li>
+  </ol>
+
+  <div class="callout">
+    <span class="callout__icon">💡</span>
+    <div class="callout__content">
+      <p>La información siempre será la misma pero puedes elegir cómo visualizarla dependiendo del contexto.</p>
+    </div>
+  </div>
+
+  <h2 id="como-crear">Cómo crear una base de datos</h2>
+  <p>Existen dos formas principales:</p>
+  <ul>
+    <li>Crear una página nueva seleccionando opciones bajo "DATABASE"</li>
+    <li>Insertar un bloque nuevo en una página existente usando <code>/</code> y seleccionando el tipo deseado</li>
+  </ul>
+
+  <h2 id="inline-fullpage">Diferencia entre bases de datos inline o full page</h2>
+
+  <h3 id="inline">Bases de datos Inline</h3>
+  <p>Convivirán con otros tipos de contenido en tu página. Son útiles cuando necesitas insertar datos contextualizados con otro contenido como texto e imágenes.</p>
+  <p>Se pueden convertir a full page mediante el menú <code>...</code> seleccionando <code>Turn into Page</code>.</p>
+
+  <h3 id="fullpage">Bases de datos Full Page</h3>
+  <p>No permiten añadir contenido adicional fuera de la base de datos misma. Útiles cuando no necesitas incluir información complementaria.</p>
+  <p>Se convierten a inline seleccionando <code>Turn into Inline</code> en el menú <code>...</code>.</p>
+
+  <h2 id="propiedades">Propiedades de las bases de datos</h2>
+
+  <h3 id="propiedades-basicas">Propiedades Básicas</h3>
+  <ul>
+    <li><strong>Name:</strong> Título del elemento principal</li>
+    <li><strong>Text:</strong> Campo de texto formateado</li>
+    <li><strong>Number:</strong> Campo numérico con opciones de porcentajes, decimales, moneda</li>
+    <li><strong>Select:</strong> Menú desplegable de selección única</li>
+    <li><strong>Multiselect:</strong> Selección múltiple tipo tags</li>
+    <li><strong>Date:</strong> Fechas con recordatorios</li>
+    <li><strong>Person:</strong> Asignar a personas del workspace</li>
+    <li><strong>Files & Media:</strong> Subir archivos</li>
+    <li><strong>Checkbox:</strong> Indicador de completitud</li>
+    <li><strong>URL:</strong> Enlaces</li>
+    <li><strong>Email:</strong> Direcciones de correo</li>
+    <li><strong>Phone:</strong> Números telefónicos</li>
+  </ul>
+
+  <h3 id="propiedades-avanzadas">Propiedades Avanzadas</h3>
+  <ul>
+    <li><strong>Created Time:</strong> Timestamp automático de creación</li>
+    <li><strong>Created by:</strong> Registra quién creó el elemento</li>
+    <li><strong>Last Edited Time:</strong> Fecha de última edición</li>
+    <li><strong>Last Edited By:</strong> Quién realizó la última edición</li>
+    <li><strong>Relation:</strong> Enlazar bases de datos entre ellas</li>
+    <li><strong>Rollup:</strong> Realizar operaciones sobre elementos vinculados</li>
+    <li><strong>Formula:</strong> Realizar cálculos basados en otras propiedades</li>
+  </ul>
+
+  <p>Las propiedades se pueden organizar desde el menú <code>...</code> (inline) o <code>Properties</code> (full page).</p>
+</LessonLayout>
