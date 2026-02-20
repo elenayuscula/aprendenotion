@@ -1,0 +1,40 @@
+---
+/**
+ * NewsletterCTA — Bloque centrado de suscripción a newsletter
+ *
+ * Props:
+ *   emoji?   — Emoji decorativo (default: 💌)
+ *   title?   — Título (default: "No te pierdas nada")
+ *   text?    — Texto descriptivo
+ *   action?  — URL del form action (para Tally.so u otro)
+ */
+interface Props {
+  emoji?: string;
+  title?: string;
+  text?: string;
+  action?: string;
+}
+
+const {
+  emoji = '💌',
+  title = 'No te pierdas nada',
+  text = 'Suscríbete a la newsletter para recibir novedades, trucos y recursos sobre Notion.',
+  action = '#',
+} = Astro.props;
+---
+
+<section class="newsletter-cta" aria-label="Suscripción a newsletter">
+  <div class="newsletter-cta__emoji" aria-hidden="true">{emoji}</div>
+  <h3 class="newsletter-cta__title">{title}</h3>
+  <p class="newsletter-cta__text">{text}</p>
+  <form class="newsletter-cta__form" action={action} method="post">
+    <input
+      type="email"
+      class="newsletter-cta__input"
+      placeholder="Tu e-mail"
+      aria-label="Tu dirección de email"
+      required
+    />
+    <button type="submit" class="newsletter-cta__btn">Suscribirme →</button>
+  </form>
+</section>

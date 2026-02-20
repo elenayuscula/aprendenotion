@@ -1,0 +1,17 @@
+# ─────────────────────────────────────────────
+# Brain Design Kit
+# ─────────────────────────────────────────────
+
+title: "Brain Design Kit"
+description: "Un sistema completo de gestión de conocimiento en Notion que integra objetivos, proyectos, tareas y notas personales. Combina GTD y Zettelkasten para convertir tus recursos en tu mejor activo."
+subtitle: "Convierte tu biblioteca de recursos en tu mejor activo"
+price: "249€ + IVA"
+priceNumeric: 249
+image: "/images/herramientas/brain-design-kit.png"
+purchaseUrl: "https://elenamadrigal.com/brain-design-kit"
+
+category: "producto-principal"
+external: true
+order: 2
+tag: "Curso + Sistema"
+tagColor: "purple"

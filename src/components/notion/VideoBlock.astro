@@ -1,0 +1,92 @@
+---
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import { richTextToPlain } from '../../lib/notion';
+
+interface Props {
+  block: BlockObjectResponse;
+}
+
+const { block } = Astro.props;
+
+let url = '';
+let caption = '';
+
+if (block.type === 'video') {
+  const video = (block as any).video;
+  if (video.type === 'external') url = video.external.url;
+  else if (video.type === 'file') url = video.file.url;
+  caption = video.caption?.length > 0 ? richTextToPlain(video.caption) : '';
+} else if (block.type === 'embed') {
+  const embed = (block as any).embed;
+  url = embed.url || '';
+  caption = embed.caption?.length > 0 ? richTextToPlain(embed.caption) : '';
+}
+
+// Extract YouTube video ID
+function getYoutubeId(url: string): string | null {
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=)([a-zA-Z0-9_-]{11})/,
+    /(?:youtu\.be\/)([a-zA-Z0-9_-]{11})/,
+    /(?:youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+  ];
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match) return match[1];
+  }
+  return null;
+}
+
+const youtubeId = getYoutubeId(url);
+const isYoutube = !!youtubeId;
+---
+
+{isYoutube ? (
+  <figure class="notion-video">
+    <div class="notion-video__wrapper">
+      <iframe
+        src={`https://www.youtube.com/embed/${youtubeId}`}
+        title={caption || 'Video de YouTube'}
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+      />
+    </div>
+    {caption && <figcaption class="notion-video__caption">{caption}</figcaption>}
+  </figure>
+) : url ? (
+  <figure class="notion-video">
+    <div class="notion-video__wrapper">
+      <iframe src={url} title={caption || 'Video'} frameborder="0" allowfullscreen loading="lazy" />
+    </div>
+    {caption && <figcaption class="notion-video__caption">{caption}</figcaption>}
+  </figure>
+) : null}
+
+<style>
+  .notion-video {
+    margin: 1.25em 0;
+  }
+  .notion-video__wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 6px;
+    background: #000;
+  }
+  .notion-video__wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .notion-video__caption {
+    margin-top: 0.5em;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary, #6B6B6B);
+    text-align: center;
+  }
+</style>

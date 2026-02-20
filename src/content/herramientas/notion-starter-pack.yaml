@@ -1,0 +1,134 @@
+# ─────────────────────────────────────────────
+# Notion Starter Pack
+# ─────────────────────────────────────────────
+
+title: "Notion Starter Pack"
+description: "Todo lo que necesitas para empezar a crear tu propio Sistema Operativo en Notion. Templates 100% funcionales con fórmulas, filtros y guías paso a paso."
+subtitle: "Todo lo que necesitas para empezar a crear tu propio Sistema Operativo en Notion"
+price: "65€ + IVA"
+priceNumeric: 65
+image: "/images/herramientas/starter-pack/portada.png"
+purchaseUrl: "https://elenamadrigal.gumroad.com/l/notion-starter-pack/yhs1vif"
+
+category: "companion"
+order: 1
+tag: "Companion del curso"
+tagColor: "green"
+
+# ── Value props ──────────────────────────────
+
+valueProps:
+  - icon: "⚡"
+    title: "100% Funcional"
+    description: "Cada plantilla viene ya programada con fórmulas y filtros configurados para que funcionen en conjunto."
+  - icon: "📖"
+    title: "Guías paso a paso"
+    description: "Todas las herramientas incluyen documentación detallada para que las adaptes a tus necesidades."
+  - icon: "✅"
+    title: "Listo para empezar"
+    description: "El sistema viene diseñado para que puedas empezar a utilizarlo sin cambiar nada. Tú eres quien elige cómo lo usas y cuándo lo modificas."
+
+# ── Body ─────────────────────────────────────
+
+body: |
+  <h2>¿Por qué este pack?</h2>
+  <p>Una vez conoces el potencial de la herramienta, no es raro entrar en la <strong>parálisis por análisis</strong>. No sabes por dónde empezar a usarla de una manera que tenga sentido.</p>
+  <p>Necesitas un sistema. Una estructura que unifique todas las páginas y bases de datos que te has ido creando. Este pack es tu punto de partida en la construcción de ese sistema; tu propio <strong>Sistema Operativo</strong> dentro de la aplicación.</p>
+  <p><img src="/images/herramientas/starter-pack/elige-por-donde.gif" alt="Elige por dónde empiezas" /></p>
+
+  <h2>Olvídate de configurar nada</h2>
+  <p>El rango de funcionalidad va desde el uso más sencillo que le podrías sacar a Notion (toma de notas) hasta la <strong>gestión de proyectos y tareas</strong>. Por el camino, una herramienta de <strong>control de gastos</strong>, de <strong>registro de hábitos</strong> o un sofisticado <strong>repositorio de recetas</strong>.</p>
+  <p><img src="/images/herramientas/starter-pack/tareas.gif" alt="Gestión de tareas en Notion" /></p>
+  <p>Si te cuesta crear y programar las bases de datos para sacarles todo el potencial, este sistema te ahorrará <strong>horas de trabajo pesado</strong>. Limítate a rellenarlas con tus propios datos o modificarlas a tu gusto siguiendo las guías de implementación.</p>
+  <p><img src="/images/herramientas/starter-pack/guias-implementacion.gif" alt="Guías de implementación paso a paso" /></p>
+
+  <h2>¿Qué incluye el pack?</h2>
+  <p>Olvídate de configurar nada y empieza a usar herramientas de tu día a día directamente construidas en Notion:</p>
+  <p><img src="/images/herramientas/starter-pack/habitos.png" alt="Seguimiento de hábitos y rutinas" /></p>
+  <p><strong>🕐 Seguimiento de Hábitos y Rutinas</strong> — Incluye base de datos de registro diario de hábitos y base de datos de revisión semanal de los mismos.</p>
+  <p><img src="/images/herramientas/starter-pack/tareas.png" alt="Gestión de tareas y proyectos" /></p>
+  <p><strong>✅ Gestión de Tareas</strong> — Incluye una base de datos "maestra" de Tareas y otra de Proyectos asociados a esas Tareas.</p>
+  <p><img src="/images/herramientas/starter-pack/recetas.png" alt="Base de datos de recetas" /></p>
+  <p><strong>🍳 Recetas</strong> — Incluye base de datos de Recetas y base de datos de Ingredientes, ambas relacionadas para ser totalmente funcionales en su conjunto.</p>
+  <p><img src="/images/herramientas/starter-pack/gastos.png" alt="Control de gastos" /></p>
+  <p><strong>💶 Finanzas</strong> — Base de datos de Control de Gastos con categorías, suscripciones y balance.</p>
+  <p><strong>📺 Entretenimiento</strong> — Base de datos de Series y Películas con puntuaciones y estado de visualización.</p>
+  <p><strong>🧠 Recursos/Aprendizaje</strong> — Notas & Ideas, Inspiración, Repositorio de artículos web, etc... Tu segundo cerebro digital.</p>
+  <p>Aunque están totalmente configuradas para empezar a usarlas desde el principio, todas las plantillas vienen con una serie de <strong>instrucciones paso a paso</strong> para que puedas modificarlas y adaptarlas a tus necesidades.</p>
+
+  <h2>Acceso a todas las futuras actualizaciones</h2>
+  <p>El pack se irá actualizando a medida que vaya añadiendo más templates y funcionalidades. Si lo compras ahora, puedes llevarte todos los dashboards y plantillas de arriba + futuras actualizaciones.</p>
+
+# ── Módulos ──────────────────────────────────
+
+modules:
+  - emoji: "🕐"
+    title: "Hábitos y Rutinas"
+    desc: "Registro diario de hábitos + base de datos de revisiones semanales. Crea consistencia y mide tu progreso."
+  - emoji: "✅"
+    title: "Gestión de Tareas"
+    desc: "Base de datos maestra de Tareas con Proyectos asociados. Vistas de tabla, tablero Kanban y calendario."
+  - emoji: "🍳"
+    title: "Recetas"
+    desc: "Base de datos de Recetas interconectada con Ingredientes. Totalmente funcional en su conjunto."
+  - emoji: "💶"
+    title: "Finanzas"
+    desc: "Control de Gastos con categorías, suscripciones y balance mensual automático."
+  - emoji: "📺"
+    title: "Entretenimiento"
+    desc: "Base de datos de Series y Películas con puntuaciones y estado de visualización."
+  - emoji: "🧠"
+    title: "Aprendizaje y Recursos"
+    desc: "Notas, Ideas, Inspiración y Repositorio de artículos web. Tu segundo cerebro digital."
+
+# ── Features ─────────────────────────────────
+
+features:
+  - "Fórmulas preconfiguradas y listas para usar"
+  - "Guías de implementación paso a paso para cada módulo"
+  - "Diseño modular: usa solo lo que necesites"
+  - "Cada herramienta funciona de forma independiente"
+  - "Acceso a todas las actualizaciones futuras"
+  - "6 módulos completos con bases de datos interconectadas"
+
+# ── Testimonios ──────────────────────────────
+
+testimonials:
+  - quote: "Me acaba de llegar el Notion Starter Pack de @elenayuscula y me vuelvo a quedar sin palabras ante este nuevo tesoro que nos deja. Yo lo llamo regalo, aunque tenga un precio simbólico, porque aún multiplicado por 20, 30 o más seguiría estando genial."
+    author: "Juan Carlos Alonso Gamboa"
+  - quote: "Es una maravilla. No son simplemente las plantillas, hay un montón de tips. Se nota el cariño que le ha puesto y todo el trabajo que hay detrás."
+    author: "Jaime Mesa"
+
+# ── Pricing ──────────────────────────────────
+
+pricing:
+  headline: "¿Cuánto cuesta?"
+  subtitle: "Elige la opción que mejor se adapte a tus necesidades."
+  cards:
+    - label: "Notion Starter Pack"
+      price: '65€ <span>+ IVA</span>'
+      features:
+        - "6 módulos completos"
+        - "Bases de datos interconectadas"
+        - "Fórmulas y filtros preconfigurados"
+        - "Guías de implementación paso a paso"
+        - "Actualizaciones de por vida"
+      url: "https://elenamadrigal.gumroad.com/l/notion-starter-pack/yhs1vif"
+      featured: true
+      internal: false
+
+# ── FAQ ──────────────────────────────────────
+
+faq:
+  - question: "¿Tengo que pagar por Notion?"
+    answer: "No. Notion tiene una versión gratuita que puedes usar perfectamente para cualquiera de los productos creados en Notion que veas en esta web."
+  - question: "He visto otras plantillas gratuitas o más baratas, ¿cuál es la diferencia?"
+    answer: "No es una plantilla al uso. Es un sistema/herramienta que he diseñado desde los cimientos para mí, es decir que está totalmente probada y comprobada que funciona. La he diseñado teniendo en cuenta distintos casos de uso, añadiendo instrucciones y razonamiento detrás para que entiendas cómo usarla según tus propias necesidades. Es un sistema que ahorra horas de trabajo, que puede mejorar tus procesos actuales y que ha sido construido con cuidado y propósito."
+  - question: "¿Las actualizaciones están incluidas?"
+    answer: "Absolutamente. Aunque ten en cuenta que, cuando duplicas el producto en tu espacio de trabajo, todas las actualizaciones que haga yo al original dejarán de aplicarse automáticamente, pero siempre encontrarás instrucciones para aplicar esas actualizaciones. Que, por si no había quedado claro, sí están incluidas ;)"
+
+# ── Navegación ───────────────────────────────
+
+prevProduct:
+  slug: "sistema-de-mejora-continua"
+  label: "← Mejora Continua"

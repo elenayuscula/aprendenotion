@@ -48,7 +48,10 @@ const defaultOgImage = `${siteUrl}/og-image.png`;
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-  <!-- Fuentes: Area y Canela se cargan via @font-face en global.css (self-hosted en /public/fonts/) -->
+  <!-- Inter font via Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
   <a href="#main-content" class="skip-to-content">Saltar al contenido</a>
@@ -65,6 +68,7 @@ const defaultOgImage = `${siteUrl}/og-image.png`;
         Notion para la vida real
       </a>
       <div class="navbar__actions">
+        <a href="/curso" class="navbar__link">Curso</a>
         <a href="/herramientas" class="navbar__link">Herramientas</a>
         <a href="/blog" class="navbar__link">Blog</a>
         <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">

@@ -23,8 +23,14 @@ const posts = (await getCollection('blog'))
     <section class="blog-grid" aria-label="Artículos del blog">
       {posts.map((post) => (
         <a href={`/blog/${post.id}`} class="blog-card">
-          <div class="blog-card__emoji" aria-hidden="true">{post.data.emoji}</div>
-          <div class="blog-card__content">
+          <div class="blog-card__image">
+            {post.data.coverImage ? (
+              <img src={post.data.coverImage} alt={post.data.title} loading="lazy" />
+            ) : (
+              <span aria-hidden="true">{post.data.emoji}</span>
+            )}
+          </div>
+          <div class="blog-card__body">
             <div class="blog-card__meta">
               <span class="blog-card__category">{post.data.category}</span>
               <span class="blog-card__separator">·</span>
@@ -32,7 +38,7 @@ const posts = (await getCollection('blog'))
             </div>
             <h2 class="blog-card__title">{post.data.title}</h2>
             <p class="blog-card__description">{post.data.description}</p>
-            <span class="blog-card__reading-time">{post.data.readingTime}</span>
+            <span class="blog-card__reading-time"></span>
           </div>
         </a>
       ))}

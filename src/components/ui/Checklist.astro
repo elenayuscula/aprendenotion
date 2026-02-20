@@ -1,0 +1,22 @@
+---
+/**
+ * Checklist — Lista con checks verdes (páginas de producto)
+ *
+ * Props:
+ *   items — Array de strings
+ */
+interface Props {
+  items: string[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="pd-checklist">
+  {items.map((item) => (
+    <div class="pd-checklist__item">
+      <span class="pd-checklist__check" aria-hidden="true">✓</span>
+      <span>{item}</span>
+    </div>
+  ))}
+</div>

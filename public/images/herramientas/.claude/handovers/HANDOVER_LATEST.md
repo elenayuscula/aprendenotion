@@ -1,0 +1,1 @@
+/Users/elena/Library/CloudStorage/GoogleDrive-elena@elenamadrigal.com/Mi unidad/01 PROYECTOS/Proyectos Claude/aprendenotion/public/images/herramientas/.claude/handovers/HANDOVER_2026-02-20_19-02-36.md

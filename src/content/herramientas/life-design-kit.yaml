@@ -1,0 +1,17 @@
+# ─────────────────────────────────────────────
+# Life Design Kit
+# ─────────────────────────────────────────────
+
+title: "Life Design Kit"
+description: "Un sistema completo para diseñar tu vida con intención. Metodología + herramientas en Notion para definir y construir la vida que quieres."
+subtitle: "Diseña tu vida con intención"
+price: "120€ + IVA"
+priceNumeric: 120
+image: "/images/herramientas/life-design-kit.png"
+purchaseUrl: "https://elenamadrigal.com/herramientas/life-design-kit"
+
+category: "producto-principal"
+external: true
+order: 1
+tag: "Curso + Sistema"
+tagColor: "purple"

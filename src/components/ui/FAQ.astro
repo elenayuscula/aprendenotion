@@ -1,0 +1,30 @@
+---
+/**
+ * FAQ — Acordeón de preguntas frecuentes con <details>/<summary>
+ *
+ * Props:
+ *   items   — Array de { question, answer }
+ *   variant — "default" | "product" (usa faq vs pd-faq classes)
+ */
+interface Props {
+  items: Array<{
+    question: string;
+    answer: string;
+  }>;
+  variant?: 'default' | 'product';
+}
+
+const { items, variant = 'default' } = Astro.props;
+const prefix = variant === 'product' ? 'pd-faq' : 'faq';
+---
+
+<div class={prefix}>
+  {items.map((item) => (
+    <details class={`${prefix}__item`}>
+      <summary class={`${prefix}__question`}>{item.question}</summary>
+      <div class={`${prefix}__answer`}>
+        <p>{item.answer}</p>
+      </div>
+    </details>
+  ))}
+</div>

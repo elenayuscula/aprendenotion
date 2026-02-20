@@ -1,0 +1,105 @@
+---
+/**
+ * RichText — renderiza un array de RichTextItemResponse de Notion
+ * con sus anotaciones (bold, italic, code, color, link, etc.)
+ */
+import type { RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints';
+
+interface Props {
+  text: RichTextItemResponse[];
+}
+
+const { text } = Astro.props;
+
+// Map Notion colors to CSS classes
+const colorMap: Record<string, string> = {
+  gray: 'notion-color-gray',
+  brown: 'notion-color-brown',
+  orange: 'notion-color-orange',
+  yellow: 'notion-color-yellow',
+  green: 'notion-color-green',
+  blue: 'notion-color-blue',
+  purple: 'notion-color-purple',
+  pink: 'notion-color-pink',
+  red: 'notion-color-red',
+  gray_background: 'notion-bg-gray',
+  brown_background: 'notion-bg-brown',
+  orange_background: 'notion-bg-orange',
+  yellow_background: 'notion-bg-yellow',
+  green_background: 'notion-bg-green',
+  blue_background: 'notion-bg-blue',
+  purple_background: 'notion-bg-purple',
+  pink_background: 'notion-bg-pink',
+  red_background: 'notion-bg-red',
+};
+---
+
+{text.map((item) => {
+  const { annotations, plain_text, href } = item;
+  let content = plain_text;
+
+  // Build class list from annotations
+  const classes: string[] = [];
+  if (annotations.bold) classes.push('notion-bold');
+  if (annotations.italic) classes.push('notion-italic');
+  if (annotations.strikethrough) classes.push('notion-strikethrough');
+  if (annotations.underline) classes.push('notion-underline');
+  if (annotations.code) classes.push('notion-inline-code');
+  if (annotations.color !== 'default') {
+    const colorClass = colorMap[annotations.color];
+    if (colorClass) classes.push(colorClass);
+  }
+
+  const className = classes.join(' ') || undefined;
+
+  if (href) {
+    return <a href={href} class={className} target="_blank" rel="noopener noreferrer">{content}</a>;
+  }
+
+  if (annotations.code) {
+    return <code class={className}>{content}</code>;
+  }
+
+  if (classes.length > 0) {
+    return <span class={className}>{content}</span>;
+  }
+
+  return <Fragment>{content}</Fragment>;
+})}
+
+<style>
+  .notion-bold { font-weight: 600; }
+  .notion-italic { font-style: italic; }
+  .notion-strikethrough { text-decoration: line-through; }
+  .notion-underline { text-decoration: underline; }
+  .notion-inline-code {
+    font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    background: var(--color-bg-secondary, #F7F6F3);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    color: #EB5757;
+  }
+
+  /* Text colors */
+  .notion-color-gray { color: #9B9A97; }
+  .notion-color-brown { color: #64473A; }
+  .notion-color-orange { color: #D9730D; }
+  .notion-color-yellow { color: #DFAB01; }
+  .notion-color-green { color: #0F7B6C; }
+  .notion-color-blue { color: #0B6E99; }
+  .notion-color-purple { color: #6940A5; }
+  .notion-color-pink { color: #AD1A72; }
+  .notion-color-red { color: #E03E3E; }
+
+  /* Background colors */
+  .notion-bg-gray { background: #EBECED; padding: 0.1em 0.3em; border-radius: 3px; }
+  .notion-bg-brown { background: #E9E5E3; padding: 0.1em 0.3em; border-radius: 3px; }
+  .notion-bg-orange { background: #FADEC9; padding: 0.1em 0.3em; border-radius: 3px; }
+  .notion-bg-yellow { background: #FDECC8; padding: 0.1em 0.3em; border-radius: 3px; }
+  .notion-bg-green { background: #DBEDDB; padding: 0.1em 0.3em; border-radius: 3px; }
+  .notion-bg-blue { background: #D3E5EF; padding: 0.1em 0.3em; border-radius: 3px; }
+  .notion-bg-purple { background: #E8DEEE; padding: 0.1em 0.3em; border-radius: 3px; }
+  .notion-bg-pink { background: #F5E0E9; padding: 0.1em 0.3em; border-radius: 3px; }
+  .notion-bg-red { background: #FFE2DD; padding: 0.1em 0.3em; border-radius: 3px; }
+</style>

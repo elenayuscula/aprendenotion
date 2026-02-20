@@ -1,0 +1,152 @@
+# ─────────────────────────────────────────────
+# Control de Ingresos y Gastos
+# ─────────────────────────────────────────────
+
+title: "Control de Ingresos y Gastos"
+description: "Registra ingresos y gastos, lleva un control de tus suscripciones y pagos recurrentes y comprueba el balance de tus cuentas. Todo en Notion."
+subtitle: "Registra ingresos y gastos, controla suscripciones y comprueba el balance de tus cuentas"
+price: "15€ + IVA"
+priceNumeric: 15
+image: "/images/herramientas/control-gastos/portada.png"
+purchaseUrl: "https://elenamadrigal.gumroad.com/l/control-gastos?wanted=true"
+
+category: "herramienta"
+order: 1
+tag: "Herramienta"
+tagColor: "blue"
+
+# ── Value props ──────────────────────────────
+
+valueProps:
+  - icon: "✅"
+    title: "Listo para empezar"
+    description: "El sistema viene diseñado para que puedas empezar a utilizarlo sin cambiar nada. Tú eres quien elige cómo lo usas y cuándo lo modificas."
+  - icon: "♾️"
+    title: "Acceso de por vida"
+    description: "Sin cuotas de suscripción. Paga una vez y accede al contenido (y a sus actualizaciones) para siempre."
+  - icon: "⚡"
+    title: "100% Funcional"
+    description: "Cada plantilla viene ya programada con fórmulas y filtros configurados para que funcionen en conjunto y a la perfección desde el minuto 1."
+
+# ── Body ─────────────────────────────────────
+
+body: |
+  <h2>Lleva un control de todos tus movimientos en un único sitio</h2>
+  <p>Esta herramienta nace de mi propia necesidad de tener controladas todas <strong>mis suscripciones y gastos recurrentes</strong> y poder organizarlos por <strong>categorías</strong>, así como hacer <strong>sumatorios y presupuestos mensuales</strong> con ellos.</p>
+  <p>Más tarde, de nuevo por necesidad, la amplié sumando también <strong>gastos del día a día</strong> y organizándolos por categorías, para saber en qué tipo de cosas gastaba más dinero y cada cuánto.</p>
+  <p>Obviamente tuve que añadir también un <strong>componente de Ingresos</strong>, lo que me llevó a acabar creando una vista de <strong>Balance total</strong>.</p>
+  <p>Todas estas necesidades, que resolví en su día para mí, fueron la semilla de lo que acabó siendo esta herramienta completa, una copia exacta de la que construí para mí y que ahora pongo a tu disposición.</p>
+
+  <blockquote>Controla lo que <strong>ingresas</strong> y lo que <strong>gastas</strong>, organízalo en <strong>categorías</strong>, controla tus <strong>pagos recurrentes</strong> y haz <strong>balance</strong> de tus cuentas al final de mes.</blockquote>
+
+  <h2>¿Qué vas a poder hacer con esta herramienta?</h2>
+  <p>La herramienta tiene distintas bases de datos que, juntas, forman un sistema que te permitirá:</p>
+  <ul>
+    <li>Crear <strong>categorías de gastos</strong> (tantas y de tanto tipo como quieras, aunque yo te doy unas cuantas ya creadas)</li>
+    <li>Decidir cuántos <strong>tipos de ingresos</strong> puedes recibir a lo largo del mes (nómina, prestaciones, productos digitales...)</li>
+    <li>Llevar un control detallado de aquellos <strong>servicios o herramientas a las que estás suscrita</strong> y saber el dinero que gastas en ellas al mes o al año</li>
+    <li><strong>Ingresar cada día tus gastos</strong> y asignarles esas categorías que te habías creado</li>
+    <li>Ver cada mes un <strong>balance de tus gastos, ingresos y ahorro</strong> total</li>
+  </ul>
+  <p><img src="/images/herramientas/control-gastos/images02.png" alt="Vista del sistema de control de gastos" /></p>
+
+  <h2>¿De qué está formado el sistema?</h2>
+  <p>El sistema se compone de varias bases de datos:</p>
+  <ul>
+    <li><strong>Base de Datos de Categorías de Gastos e Ingresos</strong> para que puedas crear las que necesites y mejor se ajusten a tu estilo de vida.</li>
+    <li><strong>Base de Datos de Ingresos</strong> pre-configurada para que puedas seleccionar de qué tipo son.</li>
+    <li><strong>Base de Datos de Gastos fijos</strong>, que funciona tanto aislada (para controlar tus suscripciones, de qué tipo son y lo que gastas en ellas) como en conjunto con el resto del sistema, para incluir esos gastos a tu balance total.</li>
+    <li><strong>Base de Datos de gastos diarios</strong>, que te permitirá introducir con detalle aquello en lo que gastas en el día a día.</li>
+    <li><strong>Base de datos de Ingresos y Gastos anuales</strong>, que recogen los datos de los otros componentes para, por último, mostrarlos en:</li>
+    <li><strong>Base de datos de Balance</strong> para poder ver, de un solo vistazo, el estado de tus cuentas cada mes y al final del año.</li>
+  </ul>
+  <p>En total <strong>10 bases de datos</strong> relacionadas entre sí, configuradas con rollups y fórmulas para hacer los cálculos y conseguir distintas visualizaciones y que tú puedas limitarte a introducir los datos.</p>
+  <p>El resto funciona por detrás para ti.</p>
+  <p><img src="/images/herramientas/control-gastos/images01-b.png" alt="Componentes del sistema de control de gastos" /></p>
+
+  <h2>¿Quieres más?</h2>
+  <p>Esta herramienta de Control de Ingresos y Gastos forma parte del <a href="/herramientas/notion-starter-pack">Notion Starter Pack</a>, un kit completo de <strong>plantillas y guías de implementación</strong> para que puedas empezar a <strong>diseñar y organizar tu vida entera en Notion</strong>.</p>
+  <p>Puedes comprar la herramienta por separado (15€) o <strong>el pack completo por 65€</strong> y además tener acceso a todas las demás plantillas y componentes.</p>
+
+# ── Módulos ──────────────────────────────────
+
+modules:
+  - emoji: "📂"
+    title: "Categorías de Gastos e Ingresos"
+    desc: "Para que puedas crear las que necesites y mejor se ajusten a tu estilo de vida."
+  - emoji: "💰"
+    title: "Base de Datos de Ingresos"
+    desc: "Pre-configurada para que puedas seleccionar de qué tipo son (nómina, freelance, extras...)."
+  - emoji: "🔄"
+    title: "Gastos fijos y suscripciones"
+    desc: "Controla tus suscripciones, de qué tipo son y lo que gastas en ellas al mes o al año."
+  - emoji: "🛒"
+    title: "Gastos diarios"
+    desc: "Introduce con detalle aquello en lo que gastas en el día a día, con categorización."
+  - emoji: "📊"
+    title: "Ingresos y Gastos anuales"
+    desc: "Recogen los datos de los otros componentes para mostrarlos en la vista de balance."
+  - emoji: "📈"
+    title: "Balance"
+    desc: "Ve de un solo vistazo el estado de tus cuentas cada mes y al final del año."
+
+# ── Features ─────────────────────────────────
+
+features:
+  - 'Crear <strong>categorías de gasto ilimitadas</strong> adaptadas a tu vida'
+  - 'Definir <strong>múltiples tipos de ingreso</strong> (nómina, freelance, extras...)'
+  - 'Hacer seguimiento de <strong>suscripciones</strong> con control de coste mensual y anual'
+  - 'Registrar <strong>gastos diarios</strong> con categorización automática'
+  - 'Generar <strong>resúmenes mensuales de balance</strong> automáticos'
+  - 'Consultar el <strong>balance anual</strong> de ingresos vs gastos'
+  - '<strong>10 bases de datos</strong> relacionadas entre sí con rollups y fórmulas'
+  - '<strong>Instrucciones paso a paso</strong> para usarla en tu día a día'
+
+# ── Testimonios ──────────────────────────────
+
+testimonials:
+  - quote: "Muchas gracias, he de confesar que después de que ayer estuve hasta las 2am trabajando en personalizar el template para incluir mis tarjetas (de crédito, débito, efectivo)... Después incluiré un tracker de inversiones que me ayude a reflejar dichos ingresos alternativos. De nuevo muchas gracias por la arquitectura inicial, me ha servido mucho más de lo que esperaba."
+    author: "Antonio Emba"
+
+# ── Pricing ──────────────────────────────────
+
+pricing:
+  headline: "¿Cuánto cuesta?"
+  subtitle: "Toma el control de tus finanzas personales con un sistema que se adapta a ti."
+  cards:
+    - label: "Control de Ingresos y Gastos"
+      price: '15€ <span>+ IVA</span>'
+      features:
+        - "Herramienta completa de Control de Ingresos y Gastos"
+        - "10 Bases de Datos interconectadas"
+        - "Instrucciones paso a paso"
+        - "Actualizaciones de por vida"
+      url: "https://elenamadrigal.gumroad.com/l/control-gastos?wanted=true"
+      featured: false
+      internal: false
+    - label: "Notion Starter Pack"
+      price: '65€ <span>+ IVA</span>'
+      features:
+        - "Incluye Control de Ingresos y Gastos"
+        - "+ Registro de Hábitos y Mejora Continua"
+        - "+ Gestión de Proyectos y Tareas"
+        - "+ Recetas y Entretenimiento"
+        - "+ Centro de Conocimiento y Aprendizaje"
+        - "Mejor valor"
+      url: "/herramientas/notion-starter-pack"
+      featured: true
+      internal: true
+
+# ── FAQ ──────────────────────────────────────
+
+faq:
+  - question: "¿Tengo que pagar por Notion?"
+    answer: "No. Notion tiene una versión gratuita que puedes usar perfectamente para cualquiera de los productos creados en Notion que veas en esta web."
+  - question: "¿Las actualizaciones están incluidas?"
+    answer: "Absolutamente. Aunque ten en cuenta que, cuando duplicas el producto en tu espacio de trabajo, todas las actualizaciones que haga yo al original dejarán de aplicarse automáticamente, pero siempre encontrarás instrucciones para aplicar esas actualizaciones. Que, por si no había quedado claro, sí están incluidas ;)"
+
+# ── Navegación ───────────────────────────────
+
+nextProduct:
+  slug: "sistema-de-mejora-continua"
+  label: "Mejora Continua →"

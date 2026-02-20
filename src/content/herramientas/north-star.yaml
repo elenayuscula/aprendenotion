@@ -1,0 +1,53 @@
+# ─────────────────────────────────────────────
+# North Star
+# ─────────────────────────────────────────────
+
+title: "North Star"
+description: "Define tu propósito, valores y visión a largo plazo con esta plantilla de Notion. Tu brújula personal para tomar mejores decisiones."
+subtitle: "Tu brújula personal para tomar mejores decisiones"
+price: "Gratis"
+priceNumeric: 0
+image: "/images/herramientas/north-star.png"
+purchaseUrl: "https://elenamadrigal.gumroad.com/l/north-star"
+
+category: "tiny-system"
+order: 4
+tag: "Gratis"
+tagColor: "green"
+
+# ── Value props ──────────────────────────────
+
+valueProps:
+  - icon: "⭐"
+    title: "Claridad de propósito"
+    description: "Define tu visión, misión y valores para guiar tus decisiones."
+  - icon: "⚡"
+    title: "Listo para usar"
+    description: "Plantilla preconfigurada con prompts de reflexión incluidos."
+  - icon: "🎁"
+    title: "100% Gratis"
+    description: "Sin coste. Sin truco. Descárgalo y empieza."
+
+# ── Pricing ──────────────────────────────────
+
+pricing:
+  headline: "Descarga tu North Star"
+  subtitle: "Empieza a definir tu propósito hoy mismo."
+  cards:
+    - label: "North Star"
+      price: "Gratis"
+      features:
+        - "Plantilla North Star completa"
+        - "Prompts de reflexión incluidos"
+        - "Actualizaciones incluidas"
+      url: "https://elenamadrigal.gumroad.com/l/north-star"
+      featured: true
+      internal: false
+
+# ── FAQ ──────────────────────────────────────
+
+faq:
+  - question: "¿Necesito pagar por Notion?"
+    answer: "No. El plan gratuito de Notion es suficiente para usar esta plantilla."
+  - question: "¿Es realmente gratis?"
+    answer: "Sí. Puedes descargarlo sin coste. Si quieres, puedes dejar una propina voluntaria."

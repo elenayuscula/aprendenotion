@@ -1,0 +1,17 @@
+# ─────────────────────────────────────────────
+# System Design Kit
+# ─────────────────────────────────────────────
+
+title: "System Design Kit"
+description: "Programa intensivo de 12 meses para diseñar tu ecosistema digital en Notion. Aprende a crear sistemas adaptativos que reflejen tu manera única de pensar y trabajar."
+subtitle: "Diseña un sistema que integre tu manera única de pensar y trabajar"
+price: "495€ + IVA"
+priceNumeric: 495
+image: "/images/herramientas/system-design-kit.png"
+purchaseUrl: "https://elenamadrigal.com/system-design-kit"
+
+category: "producto-principal"
+external: true
+order: 4
+tag: "Programa 12 meses"
+tagColor: "purple"

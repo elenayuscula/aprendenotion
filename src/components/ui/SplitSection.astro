@@ -1,0 +1,56 @@
+---
+/**
+ * SplitSection — Dos columnas: texto a un lado, media/contenido al otro
+ *
+ * Puede usarse con:
+ *   - imagen al lado del texto
+ *   - un componente (PricingCard, Checklist, FeatureGrid…) al lado del texto
+ *   - cualquier HTML arbitrario en el slot "media"
+ *
+ * Props:
+ *   label?    — Overline/etiqueta (ej: "ABOUT US", "DISEÑO PERSONALIZADO")
+ *   title     — Título principal
+ *   text?     — Párrafo de texto (string simple)
+ *   image?    — Ruta de imagen (si no usas el slot media)
+ *   imageAlt? — Alt de la imagen
+ *   reverse?  — Si true, la imagen/media va a la izquierda
+ *   cta?      — Texto del botón
+ *   href?     — URL del botón
+ *
+ * Slots:
+ *   default → contenido del lado izquierdo (si necesitas más que un texto simple)
+ *   media   → contenido del lado derecho (si necesitas algo más que una imagen)
+ */
+interface Props {
+  label?: string;
+  title: string;
+  text?: string;
+  image?: string;
+  imageAlt?: string;
+  reverse?: boolean;
+  cta?: string;
+  href?: string;
+}
+
+const { label, title, text, image, imageAlt = '', reverse = false, cta, href } = Astro.props;
+const hasMediaSlot = Astro.slots.has('media');
+---
+
+<div class={`split-section${reverse ? ' split-section--reverse' : ''}`}>
+  <div class="split-section__content">
+    {label && <div class="split-section__label">{label}</div>}
+    <h3 class="split-section__title">{title}</h3>
+    {text && <p class="split-section__text">{text}</p>}
+    <slot />
+    {cta && href && (
+      <a href={href} class="btn btn--accent" style="margin-top: var(--space-4);">{cta}</a>
+    )}
+  </div>
+  <div class="split-section__media">
+    {hasMediaSlot ? (
+      <slot name="media" />
+    ) : image ? (
+      <img src={image} alt={imageAlt} loading="lazy" />
+    ) : null}
+  </div>
+</div>

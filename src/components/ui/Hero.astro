@@ -1,0 +1,46 @@
+---
+/**
+ * Hero — Dos variantes: split (2 columnas) y centered
+ *
+ * Props:
+ *   title        — Texto del título (string)
+ *   subtitle?    — Subtítulo opcional (string)
+ *   icon?        — Ruta a imagen/icono mostrada arriba del título (string)
+ *   image?       — Ruta a ilustración lateral (solo en split) (string)
+ *   imageAlt?    — Alt de la ilustración (string)
+ *   layout?      — "split" | "centered" (default: "split")
+ */
+interface Props {
+  title: string;
+  subtitle?: string;
+  icon?: string;
+  image?: string;
+  imageAlt?: string;
+  layout?: 'split' | 'centered';
+}
+
+const { title, subtitle, icon, image, imageAlt = '', layout = 'split' } = Astro.props;
+---
+
+{layout === 'split' ? (
+  <section class="hero-split">
+    <div class="hero-split__content">
+      {icon && <img src={icon} alt="" class="hero__icon-img" width="80" height="80" />}
+      <h1 class="hero__title">{title}</h1>
+      {subtitle && <p class="hero__subtitle">{subtitle}</p>}
+      <slot />
+    </div>
+    {image && (
+      <div class="hero-split__illustration">
+        <img src={image} alt={imageAlt} width="320" height="320" />
+      </div>
+    )}
+  </section>
+) : (
+  <section class="hero">
+    {icon && <img src={icon} alt="" class="hero__icon-img" width="80" height="80" />}
+    <h1 class="hero__title">{title}</h1>
+    {subtitle && <p class="hero__subtitle">{subtitle}</p>}
+    <slot />
+  </section>
+)}

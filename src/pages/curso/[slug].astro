@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import NotionRenderer from '../../components/notion/NotionRenderer.astro';
+import { getBlocks } from '../../lib/notion';
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+
+export async function getStaticPaths() {
+  const lessons = await getCollection('lessons');
+  const sorted = lessons.sort((a, b) => a.data.order - b.data.order);
+
+  return sorted.map((lesson, index) => ({
+    params: { slug: lesson.id },
+    props: {
+      lesson,
+      prev: index > 0 ? sorted[index - 1] : null,
+      next: index < sorted.length - 1 ? sorted[index + 1] : null,
+    },
+  }));
+}
+
+const { lesson, prev, next } = Astro.props;
+
+// Fetch Notion blocks
+let blocks: BlockObjectResponse[] = [];
+if (lesson.data.notionId) {
+  blocks = await getBlocks(lesson.data.notionId);
+}
+---
+
+<BaseLayout
+  title={`${lesson.data.title} — Curso de Notion`}
+  description={lesson.data.description}
+>
+  <article class="page-wrapper">
+    <!-- Lesson header -->
+    <header class="lesson-header">
+      <a href="/curso" class="lesson-header__back">← Volver al curso</a>
+      <div class="lesson-header__meta">
+        <span class="lesson-header__module">{lesson.data.module}</span>
+        <span class="lesson-header__separator">·</span>
+        <span class="lesson-header__number">Lección {lesson.data.order}</span>
+      </div>
+      <h1 class="lesson-header__title">
+        <span class="lesson-header__emoji" aria-hidden="true">{lesson.data.emoji}</span>
+        {lesson.data.title}
+      </h1>
+      {lesson.data.description && (
+        <p class="lesson-header__description">{lesson.data.description}</p>
+      )}
+    </header>
+
+    <hr />
+
+    <!-- Lesson content -->
+    <div class="blog-post-content content">
+      {blocks.length > 0 ? (
+        <NotionRenderer blocks={blocks} />
+      ) : (
+        <p class="notion-empty-state">Esta lección está en preparación. Vuelve pronto.</p>
+      )}
+    </div>
+
+    <!-- Prev/Next navigation -->
+    <nav class="page-nav" aria-label="Navegación de lecciones">
+      {prev ? (
+        <a href={`/curso/${prev.id}`} class="page-nav__link">← {prev.data.title}</a>
+      ) : (
+        <span class="page-nav__link page-nav__link--disabled"></span>
+      )}
+      {next ? (
+        <a href={`/curso/${next.id}`} class="page-nav__link page-nav__link--next">{next.data.title} →</a>
+      ) : (
+        <span class="page-nav__link page-nav__link--disabled"></span>
+      )}
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  .lesson-header {
+    margin-bottom: var(--space-8);
+  }
+  .lesson-header__back {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary, #6B6B6B);
+    text-decoration: none;
+    margin-bottom: var(--space-6);
+  }
+  .lesson-header__back:hover {
+    color: var(--color-accent, #6C7D07);
+  }
+  .lesson-header__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary, #6B6B6B);
+    margin-bottom: var(--space-3);
+  }
+  .lesson-header__module {
+    font-weight: 600;
+    color: var(--color-accent, #6C7D07);
+  }
+  .lesson-header__title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: var(--space-3);
+  }
+  .lesson-header__emoji {
+    margin-right: 0.25em;
+  }
+  .lesson-header__description {
+    font-size: 1.15rem;
+    color: var(--color-text-secondary, #6B6B6B);
+    line-height: 1.6;
+  }
+
+  .notion-empty-state {
+    text-align: center;
+    padding: var(--space-12) 0;
+    color: var(--color-text-secondary, #6B6B6B);
+    font-style: italic;
+  }
+</style>

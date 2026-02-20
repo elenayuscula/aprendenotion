@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/ui/Hero.astro';
+import NewsletterCTA from '../components/ui/NewsletterCTA.astro';
+import CTABlock from '../components/ui/CTABlock.astro';
 import { getCollection } from 'astro:content';
 
 const latestPosts = (await getCollection('blog'))
@@ -15,6 +18,50 @@ const lessons = [
   { emoji: '🔌', title: '6. La API de Notion', href: '/api-notion' },
   { emoji: '📦', title: 'Notion Starter Pack', href: '/starter-pack' },
 ];
+
+const products = [
+  {
+    emoji: '🚀',
+    title: 'Notion Starter Pack',
+    description: 'Todos los templates del curso listos para usar. Empieza a usar Notion sin configurar nada.',
+    tag: 'Templates',
+    tagClass: 'product-card__tag--orange',
+    href: '/herramientas/notion-starter-pack',
+    featured: true,
+  },
+  {
+    emoji: '🧭',
+    title: 'Life Design Kit',
+    description: 'Diseña un sistema completo para organizar tu vida personal y profesional con Notion.',
+    tag: 'Curso',
+    href: 'https://elenamadrigal.com',
+    external: true,
+  },
+  {
+    emoji: '🖤',
+    title: 'Tu Página en Notion',
+    description: 'Aprende a crear páginas profesionales y atractivas para tu marca o proyecto.',
+    tag: 'Curso',
+    href: 'https://elenamadrigal.com',
+    external: true,
+  },
+  {
+    emoji: '⚙️',
+    title: 'Herramientas y sistemas',
+    description: 'Plantillas y sistemas avanzados para llevar tu productividad al siguiente nivel.',
+    tag: 'Recursos',
+    href: 'https://elenamadrigal.gumroad.com',
+    external: true,
+  },
+  {
+    emoji: '🌈',
+    title: 'Consultorías personalizadas',
+    description: 'Asesoramiento 1:1 para diseñar un espacio de trabajo en Notion adaptado a ti.',
+    tag: 'Servicio',
+    href: 'https://elenamadrigal.com',
+    external: true,
+  },
+];
 ---
 
 <BaseLayout
@@ -23,244 +70,182 @@ const lessons = [
 >
   <div class="page-wrapper page-wrapper--wide">
 
-    <!-- Hero — Two-column with Miroodles illustration -->
-    <section class="hero-split">
-      <div class="hero-split__content">
-        <img src="/illustrations/notion-3d-icon.svg" alt="Notion" class="hero__icon-img" width="80" height="80" />
-        <h1 class="hero__title">Notion para la vida real</h1>
-
-        <p class="section__text">
-          <a href="https://notion.so" target="_blank" rel="noopener">Notion</a> es una herramienta de productividad que ha cambiado mi vida. Y no ha cambiado mi vida por ser una herramienta de productividad, sino porque es una herramienta que, si sabes usarla, se convierte en lo que tú quieras.
-        </p>
-        <p class="section__text">
-          Puede ser una agenda semanal, una lista de tareas o un calendario. Pero también puede ser un tablero de inspiración, un comparador de precios, un CRM, o tu propia biblioteca personal.
-        </p>
-        <hr />
-        <p class="section__text">
-          La clave para usarla bien está en <strong>saber de lo que es capaz</strong>. Y ahí es donde se queda mucha gente que empieza a utilizarla. Pero te aseguro que, si pasas la primera curva de aprendizaje y te asomas a su potencial, es difícil ver dónde está el límite de sus capacidades.
-        </p>
-        <p class="section__text">
-          Yo aún lo estoy buscando y te invito a que lo busques conmigo.
-        </p>
-      </div>
-      <div class="hero-split__illustration">
-        <img src="/illustrations/hero-miroodles.svg" alt="Ilustración decorativa con formas geométricas y lupa" width="320" height="320" />
-      </div>
-    </section>
-
-    <!-- Newsletter callout (inline style matching original) -->
-    <section class="newsletter-callout" aria-label="Suscripción a newsletter">
-      <div class="newsletter-callout__header">
-        <span class="newsletter-callout__emoji" aria-hidden="true">💌</span>
-        <span class="newsletter-callout__title">¡TENEMOS UNA NEWSLETTER!</span>
-      </div>
-      <p class="newsletter-callout__text">
-        <a href="#"><em>Suscríbete</em></a> para estar al tanto de todo 👇
+    <!-- ============================================
+         1. HERO — Blanco
+         ============================================ -->
+    <Hero
+      title="Notion para la vida real"
+      icon="/illustrations/notion-3d-icon.svg"
+      image="/illustrations/hero-miroodles.svg"
+      imageAlt="Ilustración decorativa con formas geométricas y lupa"
+      layout="split"
+    >
+      <p class="section__text">
+        <a href="https://notion.so" target="_blank" rel="noopener">Notion</a> es una herramienta de productividad que ha cambiado mi vida. No por ser una herramienta de productividad, sino porque, si sabes usarla, se convierte en lo que tú quieras.
       </p>
-      <form class="newsletter-callout__form" action="#" method="post">
-        <input type="email" class="newsletter-callout__input" placeholder="Escribe tu e-mail" aria-label="Tu dirección de email" required />
-        <button type="submit" class="newsletter-callout__btn">¡Únete! →</button>
-      </form>
-    </section>
-
-    <!-- Starter Pack inline callout -->
-    <div class="starterpack-callout">
-      <span class="starterpack-callout__icon" aria-hidden="true">✨</span>
-      <p class="starterpack-callout__text">
-        Descárgate aquí el <a href="/starter-pack">Notion Starter Pack</a> para tener todos los templates usados en este curso y poder empezar a usar Notion sin tener que configurar nada.
+      <p class="section__text">
+        La clave está en <strong>saber de lo que es capaz</strong>. Y ahí es donde se queda mucha gente. Pero si pasas la primera curva de aprendizaje y te asomas a su potencial, es difícil ver dónde está el límite.
       </p>
+      <p class="section__text">
+        Yo aún lo estoy buscando y te invito a que lo busques conmigo.
+      </p>
+    </Hero>
+
+    <!-- ============================================
+         2. CURSO + LECCIONES — Franja gris
+         ============================================ -->
+    <div class="band" id="curso">
+      <section class="section" style="padding-top: 0; padding-bottom: 0;">
+        <h2 class="section__title">Aprende Notion desde 0 construyendo un proyecto real</h2>
+        <div class="course-intro">
+          <div class="course-intro__illustration">
+            <img src="/illustrations/course-miroodles.svg" alt="Ilustración de portátil con creatividad" width="140" height="140" loading="lazy" />
+          </div>
+          <p class="course-intro__text">
+            Una <a href="https://youtube.com/c/elenamadrigal" target="_blank" rel="noopener">colección de videos</a> que te llevarán desde los aspectos más básicos hasta dominar completamente la herramienta, dándote alas para poder organizar toda tu vida con ella.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" style="padding-bottom: 0;">
+        <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0;">Lecciones</h3>
+      </section>
+
+      <nav class="lessons-grid" aria-label="Lecciones del curso">
+        {lessons.map((lesson) => (
+          <a href={lesson.href} class="lesson-card">
+            <span class="lesson-card__emoji" aria-hidden="true">{lesson.emoji}</span>
+            <span class="lesson-card__title">{lesson.title}</span>
+          </a>
+        ))}
+      </nav>
+
+      <!-- Starter Pack callout dentro de la franja -->
+      <div class="starterpack-callout" style="margin-top: 1.5rem;">
+        <span class="starterpack-callout__icon" aria-hidden="true">✨</span>
+        <p class="starterpack-callout__text">
+          Descárgate aquí el <a href="/starter-pack">Notion Starter Pack</a> para tener todos los templates usados en este curso y poder empezar a usar Notion sin tener que configurar nada.
+        </p>
+      </div>
     </div>
 
-    <!-- Anchor nav row -->
-    <nav class="anchor-nav" aria-label="Saltar a sección">
-      <a href="#de-que-va">De qué va todo esto</a>
-      <a href="#por-que-gratis">¿Por qué es gratis?</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-
-    <!-- Course title + illustration -->
-    <section class="section">
-      <h2 class="section__title">Aprende a usar Notion desde 0 construyendo un proyecto real</h2>
-      <div class="course-intro">
-        <div class="course-intro__illustration">
-          <img src="/illustrations/course-miroodles.svg" alt="Ilustración de portátil con creatividad" width="140" height="140" loading="lazy" />
-        </div>
-        <p class="course-intro__text">
-          Una <a href="https://youtube.com/c/elenamadrigal" target="_blank" rel="noopener">colección de videos</a> que te llevarán desde los aspectos más básicos hasta dominar completamente la herramienta, dándote alas para poder organizar toda tu vida con ella.
-        </p>
-      </div>
-    </section>
-
-    <!-- Lessons title -->
-    <section class="section" style="padding-bottom: 0;">
-      <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0;">Lecciones</h3>
-    </section>
-
-    <!-- Lessons Grid — 2 columns -->
-    <nav class="lessons-grid" aria-label="Lecciones del curso">
-      {lessons.map((lesson) => (
-        <a href={lesson.href} class="lesson-card">
-          <span class="lesson-card__emoji" aria-hidden="true">{lesson.emoji}</span>
-          <span class="lesson-card__title">{lesson.title}</span>
-        </a>
-      ))}
-    </nav>
-
-    <hr />
-
-    <!-- De qué va todo esto -->
+    <!-- ============================================
+         3. DE QUÉ VA — Blanco
+         ============================================ -->
     <section class="section" id="de-que-va">
       <h2 class="section__title">De qué va todo esto</h2>
       <p class="section__text">
         Este proyecto nace con la idea de enseñar Notion de una manera diferente. En vez de centrarnos en las funcionalidades de la herramienta, vamos a aprender a usarla construyendo un proyecto real paso a paso.
       </p>
       <p class="section__text">
-        La idea es que, una vez acabes este curso y tengas el conocimiento, tu cabeza estará bulliendo de ideas de cómo usarla para pequeños o grandes procesos de tu día a día que necesiten una revisión. La magia empezará cuando te des cuenta de que, por cómo está pensada la herramienta, <strong>tú serás quién decida como diseñas esos sistemas</strong> para conseguir lo que quieres.
+        La idea es que, una vez acabes este curso, tu cabeza estará bulliendo de ideas de cómo usarla para pequeños o grandes procesos de tu día a día. La magia empezará cuando te des cuenta de que, por cómo está pensada la herramienta, <strong>tú serás quién decida cómo diseñas esos sistemas</strong>.
       </p>
       <p class="section__text">
-        Este proceso es el que lo cambia todo porque será cuando tengas que pensar cómo quieres trabajar, cómo quieres que sean tus procesos y, según los vayas poniendo en práctica, verás si son efectivos o no para tus objetivos. La capacidad de diseñar esos sistemas, de poder ver dónde fallamos y cómo mejorarlos y poder reconstruirlos para perfeccionarlos es lo que hace de Notion una herramienta tan especial.
+        La capacidad de diseñar esos sistemas, de poder ver dónde fallamos y cómo mejorarlos y poder reconstruirlos para perfeccionarlos es lo que hace de Notion una herramienta tan especial.
       </p>
     </section>
 
-    <hr />
+    <!-- ============================================
+         4. NEWSLETTER — Franja gris
+         ============================================ -->
+    <div class="band">
+      <NewsletterCTA
+        emoji="💌"
+        title="No te pierdas nada"
+        text="Suscríbete para recibir novedades, trucos y recursos sobre Notion directamente en tu bandeja de entrada."
+      />
+    </div>
 
-    <!-- Por qué es gratis -->
-    <section class="section" id="por-que-gratis">
-      <h2 class="section__title" style="text-align: center;">🏳️ ¿Por qué es gratis?</h2>
-      <p class="section__text" style="text-align: center; max-width: 640px; margin: 0 auto 1em;">
-        Creo de verdad que Notion tiene potencial para ayudarte a construir un sistema mejor para tu vida. Bien sea en el trabajo, con tu familia o para tus proyectos personales, si la herramienta te gusta y aprendes a usarla, tiene mucho potencial para ayudarte a diseñar mejores procesos.
-      </p>
-      <p class="section__text">
-        Mi idea a largo plazo con este proyecto es que la gente se sienta lo suficientemente empoderada como para empezar a diseñar sus propios sistemas y ayudarles en el proceso. Para eso, es necesario antes aprender a usar la herramienta y hasta dónde puede llegar. Como no quiero que el dinero sea un impedimento para esto, <strong>los videos son totalmente gratuitos y de acceso libre</strong>. Estarán colgados en Youtube para que todo el mundo pueda verlos y aprender a su ritmo.
-      </p>
-      <p class="section__text">
-        Esto es en realidad un pequeño experimento para mi. Quiero ver hasta dónde puede llegar la herramienta y compartir lo que aprenda con la gente que quiera lo mismo. Pero todos tenemos inquietudes y necesidades diferentes y eso estrecha un poco la imaginación, así que lo que pido es que, si sigues el curso y ves los videos, me comentes cualquier tipo de duda o sugerencia que puedas tener: cómo se puede mejorar, qué te gustaría ver y qué te resulta confuso.
-      </p>
-    </section>
-
-    <hr />
-
-    <!-- Roadmap -->
-    <section class="section" id="roadmap">
-      <h2 class="section__title">Roadmap</h2>
-      <p class="section__text" style="color: var(--color-text-secondary);">
-        Cosas en las que estoy trabajando y que llegarán próximamente:
-      </p>
-      <ul class="roadmap-list">
-        <li>
-          <span class="roadmap-list__icon" aria-hidden="true">💌</span>
-          <span class="roadmap-list__text"><strong>Newsletter</strong> — Novedades, trucos y recursos sobre Notion directamente en tu bandeja de entrada.</span>
-        </li>
-        <li>
-          <span class="roadmap-list__icon" aria-hidden="true">🎓</span>
-          <span class="roadmap-list__text">Un <strong>curso más avanzado</strong> para las personas que quieran llevar Notion al siguiente nivel y saber cómo pueden usarlo para construir sus propios sistemas y asegurarse de que funcionen.</span>
-        </li>
-        <li>
-          <span class="roadmap-list__icon" aria-hidden="true">💎</span>
-          <span class="roadmap-list__text">Un lugar donde <strong>compartir templates, recursos</strong> y donde dar voz a todas aquellas personas que quieran compartir cómo usan Notion en su día a día o en su trabajo.</span>
-        </li>
-      </ul>
-    </section>
-
-    <hr />
-
-    <!-- Contacto -->
-    <section class="section" id="contacto">
-      <h2 class="section__title">🍪 ¿Me ayudas a que este curso sea mejor?</h2>
-      <p class="section__text">
-        Si tienes cualquier duda, sugerencia o simplemente quieres saludar, puedes encontrarme en:
-      </p>
-    </section>
-
-    <hr />
-
-    <!-- Productos destacados — Cards -->
+    <!-- ============================================
+         5. PRODUCTOS — Blanco
+         ============================================ -->
     <section class="section" id="productos">
-      <h2 class="section__title">Lleva Notion más allá 👇</h2>
+      <h2 class="section__title">Lleva Notion más allá</h2>
       <p class="section__text" style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">
         Recursos, cursos y herramientas para sacarle el máximo partido a Notion.
       </p>
       <div class="products-grid">
-        <a href="/herramientas/notion-starter-pack" class="product-card product-card--featured">
-          <span class="product-card__emoji" aria-hidden="true">🚀</span>
-          <div class="product-card__content">
-            <h3 class="product-card__title">Notion Starter Pack</h3>
-            <p class="product-card__description">Todos los templates del curso listos para usar. Empieza a usar Notion sin configurar nada.</p>
-            <span class="product-card__tag product-card__tag--orange">Templates</span>
-          </div>
-        </a>
-        <a href="https://elenamadrigal.com" target="_blank" rel="noopener" class="product-card">
-          <span class="product-card__emoji" aria-hidden="true">🧭</span>
-          <div class="product-card__content">
-            <h3 class="product-card__title">Life Design Kit</h3>
-            <p class="product-card__description">Diseña un sistema completo para organizar tu vida personal y profesional con Notion.</p>
-            <span class="product-card__tag">Curso</span>
-          </div>
-        </a>
-        <a href="https://elenamadrigal.com" target="_blank" rel="noopener" class="product-card">
-          <span class="product-card__emoji" aria-hidden="true">🖤</span>
-          <div class="product-card__content">
-            <h3 class="product-card__title">Tu Página en Notion</h3>
-            <p class="product-card__description">Aprende a crear páginas profesionales y atractivas para tu marca o proyecto.</p>
-            <span class="product-card__tag">Curso</span>
-          </div>
-        </a>
-        <a href="https://elenamadrigal.gumroad.com" target="_blank" rel="noopener" class="product-card">
-          <span class="product-card__emoji" aria-hidden="true">⚙️</span>
-          <div class="product-card__content">
-            <h3 class="product-card__title">Herramientas y sistemas</h3>
-            <p class="product-card__description">Plantillas y sistemas avanzados para llevar tu productividad al siguiente nivel.</p>
-            <span class="product-card__tag">Recursos</span>
-          </div>
-        </a>
-        <a href="https://elenamadrigal.com" target="_blank" rel="noopener" class="product-card">
-          <span class="product-card__emoji" aria-hidden="true">🌈</span>
-          <div class="product-card__content">
-            <h3 class="product-card__title">Consultorías personalizadas</h3>
-            <p class="product-card__description">Asesoramiento 1:1 para diseñar un espacio de trabajo en Notion adaptado a ti.</p>
-            <span class="product-card__tag">Servicio</span>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <hr />
-
-    <!-- Blog preview — últimos artículos -->
-    <section class="section" id="blog">
-      <h2 class="section__title">Del blog ✍️</h2>
-      <p class="section__text" style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">
-        Artículos y tutoriales para seguir aprendiendo sobre Notion.
-      </p>
-      <div class="blog-preview-grid">
-        {latestPosts.map((post) => (
-          <a href={`/blog/${post.id}`} class="blog-preview-card">
-            <span class="blog-preview-card__emoji" aria-hidden="true">{post.data.emoji}</span>
-            <div class="blog-preview-card__content">
-              <span class="blog-preview-card__category">{post.data.category}</span>
-              <h3 class="blog-preview-card__title">{post.data.title}</h3>
+        {products.map((p) => (
+          <a
+            href={p.href}
+            class={`product-card${p.featured ? ' product-card--featured' : ''}`}
+            {...(p.external ? { target: '_blank', rel: 'noopener' } : {})}
+          >
+            <span class="product-card__emoji" aria-hidden="true">{p.emoji}</span>
+            <div class="product-card__content">
+              <h3 class="product-card__title">{p.title}</h3>
+              <p class="product-card__description">{p.description}</p>
+              <span class={`product-card__tag${p.tagClass ? ` ${p.tagClass}` : ''}`}>{p.tag}</span>
             </div>
           </a>
         ))}
       </div>
-      <div style="text-align: center; margin-top: 1.5rem;">
-        <a href="/blog" class="btn btn--outline">Ver todos los artículos →</a>
-      </div>
     </section>
 
-    <hr />
+    <!-- ============================================
+         6. BLOG — Franja gris
+         ============================================ -->
+    <div class="band" id="blog">
+      <section class="section" style="padding-top: 0; padding-bottom: 0;">
+        <h2 class="section__title">Del blog</h2>
+        <p class="section__text" style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">
+          Artículos y tutoriales para seguir aprendiendo sobre Notion.
+        </p>
+        <div class="blog-preview-grid">
+          {latestPosts.map((post) => (
+            <a href={`/blog/${post.id}`} class="blog-preview-card">
+              <div class="blog-preview-card__image">
+                {post.data.coverImage ? (
+                  <img src={post.data.coverImage} alt={post.data.title} loading="lazy" />
+                ) : (
+                  <span class="blog-preview-card__emoji" aria-hidden="true">{post.data.emoji}</span>
+                )}
+              </div>
+              <div class="blog-preview-card__body">
+                <span class="blog-preview-card__category">{post.data.category}</span>
+                <h3 class="blog-preview-card__title">{post.data.title}</h3>
+                <p class="blog-preview-card__description">{post.data.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+        <div style="text-align: center; margin-top: 1.5rem;">
+          <a href="/blog" class="btn btn--outline">Ver todos los artículos →</a>
+        </div>
+      </section>
+    </div>
 
-    <!-- Contacto -->
-    <section class="section">
-      <h2 class="section__title">Contacto</h2>
-      <ul style="list-style: none; padding: 0;">
-        <li style="margin-bottom: 0.4rem;">→ 📧 mail: <a href="mailto:elena@elenamadrigal.com"><strong>elena@elenamadrigal.com</strong></a></li>
-        <li style="margin-bottom: 0.4rem;">→ 🐦 twitter: <a href="https://twitter.com/elenayuscula" target="_blank" rel="noopener">@elenayuscula</a></li>
-        <li style="margin-bottom: 0.4rem;">→ 📇 linkedin: <a href="https://linkedin.com/in/elenamadrigal" target="_blank" rel="noopener">elenamadrigal</a></li>
-        <li style="margin-bottom: 0.4rem;">→ 🖋 página personal: <a href="https://elenamadrigal.com" target="_blank" rel="noopener">elenamadrigal.com</a></li>
-      </ul>
+    <!-- ============================================
+         7. POR QUÉ ES GRATIS — Blanco
+         ============================================ -->
+    <section class="section" id="por-que-gratis">
+      <h2 class="section__title" style="text-align: center;">¿Por qué es gratis?</h2>
+      <p class="section__text" style="text-align: center; max-width: 640px; margin: 0 auto 1em;">
+        Creo de verdad que Notion tiene potencial para ayudarte a construir un sistema mejor para tu vida. No quiero que el dinero sea un impedimento, así que <strong>los videos son totalmente gratuitos y de acceso libre</strong>.
+      </p>
+      <p class="section__text" style="max-width: 640px; margin: 0 auto 1em;">
+        Mi idea es que la gente se sienta lo suficientemente empoderada como para empezar a diseñar sus propios sistemas. Si sigues el curso, me encantaría que me compartas cualquier duda o sugerencia: cómo se puede mejorar, qué te gustaría ver y qué te resulta confuso.
+      </p>
     </section>
+
+    <!-- ============================================
+         8. CONTACTO — Franja gris
+         ============================================ -->
+    <div class="band" id="contacto">
+      <section class="section" style="padding-top: 0; padding-bottom: 0;">
+        <h2 class="section__title">Contacto</h2>
+        <p class="section__text" style="margin-bottom: 1rem;">
+          Si tienes cualquier duda, sugerencia o simplemente quieres saludar:
+        </p>
+        <ul style="list-style: none; padding: 0; font-size: 1rem;">
+          <li style="margin-bottom: 0.5rem;">📧 <a href="mailto:elena@elenamadrigal.com"><strong>elena@elenamadrigal.com</strong></a></li>
+          <li style="margin-bottom: 0.5rem;">🐦 <a href="https://twitter.com/elenayuscula" target="_blank" rel="noopener">@elenayuscula</a></li>
+          <li style="margin-bottom: 0.5rem;">📇 <a href="https://linkedin.com/in/elenamadrigal" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li style="margin-bottom: 0.5rem;">🖋 <a href="https://elenamadrigal.com" target="_blank" rel="noopener">elenamadrigal.com</a></li>
+        </ul>
+      </section>
+    </div>
+
   </div>
 
   <!-- Course structured data -->

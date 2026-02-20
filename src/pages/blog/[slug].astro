@@ -1,6 +1,9 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+import NotionRenderer from '../../components/notion/NotionRenderer.astro';
+import { getBlocks } from '../../lib/notion';
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -11,16 +14,48 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+
+// Fetch Notion blocks for this post
+let blocks: BlockObjectResponse[] = [];
+if (post.data.notionId) {
+  blocks = await getBlocks(post.data.notionId);
+}
+
+// Estimate reading time from blocks
+function estimateReadingTime(blocks: BlockObjectResponse[]): string {
+  let wordCount = 0;
+  function countWords(b: BlockObjectResponse[]) {
+    for (const block of b) {
+      const data = (block as any)[block.type];
+      if (data?.rich_text) {
+        const text = data.rich_text.map((t: any) => t.plain_text).join('');
+        wordCount += text.split(/\s+/).filter(Boolean).length;
+      }
+      if ((block as any).children) {
+        countWords((block as any).children);
+      }
+    }
+  }
+  countWords(blocks);
+  const minutes = Math.max(1, Math.ceil(wordCount / 200));
+  return `${minutes} min de lectura`;
+}
+
+const readingTime = estimateReadingTime(blocks);
 ---
 
 <BlogPostLayout
   title={post.data.title}
   description={post.data.description}
   publishDate={post.data.publishDate}
-  readingTime={post.data.readingTime}
+  readingTime={readingTime}
   category={post.data.category}
   heroEmoji={post.data.emoji}
+  coverImage={post.data.coverImage}
 >
-  <Content />
+  {blocks.length > 0 ? (
+    <NotionRenderer blocks={blocks} />
+  ) : (
+    <p class="notion-empty-state">Este artículo aún no tiene contenido. Escríbelo en Notion y aparecerá aquí automáticamente.</p>
+  )}
 </BlogPostLayout>

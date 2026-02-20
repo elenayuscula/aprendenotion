@@ -1,0 +1,63 @@
+---
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import { richTextToPlain } from '../../lib/notion';
+
+interface Props {
+  block: BlockObjectResponse;
+}
+
+const { block } = Astro.props;
+const code = (block as any).code;
+const content = richTextToPlain(code.rich_text);
+const language = code.language || 'plain text';
+const caption = code.caption?.length > 0 ? richTextToPlain(code.caption) : '';
+---
+
+<div class="notion-code">
+  <div class="notion-code__header">
+    <span class="notion-code__lang">{language}</span>
+  </div>
+  <pre class="notion-code__pre"><code>{content}</code></pre>
+  {caption && <figcaption class="notion-code__caption">{caption}</figcaption>}
+</div>
+
+<style>
+  .notion-code {
+    margin: 1em 0;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #F7F6F3;
+    border: 1px solid rgba(55, 53, 47, 0.09);
+  }
+  .notion-code__header {
+    padding: 0.5em 1em;
+    border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+  }
+  .notion-code__lang {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary, #6B6B6B);
+    text-transform: lowercase;
+  }
+  .notion-code__pre {
+    margin: 0;
+    padding: 1em;
+    overflow-x: auto;
+    font-family: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--color-text, #37352F);
+    tab-size: 2;
+  }
+  .notion-code__pre code {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    color: inherit;
+  }
+  .notion-code__caption {
+    padding: 0.5em 1em;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary, #6B6B6B);
+    border-top: 1px solid rgba(55, 53, 47, 0.09);
+  }
+</style>

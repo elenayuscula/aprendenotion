@@ -1,0 +1,32 @@
+---
+/**
+ * FeatureGrid — Grid de features con icono/emoji + título + descripción
+ *
+ * Props:
+ *   features  — Array de { icon, title, description }
+ *   columns?  — 2 | 3 (default: 2)
+ */
+interface Props {
+  features: Array<{
+    icon: string;
+    title: string;
+    description: string;
+  }>;
+  columns?: 2 | 3;
+}
+
+const { features, columns = 2 } = Astro.props;
+const gridClass = columns === 3 ? 'features-grid features-grid--3col' : 'features-grid';
+---
+
+<div class={gridClass}>
+  {features.map((f) => (
+    <div class="feature-item">
+      <span class="feature-item__emoji" aria-hidden="true">{f.icon}</span>
+      <div class="feature-item__text">
+        <h4>{f.title}</h4>
+        <p>{f.description}</p>
+      </div>
+    </div>
+  ))}
+</div>

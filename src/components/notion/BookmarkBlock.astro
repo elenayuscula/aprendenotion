@@ -1,0 +1,55 @@
+---
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import { richTextToPlain } from '../../lib/notion';
+
+interface Props {
+  block: BlockObjectResponse;
+}
+
+const { block } = Astro.props;
+const bookmark = (block as any).bookmark;
+const url = bookmark.url || '';
+const caption = bookmark.caption?.length > 0 ? richTextToPlain(bookmark.caption) : '';
+
+// Extract domain for display
+let domain = '';
+try {
+  domain = new URL(url).hostname.replace('www.', '');
+} catch { }
+---
+
+{url && (
+  <a href={url} class="notion-bookmark" target="_blank" rel="noopener noreferrer">
+    <div class="notion-bookmark__content">
+      <div class="notion-bookmark__title">{caption || url}</div>
+      <div class="notion-bookmark__url">{domain}</div>
+    </div>
+  </a>
+)}
+
+<style>
+  .notion-bookmark {
+    display: block;
+    margin: 0.75em 0;
+    padding: 1em 1.25em;
+    border: 1px solid rgba(55, 53, 47, 0.12);
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.15s;
+  }
+  .notion-bookmark:hover {
+    background: var(--color-bg-secondary, #F7F6F3);
+  }
+  .notion-bookmark__title {
+    font-weight: 500;
+    margin-bottom: 0.25em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .notion-bookmark__url {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary, #6B6B6B);
+  }
+</style>

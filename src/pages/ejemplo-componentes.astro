@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SplitSection from '../components/ui/SplitSection.astro';
+import StatsSection from '../components/ui/StatsSection.astro';
+import Testimonials from '../components/ui/Testimonials.astro';
+import FeatureGrid from '../components/ui/FeatureGrid.astro';
+import FAQ from '../components/ui/FAQ.astro';
+import PricingCard from '../components/ui/PricingCard.astro';
+import Checklist from '../components/ui/Checklist.astro';
+import CTABlock from '../components/ui/CTABlock.astro';
+import NewsletterCTA from '../components/ui/NewsletterCTA.astro';
+---
+
+<BaseLayout title="Ejemplo de Componentes — Aprende Notion" description="Página de prueba con todos los componentes UI del design system.">
+  <div class="page-wrapper page-wrapper--wide">
+
+    <section class="hero">
+      <h1 class="hero__title">Catálogo de componentes</h1>
+      <p class="hero__subtitle">Todos los componentes UI del design system en un solo lugar para revisarlos.</p>
+    </section>
+
+    <!-- ===================== SPLIT SECTION ===================== -->
+    <section class="section">
+      <h2 class="section__title">SplitSection — Texto + Imagen</h2>
+    </section>
+
+    <SplitSection
+      label="SOBRE EL PROYECTO"
+      title="Diseño personalizado + Formación"
+      text="Creamos ese entorno a medida en Notion y diseñamos los hábitos asociados que os permitan tener más y mejor visión sobre todas las partes de la empresa y más foco en lo que de verdad importa en cada momento."
+      image="/illustrations/course-miroodles.svg"
+      imageAlt="Ilustración decorativa"
+      cta="Contacta conmigo"
+      href="/contacto"
+    />
+
+    <SplitSection
+      title="Con un componente dentro en vez de imagen"
+      text="El slot 'media' acepta cualquier contenido — aquí usamos un Checklist."
+      reverse
+    >
+      <Fragment slot="media">
+        <Checklist items={[
+          "50+ plantillas listas para usar",
+          "Bases de datos interconectadas",
+          "Documentación incluida",
+          "Soporte por email",
+          "Actualizaciones de por vida",
+        ]} />
+      </Fragment>
+    </SplitSection>
+
+    <hr />
+
+    <!-- ===================== STATS SECTION ===================== -->
+    <section class="section">
+      <h2 class="section__title">StatsSection — Cifras destacadas</h2>
+    </section>
+
+    <StatsSection stats={[
+      { number: "2.500+", label: "Alumnos" },
+      { number: "7", label: "Lecciones gratuitas" },
+      { number: "50+", label: "Plantillas incluidas" },
+    ]} />
+
+    <hr />
+
+    <!-- ===================== TESTIMONIALS DEFAULT ===================== -->
+    <section class="section">
+      <h2 class="section__title" style="text-align: center;">Testimonials — Estilo centrado</h2>
+    </section>
+
+    <Testimonials testimonials={[
+      {
+        quote: "En Bisiesto habíamos empezado a trabajar en nuestra documentación y procedimientos de forma intuitiva, pero la información iba creciendo y resultando más complejo operarla. Contactamos con Elena para ordenar Notion pero lo que realmente nos llevamos fue una mejora clara de nuestra operativa interna, mucho más allá del mero uso de la herramienta.",
+        author: "Miguel Sanz",
+        role: "Bisiesto Estudio",
+        href: "#",
+      },
+      {
+        quote: "Un regalo... porque aún multiplicado por 20, 30 o más seguiría estando genial.",
+        author: "Juan Carlos Alonso Gamboa",
+      },
+      {
+        quote: "No son simplemente las plantillas, hay un montón de tips... Se nota el cuidado.",
+        author: "Jaime Mesa",
+      },
+    ]} />
+
+    <hr />
+
+    <!-- ===================== TESTIMONIALS COMPACT ===================== -->
+    <section class="section">
+      <h2 class="section__title">Testimonials — Compact (estilo Notion cards)</h2>
+    </section>
+
+    <Testimonials
+      variant="compact"
+      testimonials={[
+        {
+          quote: "Streamlined workflows to reduce timelines by 3x.",
+          author: "",
+          brand: "Toyota",
+          href: "#",
+        },
+        {
+          quote: "Every person at our company has an AI agent.",
+          author: "",
+          brand: "Ramp",
+          href: "#",
+        },
+        {
+          quote: "You can solve a lot of problems with one tool.",
+          author: "",
+          brand: "Vercel",
+        },
+      ]}
+    />
+
+    <hr />
+
+    <!-- ===================== FEATURE GRID ===================== -->
+    <section class="section">
+      <h2 class="section__title">FeatureGrid — 3 columnas</h2>
+    </section>
+
+    <FeatureGrid
+      columns={3}
+      features={[
+        { icon: "📊", title: "Bases de datos", description: "Tablas, tableros, calendarios y galerías para organizar cualquier tipo de información." },
+        { icon: "🔗", title: "Relations & Rollups", description: "Conecta bases de datos entre sí y crea resúmenes automáticos." },
+        { icon: "➗", title: "Fórmulas", description: "Automatiza cálculos y lógica con el sistema de fórmulas de Notion." },
+        { icon: "🔌", title: "API de Notion", description: "Conecta Notion con otras herramientas y automatiza tu flujo de trabajo." },
+        { icon: "🎨", title: "Diseño flexible", description: "Personaliza la apariencia de tus páginas con bloques y layouts." },
+        { icon: "🤝", title: "Colaboración", description: "Trabaja en equipo en tiempo real con permisos granulares." },
+      ]}
+    />
+
+    <hr />
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="section">
+      <h2 class="section__title">FAQ — Acordeón</h2>
+    </section>
+
+    <FAQ items={[
+      { question: "¿Necesito experiencia previa con Notion?", answer: "No, el curso empieza desde cero. Solo necesitas ganas de aprender y una cuenta gratuita de Notion." },
+      { question: "¿Cuánto dura el curso?", answer: "Puedes completarlo a tu ritmo. En total son unas 7 horas de contenido en video." },
+      { question: "¿Tiene algún coste?", answer: "No, el curso completo es gratuito y de acceso libre en YouTube." },
+    ]} />
+
+    <hr />
+
+    <!-- ===================== PRICING CARDS ===================== -->
+    <section class="section">
+      <h2 class="section__title" style="text-align: center;">PricingCard — Con hover</h2>
+    </section>
+
+    <div class="pricing-grid">
+      <PricingCard
+        label="Básico"
+        price="Gratis"
+        features={["7 lecciones en video", "Acceso a la comunidad", "Recursos descargables"]}
+        cta="Empezar gratis"
+        href="#"
+      />
+      <PricingCard
+        label="Pro"
+        price="29€"
+        period=" pago único"
+        features={["Todo lo del plan Básico", "50+ plantillas premium", "Soporte por email", "Actualizaciones de por vida"]}
+        cta="¡Lo quiero!"
+        href="#"
+        featured
+      />
+    </div>
+
+    <hr />
+
+    <!-- ===================== NEWSLETTER CTA ===================== -->
+    <NewsletterCTA />
+
+    <hr />
+
+    <!-- ===================== CTA BLOCK ===================== -->
+    <CTABlock
+      title="¿Listo para empezar?"
+      text="Aprende Notion desde cero con videos gratuitos y empieza a diseñar tus propios sistemas."
+      cta="Ver el curso"
+      href="/curso"
+    />
+
+  </div>
+</BaseLayout>

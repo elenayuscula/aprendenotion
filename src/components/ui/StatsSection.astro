@@ -1,0 +1,25 @@
+---
+/**
+ * StatsSection — Fila de cifras destacadas (3 columnas)
+ *
+ * Props:
+ *   stats — Array de { number, label }
+ */
+interface Props {
+  stats: Array<{
+    number: string;
+    label: string;
+  }>;
+}
+
+const { stats } = Astro.props;
+---
+
+<div class="stats-grid">
+  {stats.map((s) => (
+    <div class="stat-item">
+      <div class="stat-item__number">{s.number}</div>
+      <div class="stat-item__label">{s.label}</div>
+    </div>
+  ))}
+</div>

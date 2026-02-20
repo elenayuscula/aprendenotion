@@ -1,0 +1,45 @@
+---
+/**
+ * PricingCard — Tarjeta de precio individual
+ *
+ * Props:
+ *   label?     — Etiqueta superior (ej: "Básico", "Pro")
+ *   price      — Precio a mostrar (ej: "29€", "Gratis")
+ *   period?    — Periodo (ej: "/mes", "pago único")
+ *   features   — Array de strings con lo que incluye
+ *   cta        — Texto del botón
+ *   href       — URL del botón
+ *   featured?  — Si es la tarjeta destacada
+ *   variant?   — "default" | "product" (usa pricing-card vs pd-pricing-card)
+ */
+interface Props {
+  label?: string;
+  price: string;
+  period?: string;
+  features: string[];
+  cta: string;
+  href: string;
+  featured?: boolean;
+  variant?: 'default' | 'product';
+}
+
+const { label, price, period, features, cta, href, featured = false, variant = 'default' } = Astro.props;
+const prefix = variant === 'product' ? 'pd-pricing-card' : 'pricing-card';
+const cardClass = featured ? `${prefix} ${prefix}--featured` : prefix;
+---
+
+<div class={cardClass}>
+  {label && <span class={`${prefix}__label`}>{label}</span>}
+  <div class={`${prefix}__price`}>
+    {price}
+    {period && <span>{period}</span>}
+  </div>
+  <ul class={`${prefix}__features`}>
+    {features.map((f) => (
+      <li>{f}</li>
+    ))}
+  </ul>
+  <a href={href} class={`btn ${featured ? 'btn--accent' : 'btn--outline'}`}>
+    {cta}
+  </a>
+</div>

@@ -1,0 +1,75 @@
+---
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import RichText from './RichText.astro';
+import NotionRenderer from './NotionRenderer.astro';
+
+interface Props {
+  block: BlockObjectResponse;
+}
+
+const { block } = Astro.props;
+const callout = (block as any).callout;
+const children = (block as any).children as BlockObjectResponse[] | undefined;
+
+// Get icon
+let icon = '';
+if (callout.icon?.type === 'emoji') icon = callout.icon.emoji;
+
+// Map Notion callout colors to CSS
+const colorMap: Record<string, string> = {
+  default: '',
+  gray_background: 'notion-callout--gray',
+  brown_background: 'notion-callout--brown',
+  orange_background: 'notion-callout--orange',
+  yellow_background: 'notion-callout--yellow',
+  green_background: 'notion-callout--green',
+  blue_background: 'notion-callout--blue',
+  purple_background: 'notion-callout--purple',
+  pink_background: 'notion-callout--pink',
+  red_background: 'notion-callout--red',
+};
+
+const colorClass = colorMap[callout.color] || '';
+---
+
+<div class={`notion-callout ${colorClass}`}>
+  {icon && <span class="notion-callout__icon">{icon}</span>}
+  <div class="notion-callout__content">
+    <RichText text={callout.rich_text} />
+    {children && children.length > 0 && (
+      <NotionRenderer blocks={children} />
+    )}
+  </div>
+</div>
+
+<style>
+  .notion-callout {
+    display: flex;
+    gap: 0.75em;
+    padding: 1em 1.25em;
+    border-radius: 6px;
+    background: var(--color-bg-secondary, #F7F6F3);
+    margin: 0.75em 0;
+    line-height: 1.75;
+  }
+  .notion-callout__icon {
+    font-size: 1.3em;
+    flex-shrink: 0;
+    line-height: 1.5;
+  }
+  .notion-callout__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* Color variants */
+  .notion-callout--gray { background: #EBECED; }
+  .notion-callout--brown { background: #E9E5E3; }
+  .notion-callout--orange { background: #FADEC9; }
+  .notion-callout--yellow { background: #FDECC8; }
+  .notion-callout--green { background: #DBEDDB; }
+  .notion-callout--blue { background: #D3E5EF; }
+  .notion-callout--purple { background: #E8DEEE; }
+  .notion-callout--pink { background: #F5E0E9; }
+  .notion-callout--red { background: #FFE2DD; }
+</style>

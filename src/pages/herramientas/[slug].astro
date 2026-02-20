@@ -1,9 +1,11 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 import HerramientaLayout from '../../layouts/HerramientaLayout.astro';
 
 export async function getStaticPaths() {
-  const products = await getCollection('herramientas');
+  const allProducts = await getCollection('herramientas');
+  // Only generate pages for non-external products
+  const products = allProducts.filter((p) => !p.data.external);
   return products.map((product) => ({
     params: { slug: product.id },
     props: { product },
@@ -11,9 +13,6 @@ export async function getStaticPaths() {
 }
 
 const { product } = Astro.props;
-const { Content } = await render(product);
 ---
 
-<HerramientaLayout {...product.data}>
-  <Content />
-</HerramientaLayout>
+<HerramientaLayout {...product.data} />

@@ -1,0 +1,51 @@
+# ─────────────────────────────────────────────
+# Roadmap
+# ─────────────────────────────────────────────
+
+title: "Roadmap"
+description: "Planifica y visualiza tu hoja de ruta personal o profesional con esta plantilla de Notion. Organiza objetivos, hitos y plazos de forma visual."
+subtitle: "Tu hoja de ruta personal o profesional, organizada y visual"
+price: "12€ + IVA"
+priceNumeric: 12
+image: "/images/herramientas/roadmap.png"
+purchaseUrl: "https://elenamadrigal.gumroad.com/l/roadmap-notion"
+
+category: "tiny-system"
+order: 1
+tag: "Tiny System"
+tagColor: "orange"
+
+# ── Value props ──────────────────────────────
+
+valueProps:
+  - icon: "🗺️"
+    title: "Visión panorámica"
+    description: "Visualiza tu hoja de ruta completa con hitos y plazos claros."
+  - icon: "⚡"
+    title: "Listo para usar"
+    description: "Plantilla preconfigurada. Solo tienes que duplicarla y empezar."
+  - icon: "♾️"
+    title: "Acceso de por vida"
+    description: "Pago único. Sin suscripciones."
+
+# ── Pricing ──────────────────────────────────
+
+pricing:
+  headline: "Hazte con tu Roadmap"
+  subtitle: "Empieza a planificar tu hoja de ruta hoy mismo."
+  cards:
+    - label: "Roadmap"
+      price: "12€"
+      features:
+        - "Plantilla de Roadmap completa"
+        - "Listo para personalizar"
+        - "Actualizaciones incluidas"
+      url: "https://elenamadrigal.gumroad.com/l/roadmap-notion"
+      featured: true
+      internal: false
+
+# ── FAQ ──────────────────────────────────────
+
+faq:
+  - question: "¿Necesito pagar por Notion?"
+    answer: "No. El plan gratuito de Notion es suficiente para usar esta plantilla."

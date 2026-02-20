@@ -1,0 +1,53 @@
+# ─────────────────────────────────────────────
+# Personal CRM
+# ─────────────────────────────────────────────
+
+title: "Personal CRM"
+description: "Gestiona tus relaciones personales y profesionales en Notion. Contactos, interacciones, regalos y fechas importantes en un solo lugar."
+subtitle: "Gestiona tus relaciones personales y profesionales en Notion"
+price: "Gratis"
+priceNumeric: 0
+image: "/images/herramientas/personal-crm.png"
+purchaseUrl: "https://elenamadrigal.gumroad.com/l/crm-gifts"
+
+category: "tiny-system"
+order: 8
+tag: "Gratis"
+tagColor: "green"
+
+# ── Value props ──────────────────────────────
+
+valueProps:
+  - icon: "👥"
+    title: "Relaciones organizadas"
+    description: "Mantén el contacto con las personas importantes. Sin que se te olvide nadie."
+  - icon: "🎁"
+    title: "Regalos y fechas"
+    description: "Registra cumpleaños, ideas de regalos y fechas clave."
+  - icon: "🎁"
+    title: "100% Gratis"
+    description: "Sin coste. Sin truco. Descárgalo y empieza."
+
+# ── Pricing ──────────────────────────────────
+
+pricing:
+  headline: "Organiza tus relaciones"
+  subtitle: "Las mejores relaciones se cuidan con intención."
+  cards:
+    - label: "Personal CRM"
+      price: "Gratis"
+      features:
+        - "CRM personal completo"
+        - "Gestión de contactos e interacciones"
+        - "Actualizaciones incluidas"
+      url: "https://elenamadrigal.gumroad.com/l/crm-gifts"
+      featured: true
+      internal: false
+
+# ── FAQ ──────────────────────────────────────
+
+faq:
+  - question: "¿Necesito pagar por Notion?"
+    answer: "No. El plan gratuito de Notion es suficiente para usar esta plantilla."
+  - question: "¿Es realmente gratis?"
+    answer: "Sí. Puedes descargarlo sin coste. Si quieres, puedes dejar una propina voluntaria."

@@ -1,0 +1,51 @@
+# ─────────────────────────────────────────────
+# Planificación de Objetivos
+# ─────────────────────────────────────────────
+
+title: "Planificación de Objetivos"
+description: "Define, organiza y haz seguimiento de tus objetivos personales y profesionales con un sistema estructurado en Notion."
+subtitle: "Un sistema para definir, organizar y alcanzar tus objetivos"
+price: "20€ + IVA"
+priceNumeric: 20
+image: "/images/herramientas/planificacion-objetivos.png"
+purchaseUrl: "https://elenamadrigal.gumroad.com/l/planificacion-objetivos"
+
+category: "tiny-system"
+order: 2
+tag: "Tiny System"
+tagColor: "orange"
+
+# ── Value props ──────────────────────────────
+
+valueProps:
+  - icon: "🎯"
+    title: "Objetivos claros"
+    description: "Define tus metas con un framework que funciona. Estructura probada."
+  - icon: "📊"
+    title: "Seguimiento visual"
+    description: "Mide tu progreso con vistas y métricas automáticas."
+  - icon: "♾️"
+    title: "Acceso de por vida"
+    description: "Pago único. Sin suscripciones."
+
+# ── Pricing ──────────────────────────────────
+
+pricing:
+  headline: "Empieza a planificar"
+  subtitle: "Tus objetivos merecen un sistema que te ayude a alcanzarlos."
+  cards:
+    - label: "Planificación de Objetivos"
+      price: "20€"
+      features:
+        - "Sistema de objetivos completo"
+        - "Seguimiento de progreso"
+        - "Actualizaciones incluidas"
+      url: "https://elenamadrigal.gumroad.com/l/planificacion-objetivos"
+      featured: true
+      internal: false
+
+# ── FAQ ──────────────────────────────────────
+
+faq:
+  - question: "¿Necesito pagar por Notion?"
+    answer: "No. El plan gratuito de Notion es suficiente para usar esta plantilla."

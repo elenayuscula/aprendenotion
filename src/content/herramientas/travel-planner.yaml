@@ -1,0 +1,51 @@
+# ─────────────────────────────────────────────
+# Travel Planner
+# ─────────────────────────────────────────────
+
+title: "Travel Planner"
+description: "Planifica tus viajes de principio a fin en Notion. Itinerarios, presupuesto, reservas y listas de equipaje en un solo lugar."
+subtitle: "Planifica tus viajes de principio a fin en Notion"
+price: "10€ + IVA"
+priceNumeric: 10
+image: "/images/herramientas/travel-planner.png"
+purchaseUrl: "https://elenamadrigal.gumroad.com/l/notion-travel"
+
+category: "tiny-system"
+order: 3
+tag: "Tiny System"
+tagColor: "orange"
+
+# ── Value props ──────────────────────────────
+
+valueProps:
+  - icon: "✈️"
+    title: "Todo tu viaje organizado"
+    description: "Itinerario, presupuesto, reservas y packing list en un solo sitio."
+  - icon: "⚡"
+    title: "Listo para usar"
+    description: "Duplica la plantilla y empieza a planificar tu próximo viaje."
+  - icon: "♾️"
+    title: "Acceso de por vida"
+    description: "Pago único. Sin suscripciones."
+
+# ── Pricing ──────────────────────────────────
+
+pricing:
+  headline: "Planifica tu próximo viaje"
+  subtitle: "Toda la organización de tu viaje en un solo lugar."
+  cards:
+    - label: "Travel Planner"
+      price: "10€"
+      features:
+        - "Planificador de viajes completo"
+        - "Itinerarios + presupuesto + packing list"
+        - "Actualizaciones incluidas"
+      url: "https://elenamadrigal.gumroad.com/l/notion-travel"
+      featured: true
+      internal: false
+
+# ── FAQ ──────────────────────────────────────
+
+faq:
+  - question: "¿Necesito pagar por Notion?"
+    answer: "No. El plan gratuito de Notion es suficiente para usar esta plantilla."

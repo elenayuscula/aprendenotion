@@ -1,0 +1,46 @@
+---
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import { richTextToPlain, downloadImage } from '../../lib/notion';
+
+interface Props {
+  block: BlockObjectResponse;
+}
+
+const { block } = Astro.props;
+const image = (block as any).image;
+
+// Get the image URL (file or external)
+let src = '';
+if (image.type === 'file') {
+  // Notion-hosted files expire — download at build time
+  src = await downloadImage(image.file.url, block.id);
+} else if (image.type === 'external') {
+  src = image.external.url;
+}
+
+const caption = image.caption?.length > 0 ? richTextToPlain(image.caption) : '';
+---
+
+{src && (
+  <figure class="notion-image">
+    <img src={src} alt={caption || 'Imagen'} loading="lazy" />
+    {caption && <figcaption class="notion-image__caption">{caption}</figcaption>}
+  </figure>
+)}
+
+<style>
+  .notion-image {
+    margin: 1.25em 0;
+    text-align: center;
+  }
+  .notion-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+  .notion-image__caption {
+    margin-top: 0.5em;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary, #6B6B6B);
+  }
+</style>

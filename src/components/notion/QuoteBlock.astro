@@ -1,0 +1,30 @@
+---
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import RichText from './RichText.astro';
+import NotionRenderer from './NotionRenderer.astro';
+
+interface Props {
+  block: BlockObjectResponse;
+}
+
+const { block } = Astro.props;
+const quote = (block as any).quote;
+const children = (block as any).children as BlockObjectResponse[] | undefined;
+---
+
+<blockquote class="notion-quote">
+  <RichText text={quote.rich_text} />
+  {children && children.length > 0 && (
+    <NotionRenderer blocks={children} />
+  )}
+</blockquote>
+
+<style>
+  .notion-quote {
+    margin: 1em 0;
+    padding: 0.25em 0 0.25em 1em;
+    border-left: 3px solid var(--color-text, #37352F);
+    font-size: 1.05em;
+    line-height: 1.75;
+  }
+</style>

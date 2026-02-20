@@ -1,0 +1,156 @@
+# ─────────────────────────────────────────────
+# Sistema de Mejora Continua
+# ─────────────────────────────────────────────
+
+title: "Sistema de Mejora Continua"
+description: "Un sistema para implementar en tu vida la mejora constante. Combina bullet journaling con registro de hábitos para crear ciclos de mejora diarios y semanales."
+subtitle: "Un sistema para implementar en tu vida la mejora constante"
+price: "15€ + IVA"
+priceNumeric: 15
+image: "/images/herramientas/mejora-continua/portada.png"
+purchaseUrl: "https://elenamadrigal.gumroad.com/l/mejoracontinua?wanted=true"
+
+category: "herramienta"
+order: 2
+tag: "Herramienta"
+tagColor: "blue"
+
+# ── Value props ──────────────────────────────
+
+valueProps:
+  - icon: "♾️"
+    title: "Acceso de por vida"
+    description: "Sin cuotas de suscripción. Paga una vez y accede al contenido (y a sus actualizaciones) para siempre."
+  - icon: "✅"
+    title: "Listo para empezar"
+    description: "El sistema viene diseñado para que puedas empezar a utilizarlo sin cambiar nada. Tú eres quien elige cómo lo usas y cuándo lo modificas."
+  - icon: "🎬"
+    title: "Vídeos explicativos"
+    description: "Incluye vídeo tutoriales explicando y acompañándote en cada paso."
+
+# ── Body ─────────────────────────────────────
+
+body: |
+  <h2>Un sistema para implementar ciclos de mejora diarios</h2>
+  <p>Esta pequeña herramienta está sacada de mi propio sistema operativo en Notion, y está pensada como una combinación entre <strong>Bullet Journaling</strong> y <strong>Registro de Hábitos</strong>. Dos prácticas que, juntas, pueden ayudarnos a mejorar nuestra gestión emocional y psicológica respecto a cómo trabajamos, qué sentimos y qué hacemos para ser mejores cada día.</p>
+  <p>Después de haber aplicado este mismo sistema en mi día a día durante meses, he notado un cambio sustancial, tanto en cómo afronto mis días como en cómo me siento a lo largo de los mismos. Me ha permitido ir descubriendo cosas sobre mí misma:</p>
+  <ul>
+    <li>En qué momentos del día estoy más concentrada</li>
+    <li>Qué tareas me llenan y cuáles me quitan la energía</li>
+    <li>Qué hábitos desencadenan bucles positivos y cuáles no</li>
+  </ul>
+  <p>Y puedo usar esos datos para diseñar la forma de trabajar (y vivir) que más se ajuste a mí.</p>
+
+  <h2>¿Cómo funciona?</h2>
+  <p>El sistema está construido para que, a lo largo del día, puedas ir introduciendo diferentes datos relacionados con tu ejecución diaria, tus estados de ánimo o tus hábitos y rutinas.</p>
+  <p>La finalidad última es que, según vayas recogiendo estas métricas de manera diaria, consigas dos objetivos:</p>
+  <p><strong>1. Ser cada vez más consciente de cómo te sientes y por qué.</strong> Haciendo el ejercicio intencionado de preguntarte cada día estas cosas te harás más sensible a estas sensaciones y sabrás relacionarlas con sus posibles causas: en qué momentos del día tienes más concentración, qué tipo de trabajo te hace fluir más, qué tareas consumen más tu energía, qué acontecimientos hacen que pierdas el foco...</p>
+  <p>Tendrás, al final de la semana, una visión mucho más clara de qué has hecho, qué está funcionando y qué no y podrás actuar sobre ello.</p>
+  <p><strong>2. Con el tiempo, irás encontrando patrones</strong> y empezarás a ver dónde están los bucles de retroalimentación que te hacen caer en aquello que no quieres caer o, al contrario, ver qué tipo de acciones desencadenan buenos resultados y podrás seguir trabajando en ellas para mejorarlas.</p>
+
+  <h2>¿De qué se compone el sistema?</h2>
+  <p>El sistema está basado en dos cimientos:</p>
+  <ul>
+    <li>El <strong>Daily Log</strong>, o registro diario (rellenando esta cada día es lo que nos ayuda al primer objetivo de mayor consciencia sobre nosotros mismos)</li>
+    <li>La <strong>Revisión Semanal</strong> (lo que nos da la visión general de cómo lo que hacemos en el día a día nos ayuda o no a trabajar mejor y alcanzar nuestros objetivos)</li>
+  </ul>
+
+  <h3>Registro Diario</h3>
+  <p>Dividido en 3 partes, por cada momento del día, para que puedas ir apuntando cómo te sientes en diferentes momentos.</p>
+  <p><img src="/images/herramientas/mejora-continua/inicio-dia.png" alt="Inicio del día" /></p>
+  <p><strong>Inicio del Día</strong> — Apunta cómo has dormido, cuántas horas, repasa tus tareas y objetivo del día y recuerda aquello que hiciste mal el día anterior para intentar no caer en ello.</p>
+  <p><img src="/images/herramientas/mejora-continua/mitad-dia.png" alt="A lo largo del día" /></p>
+  <p><strong>A lo largo del día</strong> — Tómate un descanso mental para ir registrando los hábitos que vas cumpliendo, así como ir haciendo un pequeño repaso del día; si ha habido algo destacable, estás encontrando algún reto o has hecho algo de lo que sentirte orgullosa.</p>
+  <p><img src="/images/herramientas/mejora-continua/final-dia.png" alt="Final del día" /></p>
+  <p><strong>Final del día</strong> — Repasa qué has hecho, cuánto de lo que te propusiste has conseguido y reflexiona sobre por qué no. Evalúa tus estados de ánimo a lo largo del día, tus niveles de energía o tus momentos 'brillantes'. Termina haciendo un repaso de qué está funcionando y qué no y cómo puedes actuar para aprovechar lo primero y descartar lo segundo.</p>
+
+  <h3>Revisión Semanal</h3>
+  <p>Registrar todos esos datos día a día es solo la primera parte del sistema; la que nos ayudará a ser más conscientes de los diferentes estados de ánimo por los que pasamos a lo largo del día, la energía que tenemos al realizar determinadas tareas, etc, pero todo se completa cuando llegas a la Revisión Semanal, que dividimos en 3 partes:</p>
+  <p><img src="/images/herramientas/mejora-continua/highlights-retos.png" alt="Highlights y retos de la semana" /></p>
+  <p><strong>Highlights de la semana</strong> — Aquí harás un repaso de los logros que hayas ido apuntando día a día y podrás guardarlos en su propia base de datos para rememorarlos siempre que quieras, junto a lo que has aprendido de ellos para poder repetirlo en el futuro.</p>
+  <p><strong>Retos de la semana</strong> — Es importante no solo apuntar lo bueno, sino también los momentos en los que encontramos dificultades, con la intención de reflexionar sobre cómo nos enfrentamos a ellas y mejorar en el futuro.</p>
+  <p><img src="/images/herramientas/mejora-continua/reflexiona-semana.png" alt="Reflexiona sobre la semana" /></p>
+  <p><strong>Reflexiona sobre la semana</strong> — Aquí es donde podrás hacer un repaso de todo lo que, a lo largo de la semana, has ido apuntando sobre lo que estaba saliendo bien y mal. La finalidad de esta parte es que reflexiones sobre aquello que detectas que te está acercando a tus objetivos y pienses en maneras de seguir haciéndolo y mejorándolo cada día. A la vez, si tienes una vista general de todas aquellas cosas que has ido apuntando que no querías que se repitieran, irás viendo qué hábitos o malas costumbres te están impidiendo avanzar y también pensarás en maneras de evitarlas.</p>
+
+# ── Módulos ──────────────────────────────────
+
+modules:
+  - emoji: "📋"
+    title: "Base de datos de Días"
+    desc: "Con todas las propiedades necesarias para recoger toda esta información y preparado para poder añadir tantas como quieras o modificarlo a tu gusto."
+  - emoji: "📊"
+    title: "Base de datos de Semanas"
+    desc: "Programada para hacer resurgir esos datos en distintos prompts que te ayudarán a tener una visión más amplia de los días pasados, invitándote a reflexionar sobre ellos."
+  - emoji: "🔢"
+    title: "Fórmulas"
+    desc: "Para cambiar el componente de Hábitos, que va cambiando de emoji según cuántos vayas cumpliendo."
+  - emoji: "🔄"
+    title: "Actualizaciones"
+    desc: "De por vida. El sistema se actualiza y mejora con el tiempo."
+  - emoji: "💬"
+    title: "Formulario de feedback"
+    desc: "Para ayudarme a que este sea un sistema también en mejora continua ;)"
+
+# ── Features ─────────────────────────────────
+
+features:
+  - '<strong>Daily Log</strong> dividido en 3 momentos del día (Inicio, Mediodía, Final)'
+  - '<strong>Revisión semanal</strong> con 3 secciones (Highlights, Retos, Reflexión)'
+  - 'Base de datos de <strong>Días</strong> con propiedades personalizables'
+  - 'Base de datos de <strong>Semanas</strong> con prompts de reflexión'
+  - '<strong>Fórmulas</strong> para seguimiento de hábitos con emojis'
+  - '<strong>Vídeo tutoriales</strong> explicando cada parte del sistema'
+  - '<strong>Actualizaciones de por vida</strong> incluidas'
+
+# ── Testimonios ──────────────────────────────
+
+testimonials:
+  - quote: "Lo he implementado y adecuado a mí, y os prometo que me está permitiendo tener mucha más paz y mucha más perspectiva sobre mi carrera, mis hobbies y mi vida personal."
+    author: "Noemí Carro"
+
+# ── Pricing ──────────────────────────────────
+
+pricing:
+  headline: "¿Cuánto cuesta?"
+  subtitle: "Empieza hoy mismo a implementar la mejora continua."
+  cards:
+    - label: "Sistema de Mejora Continua"
+      price: '15€ <span>+ IVA</span>'
+      features:
+        - "Sistema completo de mejora continua"
+        - "Daily Log + Revisión Semanal"
+        - "Vídeo tutoriales incluidos"
+        - "Actualizaciones de por vida"
+      url: "https://elenamadrigal.gumroad.com/l/mejoracontinua?wanted=true"
+      featured: false
+      internal: false
+    - label: "Notion Starter Pack"
+      price: '65€ <span>+ IVA</span>'
+      features:
+        - "Incluye esta herramienta"
+        - "+ Gestión de Tareas y Proyectos"
+        - "+ Control de Gastos e Ingresos"
+        - "+ Recetas, Entretenimiento y más"
+        - "Mejor valor"
+      url: "/herramientas/notion-starter-pack"
+      featured: true
+      internal: true
+
+# ── FAQ ──────────────────────────────────────
+
+faq:
+  - question: "¿Tengo que pagar por Notion?"
+    answer: "No. Notion tiene una versión gratuita que puedes usar perfectamente para cualquiera de los productos creados en Notion que veas en esta web."
+  - question: "¿Las actualizaciones están incluidas?"
+    answer: "Absolutamente. Aunque ten en cuenta que, cuando duplicas el producto en tu espacio de trabajo, todas las actualizaciones que haga yo al original dejarán de aplicarse automáticamente, pero siempre encontrarás instrucciones para aplicar esas actualizaciones. Que, por si no había quedado claro, sí están incluidas ;)"
+  - question: "He visto otras plantillas gratuitas o más baratas, ¿cuál es la diferencia?"
+    answer: "No es una plantilla al uso. Es un sistema/herramienta que he diseñado desde los cimientos para mí, es decir que está totalmente probada y comprobada que funciona. La he diseñado teniendo en cuenta distintos casos de uso, añadiendo instrucciones y razonamiento detrás para que entiendas cómo usarla según tus propias necesidades. Es un sistema que ahorra horas de trabajo posterior, por no mencionar el dinero de usar otras herramientas que podrían ser de pago."
+
+# ── Navegación ───────────────────────────────
+
+prevProduct:
+  slug: "control-gastos-notion"
+  label: "← Control de Gastos"
+nextProduct:
+  slug: "notion-starter-pack"
+  label: "Notion Starter Pack →"

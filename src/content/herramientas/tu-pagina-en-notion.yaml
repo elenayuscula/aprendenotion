@@ -1,0 +1,138 @@
+# ─────────────────────────────────────────────
+# Tu Página en Notion
+# ─────────────────────────────────────────────
+
+title: "Tu Página en Notion"
+description: "Diseña una web sin salir de Notion y lanza tu proyecto al mundo sin necesidad de saber programar. Curso completo con 4 módulos, templates y material extra."
+subtitle: "Diseña una web sin salir de Notion y lanza tu proyecto al mundo"
+price: "120€ + IVA"
+priceNumeric: 120
+image: "/images/herramientas/tu-pagina-en-notion.png"
+purchaseUrl: "https://elenamadrigal.gumroad.com/l/pagina-en-notion?variant=Esencial"
+
+category: "companion"
+order: 2
+
+# ── Value props ──────────────────────────────
+
+valueProps:
+  - icon: "♾️"
+    title: "Acceso de por vida"
+    description: "Sin cuotas de suscripción. Paga una vez y accede al contenido (y a sus actualizaciones) para siempre."
+  - icon: "📓"
+    title: "Cuadernos de trabajo"
+    description: "Ejercicios que complementan las lecciones para que apliques la teoría a tus propias bases de datos."
+  - icon: "🎬"
+    title: "Vídeos explicativos"
+    description: "Vídeo tutoriales que te guían y acompañan en cada paso del proceso."
+
+# ── Body ─────────────────────────────────────
+
+body: |
+  <h2>Publica tu web donde la escribes</h2>
+  <p>Notion es, a día de hoy, el mejor ejemplo de herramienta <strong>capaz de fusionar diferentes procesos mentales y de trabajo en una misma plataforma</strong>. Al ser un lienzo en blanco, puedes diseñar dentro todo aquello que necesites. Incluso páginas webs.</p>
+  <p>Este curso combina la capacidad de Notion como interfaz que une cerebro y pantalla con el poder de internet para llegar a audiencias de todo el mundo. Pero no de cualquier manera: <strong>diseñando con estrategia</strong>, no por impulso.</p>
+  <p><img src="/images/herramientas/tu-pagina-en-notion/tpen-02.png" alt="Vista previa del curso Tu Página en Notion" /></p>
+
+  <h2>Lo importante es crear</h2>
+  <p>Si tú tienes la idea e internet te da el medio, este curso pretende ser <strong>el puente que convierta esa idea en un proyecto real</strong>.</p>
+  <p>Ahora, cualquier persona con un ordenador y una idea puede ponerla en internet, validarla y mejorarla sin ningún coste añadido.</p>
+
+  <h2>¿Qué vas a aprender?</h2>
+  <p><img src="/images/herramientas/tu-pagina-en-notion/planifica.gif" alt="Módulo 1: Planifica" /></p>
+  <p><strong>Módulo 1. Planifica</strong> — Antes de diseñar, responde a las preguntas fundamentales: qué quieres conseguir con tu web, a quién te diriges, qué contenido necesitas y qué recorrido harán tus visitantes hasta la acción deseada.</p>
+  <p><img src="/images/herramientas/tu-pagina-en-notion/disena.gif" alt="Módulo 2: Diseña" /></p>
+  <p><strong>Módulo 2. Diseña</strong> — Con la estrategia clara, aprende a implementar el diseño en Notion usando bloques para crear elementos que transmitan tu mensaje. Construye una librería de componentes reutilizables y crea tres sitios de complejidad creciente: un portfolio visual, una web personal con blog integrado y una página de producto con opción de compra.</p>
+  <p><img src="/images/herramientas/tu-pagina-en-notion/implementa.gif" alt="Módulo 3: Implementa" /></p>
+  <p><strong>Módulo 3. Implementa</strong> — Aprende a usar Super.so para conectar tu dominio personalizado y publicar tu web. Personaliza el diseño y añade el toque profesional que necesitas.</p>
+  <p><img src="/images/herramientas/tu-pagina-en-notion/supervitamina.gif" alt="Módulo 4: Supervitamina" /></p>
+  <p><strong>Módulo 4. Supervitamina</strong> — Opciones avanzadas de personalización: creación de temas propios, personalización CSS para mayor control, e integración de herramientas externas (analíticas, formularios de contacto, chatbots, opciones de compra).</p>
+
+  <h2>¿Para quién es este curso?</h2>
+  <ul>
+    <li>Diseñadores, escritores, educadores y creadores de contenido que quieren una plataforma original donde mostrar su trabajo</li>
+    <li>Emprendedores que quieren validar una idea de negocio o demostrar su propuesta de valor</li>
+    <li>Empresas que quieren anunciar sus servicios y abrir vías de contacto con clientes</li>
+    <li>Cualquiera que quiera hacer visible al mundo sus ideas, su segundo cerebro o su contenido en Notion</li>
+  </ul>
+
+# ── Módulos ──────────────────────────────────
+
+modules:
+  - emoji: "📐"
+    title: "Planifica"
+    desc: "Define qué quieres conseguir, a quién te diriges y qué recorrido harán tus visitantes."
+  - emoji: "🎨"
+    title: "Diseña"
+    desc: "Implementa el diseño en Notion con bloques, componentes reutilizables y 3 sitios de ejemplo."
+  - emoji: "🚀"
+    title: "Implementa"
+    desc: "Conecta tu dominio con Super.so, personaliza y publica tu web al mundo."
+  - emoji: "⚡"
+    title: "Supervitamina"
+    desc: "CSS personalizado, temas propios, analíticas, formularios y herramientas externas."
+  - emoji: "🎁"
+    title: "Contenido Extra"
+    desc: "Templates de partida para 3 tipos de web, librería de componentes, repositorio de inspiración y más."
+
+# ── Features ─────────────────────────────────
+
+features:
+  - 'Diseña siguiendo un <strong>sistema reutilizable</strong> para cualquier proyecto web futuro'
+  - 'Trucos de Notion para usarla como herramienta de <strong>expresión</strong>, no solo productividad'
+  - 'Cómo <strong>sortear las limitaciones</strong> de la plataforma para crear páginas 100% funcionales'
+  - 'Patrones de <strong>diseño y estrategia</strong> usados por otras webs exitosas'
+  - 'Proceso de diseño específico para webs en Notion basado en <strong>user-centered design</strong>'
+  - '<strong>Personalización desde Super.so</strong> para diferenciarse de otros sitios hechos con Notion'
+  - '<strong>Membership Site Edition:</strong> convierte tu página en un negocio de membresía con Outseta'
+
+# ── Testimonios ──────────────────────────────
+
+testimonials:
+  - quote: "Si compré este curso no solo fue por la parte técnica (que quizás es donde menos me hacía falta) sino por toda la magia y valor que añades en forma de metodologías, diseño, herramientas, planificación, UX..."
+    author: "David Valero"
+
+# ── Pricing ──────────────────────────────────
+
+pricing:
+  headline: "¿Cuánto cuesta?"
+  subtitle: "Elige la edición que mejor se adapte a tu proyecto."
+  cards:
+    - label: "Esencial"
+      price: '120€ <span>+ IVA</span>'
+      features:
+        - "Curso completo (4 módulos)"
+        - "Vídeos paso a paso"
+        - "Material extra y templates"
+        - "Acceso de por vida"
+      url: "https://elenamadrigal.gumroad.com/l/pagina-en-notion?variant=Esencial"
+      featured: false
+      internal: false
+    - label: "Membership Site Edition"
+      price: '150€ <span>+ IVA</span>'
+      features:
+        - "Todo lo de Esencial"
+        - "+ Librería de Componentes Reutilizables"
+        - "+ Curso de Membership de NocodeHackers"
+        - "Convierte tu web en negocio de membresía"
+      url: "https://elenamadrigal.gumroad.com/l/pagina-en-notion?variant=Membership%20Site%20Edition"
+      featured: true
+      internal: false
+
+# ── FAQ ──────────────────────────────────────
+
+faq:
+  - question: "¿Tengo que pagar por Notion?"
+    answer: "No. Notion tiene una versión gratuita que puedes usar perfectamente para crear tu página web."
+  - question: "¿Dónde se guardan las copias de seguridad?"
+    answer: "El sistema Notion + Super.so sube el contenido de tu página a internet y se actualiza automáticamente. El backup es la misma página en tu documento Notion. Todo está integrado en una misma herramienta."
+  - question: "¿Qué diferencia hay entre Notion + Super.so y Webflow o WordPress?"
+    answer: "Webflow requiere mayor aprendizaje (conocimientos de HTML/CSS) y es más complejo para ideas sencillas. WordPress necesita instalación, configuración y conocimiento de bases de datos. Notion + Super.so es más rápido para validar ideas sin parálisis por análisis."
+  - question: "¿Por qué usar Super.so si existen servicios gratuitos?"
+    answer: "Super.so es el servicio que asegura webs seguras, convirtiendo páginas a estáticas. Permite más opciones de configuración, una plataforma más sólida y un futuro más prometedor."
+
+# ── Navegación ───────────────────────────────
+
+prevProduct:
+  slug: "notion-starter-pack"
+  label: "← Starter Pack"

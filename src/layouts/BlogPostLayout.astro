@@ -8,9 +8,10 @@ interface Props {
   readingTime: string;
   category: string;
   heroEmoji: string;
+  coverImage?: string;
 }
 
-const { title, description, publishDate, readingTime, category, heroEmoji } = Astro.props;
+const { title, description, publishDate, readingTime, category, heroEmoji, coverImage } = Astro.props;
 const siteUrl = 'https://aprendenotion.com';
 const pageUrl = new URL(Astro.url.pathname, siteUrl).href;
 ---
@@ -26,9 +27,14 @@ const pageUrl = new URL(Astro.url.pathname, siteUrl).href;
         <span class="blog-post-header__separator">·</span>
         <span>{readingTime}</span>
       </div>
-      <div class="blog-post-header__emoji" aria-hidden="true">{heroEmoji}</div>
+      {!coverImage && <div class="blog-post-header__emoji" aria-hidden="true">{heroEmoji}</div>}
       <h1 class="blog-post-header__title" itemprop="headline">{title}</h1>
       <p class="blog-post-header__description" itemprop="description">{description}</p>
+      {coverImage && (
+        <div class="blog-post-header__cover">
+          <img src={coverImage} alt={`Portada de ${title}`} loading="eager" itemprop="image" />
+        </div>
+      )}
     </header>
 
     <hr />

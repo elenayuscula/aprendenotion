@@ -1,0 +1,49 @@
+---
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import RichText from './RichText.astro';
+import NotionRenderer from './NotionRenderer.astro';
+
+interface Props {
+  items: BlockObjectResponse[];
+  ordered?: boolean;
+}
+
+const { items, ordered = false } = Astro.props;
+const Tag = ordered ? 'ol' : 'ul';
+---
+
+<Tag class={`notion-list ${ordered ? 'notion-list--ordered' : 'notion-list--bulleted'}`}>
+  {items.map((item) => {
+    const data = (item as any)[item.type];
+    const children = (item as any).children as BlockObjectResponse[] | undefined;
+    return (
+      <li class="notion-list-item">
+        <RichText text={data.rich_text} />
+        {children && children.length > 0 && (
+          <NotionRenderer blocks={children} />
+        )}
+      </li>
+    );
+  })}
+</Tag>
+
+<style>
+  .notion-list {
+    margin: 0.5em 0;
+    padding-left: 1.75em;
+  }
+  .notion-list--bulleted {
+    list-style-type: disc;
+  }
+  .notion-list--ordered {
+    list-style-type: decimal;
+  }
+  .notion-list-item {
+    margin: 0.15em 0;
+    line-height: 1.75;
+  }
+  .notion-list-item :global(ul),
+  .notion-list-item :global(ol) {
+    margin: 0.1em 0;
+  }
+</style>

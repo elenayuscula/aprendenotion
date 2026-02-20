@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allLessons = (await getCollection('lessons'))
+  .sort((a, b) => a.data.order - b.data.order);
+
+// Group by module
+const modules: Record<string, typeof allLessons> = {};
+for (const lesson of allLessons) {
+  const mod = lesson.data.module;
+  if (!modules[mod]) modules[mod] = [];
+  modules[mod].push(lesson);
+}
+
+const moduleOrder = ['Fundamentos', 'Intermedio', 'Avanzado'];
+const sortedModules = moduleOrder
+  .filter((m) => modules[m])
+  .map((m) => ({ name: m, lessons: modules[m] }));
+---
+
+<BaseLayout
+  title="Curso de Notion — Aprende Notion"
+  description="Aprende Notion desde cero con lecciones prácticas organizadas por módulos. Todo gratis."
+>
+  <div class="page-wrapper page-wrapper--wide">
+    <!-- Curso hero -->
+    <section class="blog-hero">
+      <h1 class="blog-hero__title">Curso de Notion</h1>
+      <p class="blog-hero__subtitle">
+        Lecciones prácticas para dominar Notion, organizadas de principiante a avanzado. 100% gratis.
+      </p>
+    </section>
+
+    <!-- Modules -->
+    {sortedModules.map((mod, modIndex) => (
+      <section class={`curso-module ${modIndex % 2 === 0 ? '' : 'band'}`}>
+        <div class="curso-module__header">
+          <span class="curso-module__number">Módulo {modIndex + 1}</span>
+          <h2 class="curso-module__title">{mod.name}</h2>
+        </div>
+
+        <div class="curso-module__grid">
+          {mod.lessons.map((lesson, i) => (
+            <a href={`/curso/${lesson.id}`} class="lesson-card">
+              <span class="lesson-card__number">{lesson.data.order || i + 1}</span>
+              <div class="lesson-card__content">
+                <span class="lesson-card__emoji" aria-hidden="true">{lesson.data.emoji}</span>
+                <h3 class="lesson-card__title">{lesson.data.title}</h3>
+                {lesson.data.description && (
+                  <p class="lesson-card__description">{lesson.data.description}</p>
+                )}
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    {allLessons.length === 0 && (
+      <section class="curso-empty">
+        <p>Las lecciones se están preparando. Vuelve pronto o suscríbete a la newsletter para que te avise cuando estén listas.</p>
+      </section>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .curso-module {
+    padding: var(--space-12) 0;
+  }
+  .curso-module__header {
+    margin-bottom: var(--space-8);
+  }
+  .curso-module__number {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent, #6C7D07);
+    margin-bottom: var(--space-2);
+  }
+  .curso-module__title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .curso-module__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-4);
+  }
+  .curso-empty {
+    text-align: center;
+    padding: var(--space-16) 0;
+    color: var(--color-text-secondary, #6B6B6B);
+  }
+</style>

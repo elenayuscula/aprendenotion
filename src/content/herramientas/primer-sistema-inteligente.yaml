@@ -1,0 +1,17 @@
+# ─────────────────────────────────────────────
+# Tu primer sistema inteligente en Notion
+# ─────────────────────────────────────────────
+
+title: "Tu Primer Sistema Inteligente en Notion"
+description: "Un agente IA dentro de Notion que te guía para descubrir cómo trabajas y construir un sistema personalizado en 90 minutos. Sin plantillas genéricas: tu sistema, basado en cómo funciona tu cabeza."
+subtitle: "Un sistema en Notion que por fin funciona como tu cabeza"
+price: "99€ + IVA"
+priceNumeric: 99
+image: "/images/herramientas/primer-sistema-inteligente.png"
+purchaseUrl: "https://elenamadrigal.com/sistema-inteligente-en-notion"
+
+category: "producto-principal"
+external: true
+order: 3
+tag: "Agente IA + Sistema"
+tagColor: "purple"

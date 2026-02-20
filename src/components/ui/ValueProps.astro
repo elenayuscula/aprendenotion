@@ -1,0 +1,29 @@
+---
+/**
+ * ValueProps — Grid 3 columnas de propuestas de valor (páginas de producto)
+ *
+ * Props:
+ *   items — Array de { icon, title, description }
+ */
+interface Props {
+  items: Array<{
+    icon: string;
+    title: string;
+    description: string;
+  }>;
+}
+
+const { items } = Astro.props;
+---
+
+<div class="pd-value-props">
+  {items.map((item) => (
+    <div class="pd-value-prop">
+      <span class="pd-value-prop__icon" aria-hidden="true">{item.icon}</span>
+      <div>
+        <strong>{item.title}</strong>
+        <p>{item.description}</p>
+      </div>
+    </div>
+  ))}
+</div>

@@ -1,0 +1,53 @@
+# ─────────────────────────────────────────────
+# Documento de Logros
+# ─────────────────────────────────────────────
+
+title: "Documento de Logros"
+description: "Registra y celebra tus logros profesionales y personales. Perfecto para preparar evaluaciones de desempeño, CVs y entrevistas."
+subtitle: "Registra tus logros para no olvidar nunca lo lejos que has llegado"
+price: "Gratis"
+priceNumeric: 0
+image: "/images/herramientas/documento-logros.png"
+purchaseUrl: "https://elenamadrigal.gumroad.com/l/documento-logros"
+
+category: "tiny-system"
+order: 9
+tag: "Gratis"
+tagColor: "green"
+
+# ── Value props ──────────────────────────────
+
+valueProps:
+  - icon: "🏆"
+    title: "Celebra tu progreso"
+    description: "Un registro vivo de todo lo que has conseguido. Profesional y personal."
+  - icon: "📄"
+    title: "Siempre preparado"
+    description: "Ten tus logros listos para evaluaciones, CVs y entrevistas."
+  - icon: "🎁"
+    title: "100% Gratis"
+    description: "Sin coste. Sin truco. Descárgalo y empieza."
+
+# ── Pricing ──────────────────────────────────
+
+pricing:
+  headline: "Empieza a registrar tus logros"
+  subtitle: "No dejes que tus éxitos se pierdan en el olvido."
+  cards:
+    - label: "Documento de Logros"
+      price: "Gratis"
+      features:
+        - "Registro de logros completo"
+        - "Categorización por áreas"
+        - "Actualizaciones incluidas"
+      url: "https://elenamadrigal.gumroad.com/l/documento-logros"
+      featured: true
+      internal: false
+
+# ── FAQ ──────────────────────────────────────
+
+faq:
+  - question: "¿Necesito pagar por Notion?"
+    answer: "No. El plan gratuito de Notion es suficiente para usar esta plantilla."
+  - question: "¿Es realmente gratis?"
+    answer: "Sí. Puedes descargarlo sin coste. Si quieres, puedes dejar una propina voluntaria."

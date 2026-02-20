@@ -1,0 +1,82 @@
+---
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import RichText from './RichText.astro';
+import NotionRenderer from './NotionRenderer.astro';
+import { richTextToPlain } from '../../lib/notion';
+
+interface Props {
+  block: BlockObjectResponse;
+  level: 1 | 2 | 3;
+}
+
+const { block, level } = Astro.props;
+const heading = (block as any)[`heading_${level}`];
+const isToggle = heading.is_toggleable;
+const children = (block as any).children as BlockObjectResponse[] | undefined;
+
+// Generate anchor ID from text
+const text = richTextToPlain(heading.rich_text);
+const id = text
+  .toLowerCase()
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/[^a-z0-9]+/g, '-')
+  .replace(/(^-|-$)/g, '');
+---
+
+{isToggle && children ? (
+  <details class={`notion-toggle-heading notion-h${level}`}>
+    <summary>
+      {level === 1 && <h2 id={id}><RichText text={heading.rich_text} /></h2>}
+      {level === 2 && <h3 id={id}><RichText text={heading.rich_text} /></h3>}
+      {level === 3 && <h4 id={id}><RichText text={heading.rich_text} /></h4>}
+    </summary>
+    <div class="notion-toggle-content">
+      <NotionRenderer blocks={children} />
+    </div>
+  </details>
+) : (
+  <>
+    {level === 1 && <h2 id={id} class="notion-h1"><RichText text={heading.rich_text} /></h2>}
+    {level === 2 && <h3 id={id} class="notion-h2"><RichText text={heading.rich_text} /></h3>}
+    {level === 3 && <h4 id={id} class="notion-h3"><RichText text={heading.rich_text} /></h4>}
+  </>
+)}
+
+<style>
+  .notion-h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin: 2em 0 0.5em;
+    letter-spacing: -0.02em;
+  }
+  .notion-h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 1.75em 0 0.4em;
+    letter-spacing: -0.01em;
+  }
+  .notion-h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1.5em 0 0.3em;
+  }
+  .notion-toggle-heading summary {
+    cursor: pointer;
+    list-style: none;
+  }
+  .notion-toggle-heading summary::-webkit-details-marker { display: none; }
+  .notion-toggle-heading summary::before {
+    content: '▶';
+    display: inline-block;
+    margin-right: 0.5em;
+    font-size: 0.7em;
+    transition: transform 0.2s;
+  }
+  .notion-toggle-heading[open] summary::before {
+    transform: rotate(90deg);
+  }
+  .notion-toggle-content {
+    padding-left: 1.5em;
+  }
+</style>

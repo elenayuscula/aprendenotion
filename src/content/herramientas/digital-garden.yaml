@@ -1,0 +1,53 @@
+# ─────────────────────────────────────────────
+# Digital Garden
+# ─────────────────────────────────────────────
+
+title: "Digital Garden"
+description: "Cultiva tu jardín digital en Notion. Un espacio para plantar ideas, conectar pensamientos y ver crecer tu conocimiento."
+subtitle: "Un espacio para plantar ideas, conectar pensamientos y cultivar conocimiento"
+price: "Gratis"
+priceNumeric: 0
+image: "/images/herramientas/digital-garden.png"
+purchaseUrl: "https://elenamadrigal.gumroad.com/l/digital-garden"
+
+category: "tiny-system"
+order: 7
+tag: "Gratis"
+tagColor: "green"
+
+# ── Value props ──────────────────────────────
+
+valueProps:
+  - icon: "🌱"
+    title: "Cultiva ideas"
+    description: "Un sistema para capturar, desarrollar y conectar tus pensamientos."
+  - icon: "🔗"
+    title: "Conocimiento conectado"
+    description: "Las ideas crecen cuando se relacionan entre sí. Este sistema lo facilita."
+  - icon: "🎁"
+    title: "100% Gratis"
+    description: "Sin coste. Sin truco. Descárgalo y empieza."
+
+# ── Pricing ──────────────────────────────────
+
+pricing:
+  headline: "Planta tu primer semilla"
+  subtitle: "Tu jardín digital empieza con una sola idea."
+  cards:
+    - label: "Digital Garden"
+      price: "Gratis"
+      features:
+        - "Sistema de jardín digital completo"
+        - "Estructura para captura y conexión de ideas"
+        - "Actualizaciones incluidas"
+      url: "https://elenamadrigal.gumroad.com/l/digital-garden"
+      featured: true
+      internal: false
+
+# ── FAQ ──────────────────────────────────────
+
+faq:
+  - question: "¿Necesito pagar por Notion?"
+    answer: "No. El plan gratuito de Notion es suficiente para usar esta plantilla."
+  - question: "¿Es realmente gratis?"
+    answer: "Sí. Puedes descargarlo sin coste. Si quieres, puedes dejar una propina voluntaria."

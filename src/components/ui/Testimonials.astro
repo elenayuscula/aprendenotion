@@ -1,0 +1,54 @@
+---
+/**
+ * Testimonials — Testimonios centrados (quote grande en itálica)
+ *
+ * Dos variantes:
+ *   "default"  → Quotes grandes centrados, apilados verticalmente (estilo MakinProcess)
+ *   "compact"  → Grid de cards con marca + quote corto (estilo Notion.com)
+ *
+ * Props:
+ *   testimonials — Array de { quote, author, role?, brand?, href? }
+ *   variant?     — "default" | "compact"
+ */
+interface Props {
+  testimonials: Array<{
+    quote: string;
+    author: string;
+    role?: string;
+    brand?: string;
+    href?: string;
+  }>;
+  variant?: 'default' | 'compact';
+}
+
+const { testimonials, variant = 'default' } = Astro.props;
+const isCompact = variant === 'compact';
+const gridClass = isCompact ? 'testimonials-grid testimonials-grid--compact' : 'testimonials-grid';
+---
+
+<div class={gridClass}>
+  {testimonials.map((t) =>
+    isCompact ? (
+      <!-- Compact: card con marca + quote corto -->
+      <blockquote class={`testimonial testimonial--compact${t.href ? '' : ''}`}>
+        {t.brand && <div class="testimonial__brand">{t.brand}</div>}
+        <p class="testimonial__quote">{t.quote}</p>
+        {t.href && (
+          <a href={t.href} class="testimonial__link">Leer más →</a>
+        )}
+      </blockquote>
+    ) : (
+      <!-- Default: quote grande centrado -->
+      <blockquote class="testimonial">
+        <p class="testimonial__quote">{t.quote}</p>
+        <div class="testimonial__meta">
+          <span class="testimonial__author">{t.author}</span>
+          {t.role && <span class="testimonial__role">{t.role}</span>}
+        </div>
+        {t.href && (
+          <a href={t.href} class="testimonial__link">Leer el caso de éxito →</a>
+        )}
+      </blockquote>
+    )
+  )}
+</div>

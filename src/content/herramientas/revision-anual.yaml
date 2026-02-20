@@ -1,0 +1,53 @@
+# ─────────────────────────────────────────────
+# Revisión Anual
+# ─────────────────────────────────────────────
+
+title: "Revisión Anual"
+description: "Un sistema de reflexión para cerrar el año con claridad. Revisa logros, aprendizajes y define intenciones para el año que viene."
+subtitle: "Cierra el año con claridad y empieza el siguiente con intención"
+price: "Gratis"
+priceNumeric: 0
+image: "/images/herramientas/revision-anual.png"
+purchaseUrl: "https://elenamadrigal.gumroad.com/l/revision-anual"
+
+category: "tiny-system"
+order: 5
+tag: "Gratis"
+tagColor: "green"
+
+# ── Value props ──────────────────────────────
+
+valueProps:
+  - icon: "📅"
+    title: "Cierre de año completo"
+    description: "Revisa logros, desafíos y aprendizajes del año que termina."
+  - icon: "🎯"
+    title: "Intenciones para el nuevo año"
+    description: "Define con claridad qué quieres conseguir en los próximos 12 meses."
+  - icon: "🎁"
+    title: "100% Gratis"
+    description: "Sin coste. Sin truco. Descárgalo y empieza."
+
+# ── Pricing ──────────────────────────────────
+
+pricing:
+  headline: "Descarga tu Revisión Anual"
+  subtitle: "El mejor momento para reflexionar es ahora."
+  cards:
+    - label: "Revisión Anual"
+      price: "Gratis"
+      features:
+        - "Sistema de revisión anual completo"
+        - "Prompts de reflexión guiados"
+        - "Actualizaciones incluidas"
+      url: "https://elenamadrigal.gumroad.com/l/revision-anual"
+      featured: true
+      internal: false
+
+# ── FAQ ──────────────────────────────────────
+
+faq:
+  - question: "¿Necesito pagar por Notion?"
+    answer: "No. El plan gratuito de Notion es suficiente para usar esta plantilla."
+  - question: "¿Es realmente gratis?"
+    answer: "Sí. Puedes descargarlo sin coste. Si quieres, puedes dejar una propina voluntaria."

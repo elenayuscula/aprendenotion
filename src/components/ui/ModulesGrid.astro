@@ -1,0 +1,29 @@
+---
+/**
+ * ModulesGrid — Grid 2 columnas de módulos con emoji (páginas de producto)
+ *
+ * Props:
+ *   modules — Array de { emoji, title, description }
+ */
+interface Props {
+  modules: Array<{
+    emoji: string;
+    title: string;
+    description: string;
+  }>;
+}
+
+const { modules } = Astro.props;
+---
+
+<div class="pd-modules-grid">
+  {modules.map((m) => (
+    <div class="pd-module">
+      <span class="pd-module__emoji" aria-hidden="true">{m.emoji}</span>
+      <div>
+        <p class="pd-module__title">{m.title}</p>
+        <p class="pd-module__desc">{m.description}</p>
+      </div>
+    </div>
+  ))}
+</div>

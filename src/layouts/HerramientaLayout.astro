@@ -1,21 +1,26 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import Testimonials from '../components/ui/Testimonials.astro';
 
 interface Props {
   title: string;
   description: string;
-  subtitle: string;
+  subtitle?: string;
   price: string;
   priceNumeric: number;
-  tag: string;
-  tagColor: string;
+  category: string;
+  external?: boolean;
+  order?: number;
+  tag?: string;
+  tagColor?: string;
   image: string;
   purchaseUrl: string;
-  valueProps: Array<{ icon: string; title: string; description: string }>;
+  valueProps?: Array<{ icon: string; title: string; description: string }>;
+  body?: string;
   features?: string[];
   modules?: Array<{ emoji: string; title: string; desc: string }>;
   testimonials?: Array<{ quote: string; author: string }>;
-  pricing: {
+  pricing?: {
     headline: string;
     subtitle: string;
     cards: Array<{
@@ -27,7 +32,7 @@ interface Props {
       internal: boolean;
     }>;
   };
-  faq: Array<{ question: string; answer: string }>;
+  faq?: Array<{ question: string; answer: string }>;
   prevProduct?: { slug: string; label: string };
   nextProduct?: { slug: string; label: string };
 }
@@ -38,11 +43,13 @@ const {
   subtitle,
   price,
   priceNumeric,
+  category,
   tag,
-  tagColor,
+  tagColor = 'blue',
   image,
   purchaseUrl,
   valueProps,
+  body,
   features,
   modules,
   testimonials,
@@ -92,35 +99,38 @@ if (testimonials && testimonials.length >= 2) {
 
     <!-- Product Hero -->
     <section class="pd-hero">
-      <span class={`pd-hero__tag pd-hero__tag--${tagColor}`}>{tag}</span>
+      {tag && <span class={`pd-hero__tag pd-hero__tag--${tagColor}`}>{tag}</span>}
       <h1 class="pd-hero__title">{title}</h1>
-      <p class="pd-hero__subtitle">{subtitle}</p>
+      {subtitle && <p class="pd-hero__subtitle">{subtitle}</p>}
       <div class="pd-hero__image">
         <img src={image} alt={`Vista previa de ${title}`} width="600" height="420" />
       </div>
     </section>
 
-    <!-- Value props -->
-    <div class="pd-value-props">
-      {valueProps.map((vp) => (
-        <div class="pd-value-prop">
-          <span class="pd-value-prop__icon" aria-hidden="true">{vp.icon}</span>
-          <div>
-            <strong>{vp.title}</strong>
-            <p>{vp.description}</p>
+    <!-- Value props (if present) -->
+    {valueProps && valueProps.length > 0 && (
+      <div class="pd-value-props">
+        {valueProps.map((vp) => (
+          <div class="pd-value-prop">
+            <span class="pd-value-prop__icon" aria-hidden="true">{vp.icon}</span>
+            <div>
+              <strong>{vp.title}</strong>
+              <p>{vp.description}</p>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
-
-    <hr />
-
-    <!-- MDX body content (prose sections) -->
-    <section class="section">
-      <div class="section__text content">
-        <slot />
+        ))}
       </div>
-    </section>
+    )}
+
+    <!-- Body content (HTML from YAML) -->
+    {body && (
+      <>
+        <hr />
+        <section class="section">
+          <div class="section__text content" set:html={body} />
+        </section>
+      </>
+    )}
 
     <!-- Modules grid (if present) -->
     {modules && modules.length > 0 && (
@@ -169,70 +179,64 @@ if (testimonials && testimonials.length >= 2) {
       <>
         <hr />
         <section class="section">
-          {testimonials.length > 1 ? (
-            <>
-              <h2 class="section__title">Lo que dicen los usuarios</h2>
-              <div class="pd-testimonials-grid">
-                {testimonials.map((t) => (
-                  <blockquote class="pd-testimonial">
-                    <p>"{t.quote}"</p>
-                    <footer>— <strong>{t.author}</strong></footer>
-                  </blockquote>
-                ))}
-              </div>
-            </>
-          ) : (
-            <blockquote class="pd-testimonial">
-              <p>"{testimonials[0].quote}"</p>
-              <footer>— <strong>{testimonials[0].author}</strong></footer>
-            </blockquote>
-          )}
+          <h2 class="section__title" style="text-align: center;">Lo que dicen los usuarios</h2>
+          <Testimonials testimonials={testimonials.map(t => ({
+            quote: t.quote,
+            author: t.author,
+            role: undefined,
+          }))} />
         </section>
       </>
     )}
 
-    <hr />
-
-    <!-- Pricing -->
-    <section class="section pd-pricing-section">
-      <h2 class="section__title" style="text-align: center;">{pricing.headline}</h2>
-      <p class="section__text" style="text-align: center; color: var(--color-text-secondary);">
-        {pricing.subtitle}
-      </p>
-      <div class="pd-pricing-cards">
-        {pricing.cards.map((card) => (
-          <div class={`pd-pricing-card${card.featured ? ' pd-pricing-card--featured' : ''}`}>
-            <span class="pd-pricing-card__label">{card.label}</span>
-            <div class="pd-pricing-card__price" set:html={card.price} />
-            <ul class="pd-pricing-card__features">
-              {card.features.map((f) => (
-                <li>{f}</li>
-              ))}
-            </ul>
-            {card.internal ? (
-              <a href={card.url} class="btn">&iexcl;Lo quiero!</a>
-            ) : (
-              <a href={card.url} class="btn" target="_blank" rel="noopener">&iexcl;Lo quiero!</a>
-            )}
+    <!-- Pricing (if present) -->
+    {pricing && pricing.cards && pricing.cards.length > 0 && (
+      <>
+        <hr />
+        <section class="section pd-pricing-section">
+          <h2 class="section__title" style="text-align: center;">{pricing.headline}</h2>
+          <p class="section__text" style="text-align: center; color: var(--color-text-secondary);">
+            {pricing.subtitle}
+          </p>
+          <div class="pd-pricing-cards">
+            {pricing.cards.map((card) => (
+              <div class={`pd-pricing-card${card.featured ? ' pd-pricing-card--featured' : ''}`}>
+                <span class="pd-pricing-card__label">{card.label}</span>
+                <div class="pd-pricing-card__price" set:html={card.price} />
+                <ul class="pd-pricing-card__features">
+                  {card.features.map((f) => (
+                    <li>{f}</li>
+                  ))}
+                </ul>
+                {card.internal ? (
+                  <a href={card.url} class="btn">¡Lo quiero!</a>
+                ) : (
+                  <a href={card.url} class="btn" target="_blank" rel="noopener">¡Lo quiero!</a>
+                )}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </section>
+        </section>
+      </>
+    )}
 
-    <hr />
-
-    <!-- FAQ -->
-    <section class="section">
-      <h2 class="section__title">Preguntas frecuentes</h2>
-      <div class="pd-faq">
-        {faq.map((item) => (
-          <details class="pd-faq__item">
-            <summary class="pd-faq__question">{item.question}</summary>
-            <p class="pd-faq__answer">{item.answer}</p>
-          </details>
-        ))}
-      </div>
-    </section>
+    <!-- FAQ (if present) -->
+    {faq && faq.length > 0 && (
+      <>
+        <hr />
+        <section class="section">
+          <h2 class="section__title">Preguntas frecuentes</h2>
+          <div class="pd-faq">
+            {faq.map((item) => (
+              <details class="pd-faq__item">
+                <summary class="pd-faq__question">{item.question}</summary>
+                <p class="pd-faq__answer">{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      </>
+    )}
 
     <!-- Navigation -->
     <nav class="page-nav" aria-label="Navegación de productos">

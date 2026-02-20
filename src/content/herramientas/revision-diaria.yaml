@@ -1,0 +1,53 @@
+# ─────────────────────────────────────────────
+# Revisión Diaria
+# ─────────────────────────────────────────────
+
+title: "Revisión Diaria"
+description: "Un sistema minimalista de journaling diario en Notion. Registra tu día, reflexiona y detecta patrones para mejorar."
+subtitle: "Un sistema minimalista de journaling diario en Notion"
+price: "Gratis"
+priceNumeric: 0
+image: "/images/herramientas/revision-diaria.png"
+purchaseUrl: "https://elenamadrigal.gumroad.com/l/revision-diaria"
+
+category: "tiny-system"
+order: 6
+tag: "Gratis"
+tagColor: "green"
+
+# ── Value props ──────────────────────────────
+
+valueProps:
+  - icon: "📋"
+    title: "Journaling simple"
+    description: "Registra tu día en pocos minutos con un sistema claro y directo."
+  - icon: "🔍"
+    title: "Detecta patrones"
+    description: "Revisa tus días anteriores y descubre qué funciona y qué no."
+  - icon: "🎁"
+    title: "100% Gratis"
+    description: "Sin coste. Sin truco. Descárgalo y empieza."
+
+# ── Pricing ──────────────────────────────────
+
+pricing:
+  headline: "Empieza tu registro diario"
+  subtitle: "Unos minutos al día pueden cambiar tu perspectiva."
+  cards:
+    - label: "Revisión Diaria"
+      price: "Gratis"
+      features:
+        - "Sistema de journaling diario"
+        - "Prompts incluidos"
+        - "Actualizaciones incluidas"
+      url: "https://elenamadrigal.gumroad.com/l/revision-diaria"
+      featured: true
+      internal: false
+
+# ── FAQ ──────────────────────────────────────
+
+faq:
+  - question: "¿Necesito pagar por Notion?"
+    answer: "No. El plan gratuito de Notion es suficiente para usar esta plantilla."
+  - question: "¿Es realmente gratis?"
+    answer: "Sí. Puedes descargarlo sin coste. Si quieres, puedes dejar una propina voluntaria."

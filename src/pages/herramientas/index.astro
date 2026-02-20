@@ -2,52 +2,201 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-const products = await getCollection('herramientas');
+const allProducts = await getCollection('herramientas');
+
+// Sort by order within each category
+const sortByOrder = (a: any, b: any) => (a.data.order || 0) - (b.data.order || 0);
+
+const companions = allProducts.filter(p => p.data.category === 'companion').sort(sortByOrder);
+// Herramientas + Tiny Systems juntas en una sola sección, distinguidas por su etiqueta
+const herramientasYTiny = allProducts
+  .filter(p => p.data.category === 'herramienta' || p.data.category === 'tiny-system')
+  .sort(sortByOrder);
+const productosPrincipales = allProducts.filter(p => p.data.category === 'producto-principal').sort(sortByOrder);
+
+// For structured data, only include products with pages
+const productsWithPages = allProducts.filter(p => !p.data.external);
+
+// Helper: build the href for a product card
+function productHref(product: any): string {
+  if (product.data.external) {
+    return product.data.purchaseUrl;
+  }
+  return `/herramientas/${product.id}`;
+}
+
+// Helper: should open in new tab?
+function isExternal(product: any): boolean {
+  return product.data.external;
+}
 ---
 
 <BaseLayout
   title="Herramientas — Aprende Notion"
-  description="Herramientas y sistemas construidos en Notion para mejorar tu productividad. Plantillas funcionales con fórmulas, filtros y guías paso a paso."
+  description="Herramientas, plantillas y sistemas construidos en Notion para mejorar tu productividad. Desde tiny systems gratuitos hasta cursos completos."
 >
   <div class="page-wrapper page-wrapper--wide">
 
     <!-- Hero -->
     <section class="store-hero">
       <span class="store-hero__label">HERRAMIENTAS</span>
-      <h1 class="store-hero__title">¿Buscas una herramienta ya construida?</h1>
+      <h1 class="store-hero__title">Herramientas y sistemas para Notion</h1>
       <p class="store-hero__subtitle">
-        <em>Tiny is Mighty.</em> La otra manera que tengo de volcar mis ideas en un formato accesible para todo el mundo es hacerlo en forma de herramientas que recogen mi manera particular de hacer ciertas cosas.
+        <em>Tiny is Mighty.</em> Desde plantillas gratuitas hasta sistemas completos — mi manera particular de hacer las cosas, volcada en formato accesible para todo el mundo.
       </p>
     </section>
 
-    <!-- Products Grid — 3 columns -->
-    <section class="store-grid" aria-label="Herramientas disponibles">
-      {products.map((product) => (
-        <a href={`/herramientas/${product.id}`} class="store-card">
-          <div class="store-card__image">
-            <img src={product.data.image} alt={product.data.title} width="360" height="252" loading="lazy" />
-          </div>
-          <div class="store-card__body">
-            <span class={`store-card__tag store-card__tag--${product.data.tagColor}`}>{product.data.tag}</span>
-            <h2 class="store-card__title">{product.data.title}</h2>
-            <p class="store-card__description">{product.data.description}</p>
-            <span class="store-card__price">{product.data.price}</span>
-          </div>
-        </a>
-      ))}
-    </section>
+    <!-- ─── Filtros gratis / premium ─── -->
+    <div class="store-filters" id="store-filters">
+      <button class="store-filters__btn store-filters__btn--active" data-filter="all">Todas</button>
+      <button class="store-filters__btn" data-filter="gratis">Gratis</button>
+      <button class="store-filters__btn" data-filter="premium">Premium</button>
+    </div>
+
+    <!-- ─── Companion del curso ─── -->
+    {companions.length > 0 && (
+      <section class="store-section" data-section="companion">
+        <div class="store-section__header">
+          <h2 class="store-section__title">Companion del curso</h2>
+          <p class="store-section__desc">Las herramientas que complementan las lecciones del curso AprendeNotion. El siguiente paso natural después de aprender.</p>
+        </div>
+        <div class="store-grid store-grid--2col">
+          {companions.map((product) => (
+            <a
+              href={productHref(product)}
+              class="store-card"
+              target={isExternal(product) ? '_blank' : undefined}
+              rel={isExternal(product) ? 'noopener' : undefined}
+              data-price={product.data.priceNumeric > 0 ? 'premium' : 'gratis'}
+            >
+              <div class="store-card__image">
+                <img src={product.data.image} alt={product.data.title} width="360" height="252" loading="lazy" />
+              </div>
+              <div class="store-card__body">
+                <h3 class="store-card__title">{product.data.title}</h3>
+                <p class="store-card__description">{product.data.description}</p>
+                <span class="store-card__price">{product.data.price}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- ─── Herramientas y Tiny Systems (una sola sección) ─── -->
+    {herramientasYTiny.length > 0 && (
+      <section class="store-section" data-section="herramientas">
+        <div class="store-section__header">
+          <h2 class="store-section__title">Herramientas y Tiny Systems</h2>
+          <p class="store-section__desc">Plantillas, sistemas y herramientas para Notion. Desde lead magnets gratuitos hasta sistemas especializados. <em>Tiny is Mighty.</em></p>
+        </div>
+        <div class="store-grid">
+          {herramientasYTiny.map((product) => (
+            <a
+              href={productHref(product)}
+              class="store-card"
+              data-price={product.data.priceNumeric > 0 ? 'premium' : 'gratis'}
+            >
+              <div class="store-card__image">
+                <img src={product.data.image} alt={product.data.title} width="360" height="252" loading="lazy" />
+              </div>
+              <div class="store-card__body">
+                <h3 class="store-card__title">{product.data.title}</h3>
+                <p class="store-card__description">{product.data.description}</p>
+                <span class="store-card__price">{product.data.price}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- ─── Productos principales ─── -->
+    {productosPrincipales.length > 0 && (
+      <section class="store-section" data-section="cursos">
+        <div class="store-section__header">
+          <h2 class="store-section__title">Cursos y metodologías</h2>
+          <p class="store-section__desc">Programas completos de formación con metodología propia. Disponibles en elenamadrigal.com.</p>
+        </div>
+        <div class="store-grid store-grid--2col">
+          {productosPrincipales.map((product) => (
+            <a
+              href={productHref(product)}
+              class="store-card"
+              target={isExternal(product) ? '_blank' : undefined}
+              rel={isExternal(product) ? 'noopener' : undefined}
+              data-price="premium"
+            >
+              <div class="store-card__image">
+                <img src={product.data.image} alt={product.data.title} width="360" height="252" loading="lazy" />
+              </div>
+              <div class="store-card__body">
+                {product.data.tag && <span class={`store-card__tag store-card__tag--${product.data.tagColor}`}>{product.data.tag}</span>}
+                <h3 class="store-card__title">{product.data.title}</h3>
+                <p class="store-card__description">{product.data.description}</p>
+                <span class="store-card__price">{product.data.price}</span>
+                {isExternal(product) && <span class="store-card__external">↗ elenamadrigal.com</span>}
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
 
   </div>
+
+  <!-- Filter logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = document.querySelectorAll('.store-filters__btn');
+      const cards = document.querySelectorAll('.store-card[data-price]');
+      const sections = document.querySelectorAll('.store-section[data-section]');
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Update active button
+          buttons.forEach(b => b.classList.remove('store-filters__btn--active'));
+          btn.classList.add('store-filters__btn--active');
+
+          const filter = btn.getAttribute('data-filter');
+
+          // Show/hide cards
+          cards.forEach(card => {
+            const price = card.getAttribute('data-price');
+            if (filter === 'all') {
+              (card as HTMLElement).style.display = '';
+            } else if (filter === 'gratis') {
+              (card as HTMLElement).style.display = price === 'gratis' ? '' : 'none';
+            } else if (filter === 'premium') {
+              (card as HTMLElement).style.display = price === 'premium' ? '' : 'none';
+            }
+          });
+
+          // Show/hide sections based on whether they have visible cards
+          sections.forEach(section => {
+            const visibleCards = section.querySelectorAll('.store-card[data-price]');
+            let hasVisible = false;
+            visibleCards.forEach(card => {
+              if ((card as HTMLElement).style.display !== 'none') {
+                hasVisible = true;
+              }
+            });
+            (section as HTMLElement).style.display = hasVisible ? '' : 'none';
+          });
+        });
+      });
+    });
+  </script>
 
   <!-- Structured data -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": "Herramientas de Notion",
-    "description": "Herramientas y sistemas construidos en Notion para mejorar tu productividad.",
+    "description": "Herramientas, plantillas y sistemas construidos en Notion para mejorar tu productividad.",
     "url": "https://aprendenotion.com/herramientas",
-    "numberOfItems": products.length,
-    "itemListElement": products.map((p, i) => ({
+    "numberOfItems": productsWithPages.length,
+    "itemListElement": productsWithPages.map((p, i) => ({
       "@type": "ListItem",
       "position": i + 1,
       "url": `https://aprendenotion.com/herramientas/${p.id}`

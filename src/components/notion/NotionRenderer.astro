@@ -1,0 +1,88 @@
+---
+/**
+ * NotionRenderer — recibe un array de bloques de Notion y los renderiza
+ * recursivamente usando los componentes de bloque individuales.
+ */
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import ParagraphBlock from './ParagraphBlock.astro';
+import HeadingBlock from './HeadingBlock.astro';
+import ListBlock from './ListBlock.astro';
+import CalloutBlock from './CalloutBlock.astro';
+import ToggleBlock from './ToggleBlock.astro';
+import CodeBlock from './CodeBlock.astro';
+import ImageBlock from './ImageBlock.astro';
+import VideoBlock from './VideoBlock.astro';
+import QuoteBlock from './QuoteBlock.astro';
+import DividerBlock from './DividerBlock.astro';
+import ColumnBlock from './ColumnBlock.astro';
+import TableBlock from './TableBlock.astro';
+import BookmarkBlock from './BookmarkBlock.astro';
+
+interface Props {
+  blocks: BlockObjectResponse[];
+}
+
+const { blocks } = Astro.props;
+
+// Group consecutive list items into a single list wrapper
+type GroupedItem = { type: 'block'; block: BlockObjectResponse } | { type: 'list'; listType: 'ul' | 'ol'; items: BlockObjectResponse[] };
+
+function groupBlocks(blocks: BlockObjectResponse[]): GroupedItem[] {
+  const result: GroupedItem[] = [];
+  let currentList: { listType: 'ul' | 'ol'; items: BlockObjectResponse[] } | null = null;
+
+  for (const block of blocks) {
+    const isBullet = block.type === 'bulleted_list_item';
+    const isNumbered = block.type === 'numbered_list_item';
+
+    if (isBullet || isNumbered) {
+      const listType = isBullet ? 'ul' : 'ol';
+      if (currentList && currentList.listType === listType) {
+        currentList.items.push(block);
+      } else {
+        if (currentList) result.push({ type: 'list', ...currentList });
+        currentList = { listType, items: [block] };
+      }
+    } else {
+      if (currentList) {
+        result.push({ type: 'list', ...currentList });
+        currentList = null;
+      }
+      result.push({ type: 'block', block });
+    }
+  }
+  if (currentList) result.push({ type: 'list', ...currentList });
+  return result;
+}
+
+const grouped = groupBlocks(blocks);
+---
+
+<div class="notion-content">
+  {grouped.map((item) => {
+    if (item.type === 'list') {
+      return <ListBlock items={item.items} ordered={item.listType === 'ol'} />;
+    }
+
+    const block = item.block;
+
+    if (block.type === 'paragraph') return <ParagraphBlock block={block} />;
+    if (block.type === 'heading_1') return <HeadingBlock block={block} level={1} />;
+    if (block.type === 'heading_2') return <HeadingBlock block={block} level={2} />;
+    if (block.type === 'heading_3') return <HeadingBlock block={block} level={3} />;
+    if (block.type === 'callout') return <CalloutBlock block={block} />;
+    if (block.type === 'toggle') return <ToggleBlock block={block} />;
+    if (block.type === 'code') return <CodeBlock block={block} />;
+    if (block.type === 'image') return <ImageBlock block={block} />;
+    if (block.type === 'video') return <VideoBlock block={block} />;
+    if (block.type === 'quote') return <QuoteBlock block={block} />;
+    if (block.type === 'divider') return <DividerBlock />;
+    if (block.type === 'column_list') return <ColumnBlock block={block} />;
+    if (block.type === 'table') return <TableBlock block={block} />;
+    if (block.type === 'bookmark') return <BookmarkBlock block={block} />;
+    if (block.type === 'embed') return <VideoBlock block={block} />;
+
+    // Unsupported block — render nothing
+    return null;
+  })}
+</div>

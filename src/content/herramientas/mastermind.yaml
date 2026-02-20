@@ -1,0 +1,51 @@
+# ─────────────────────────────────────────────
+# Mastermind Tool
+# ─────────────────────────────────────────────
+
+title: "Mastermind Tool"
+description: "Organiza y gestiona tu grupo mastermind en Notion. Seguimiento de sesiones, compromisos, feedback y progreso de cada participante."
+subtitle: "Organiza y gestiona tu grupo mastermind en Notion"
+price: "7,50€ + IVA"
+priceNumeric: 7.50
+image: "/images/herramientas/mastermind.png"
+purchaseUrl: "https://elenamadrigal.gumroad.com/l/mastermind"
+
+category: "tiny-system"
+order: 10
+tag: "Tiny System"
+tagColor: "orange"
+
+# ── Value props ──────────────────────────────
+
+valueProps:
+  - icon: "🧠"
+    title: "Sesiones organizadas"
+    description: "Estructura tus reuniones de mastermind con un sistema claro."
+  - icon: "📈"
+    title: "Seguimiento de progreso"
+    description: "Registra compromisos y haz seguimiento del avance de cada miembro."
+  - icon: "♾️"
+    title: "Acceso de por vida"
+    description: "Pago único. Sin suscripciones."
+
+# ── Pricing ──────────────────────────────────
+
+pricing:
+  headline: "Hazte con la herramienta"
+  subtitle: "Lleva tu mastermind al siguiente nivel."
+  cards:
+    - label: "Mastermind Tool"
+      price: "7,50€"
+      features:
+        - "Sistema de mastermind completo"
+        - "Seguimiento de sesiones y compromisos"
+        - "Actualizaciones incluidas"
+      url: "https://elenamadrigal.gumroad.com/l/mastermind"
+      featured: true
+      internal: false
+
+# ── FAQ ──────────────────────────────────────
+
+faq:
+  - question: "¿Necesito pagar por Notion?"
+    answer: "No. El plan gratuito de Notion es suficiente para usar esta plantilla."

@@ -1,0 +1,25 @@
+---
+/**
+ * CTABlock — Bloque de llamada a la acción centrado
+ *
+ * Props:
+ *   title   — Título del CTA
+ *   text?   — Texto descriptivo
+ *   cta     — Texto del botón
+ *   href    — URL del botón
+ */
+interface Props {
+  title: string;
+  text?: string;
+  cta: string;
+  href: string;
+}
+
+const { title, text, cta, href } = Astro.props;
+---
+
+<div class="cta-block">
+  <h2 class="cta-block__title">{title}</h2>
+  {text && <p class="cta-block__text">{text}</p>}
+  <a href={href} class="btn btn--accent btn--lg">{cta}</a>
+</div>

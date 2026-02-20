@@ -1,0 +1,68 @@
+---
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import RichText from './RichText.astro';
+
+interface Props {
+  block: BlockObjectResponse;
+}
+
+const { block } = Astro.props;
+const table = (block as any).table;
+const hasColumnHeader = table.has_column_header;
+const hasRowHeader = table.has_row_header;
+const rows = ((block as any).children || []) as BlockObjectResponse[];
+---
+
+<div class="notion-table-wrapper">
+  <table class="notion-table">
+    {rows.map((row, rowIndex) => {
+      const cells = (row as any).table_row?.cells || [];
+      const isHeaderRow = hasColumnHeader && rowIndex === 0;
+      const Tag = isHeaderRow ? 'th' : 'td';
+      const WrapperTag = isHeaderRow ? 'thead' : (rowIndex === 1 && hasColumnHeader ? 'tbody' : undefined);
+
+      return (
+        <tr>
+          {cells.map((cell: any, cellIndex: number) => {
+            const isHeaderCell = hasRowHeader && cellIndex === 0 && !isHeaderRow;
+            const CellTag = isHeaderRow || isHeaderCell ? 'th' : 'td';
+            return (
+              <CellTag class={isHeaderCell ? 'notion-table__row-header' : undefined}>
+                <RichText text={cell} />
+              </CellTag>
+            );
+          })}
+        </tr>
+      );
+    })}
+  </table>
+</div>
+
+<style>
+  .notion-table-wrapper {
+    margin: 1em 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .notion-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  .notion-table th,
+  .notion-table td {
+    border: 1px solid rgba(55, 53, 47, 0.12);
+    padding: 0.5em 0.75em;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .notion-table th {
+    background: var(--color-bg-secondary, #F7F6F3);
+    font-weight: 600;
+  }
+  .notion-table__row-header {
+    background: var(--color-bg-secondary, #F7F6F3);
+    font-weight: 600;
+  }
+</style>
