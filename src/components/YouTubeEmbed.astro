@@ -1,0 +1,21 @@
+---
+interface Props {
+  videoId: string;
+  title?: string;
+}
+
+const { videoId, title = 'Video de YouTube' } = Astro.props;
+---
+
+<figure class="notion-video">
+  <div class="notion-video__wrapper">
+    <iframe
+      src={`https://www.youtube.com/embed/${videoId}`}
+      title={title}
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      loading="lazy"
+    />
+  </div>
+</figure>
