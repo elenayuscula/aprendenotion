@@ -1,0 +1,25 @@
+---
+import type { TocEntry } from '../../lib/toc';
+
+interface Props {
+  entries: TocEntry[];
+  variant?: 'sidebar' | 'inline';
+  title?: string;
+}
+
+const { entries, variant = 'inline', title } = Astro.props;
+const label = title ?? (variant === 'sidebar' ? 'En esta lección' : 'Contenido');
+---
+
+{entries.length > 0 && (
+  <nav class={`toc ${variant === 'sidebar' ? 'toc--sidebar' : ''}`} aria-label="Tabla de contenidos">
+    <div class="toc__title">{label}</div>
+    <ul class="toc__list">
+      {entries.map((entry) => (
+        <li class={entry.level >= 2 ? 'toc__list--nested' : ''}>
+          <a href={`#${entry.id}`}>{entry.text}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
