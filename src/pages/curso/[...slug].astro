@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 import TableOfContents from '../../components/ui/TableOfContents.astro';
 import { getCollection } from 'astro:content';
 import NotionRenderer from '../../components/notion/NotionRenderer.astro';
@@ -183,32 +182,32 @@ let blocks: BlockObjectResponse[] = [];
 let toc: import('../../lib/toc').TocEntry[] = [];
 let topVideos: { id: string; position: 'top' | string }[] = [];
 let midVideoMap = new Map<string, string[]>();
-let moduleBlocks: BlockObjectResponse[] = [];
+// moduleBlocks ya no se necesita: ambos tipos usan `blocks`
 
 if (props.type === 'module') {
-  // Si hay una lección padre con contenido de Notion, cargarlo como intro
   if (props.parentLesson?.data?.notionId) {
-    moduleBlocks = await getBlocks(props.parentLesson.data.notionId);
+    blocks = await getBlocks(props.parentLesson.data.notionId);
+    toc = extractToc(blocks);
   }
 }
 
 if (props.type === 'lesson') {
-  // Fetch Notion blocks
   if (props.lesson.data.notionId) {
     blocks = await getBlocks(props.lesson.data.notionId);
     toc = extractToc(blocks);
   }
+}
 
-  // Prepare videos
-  const lessonVideos = LESSON_VIDEOS[props.lesson.id] || [];
-  topVideos = lessonVideos.filter((v) => v.position === 'top');
-  const midVideos = lessonVideos.filter((v) => v.position !== 'top');
+// Prepare videos — works for both modules (by slug) and lessons (by id)
+const videoKey = props.type === 'module' ? props.module.slug : props.lesson.id;
+const pageVideos = LESSON_VIDEOS[videoKey] || [];
+topVideos = pageVideos.filter((v) => v.position === 'top');
+const midVideos = pageVideos.filter((v) => v.position !== 'top');
 
-  for (const v of midVideos) {
-    const key = normalizeText(v.position as string);
-    if (!midVideoMap.has(key)) midVideoMap.set(key, []);
-    midVideoMap.get(key)!.push(v.id);
-  }
+for (const v of midVideos) {
+  const key = normalizeText(v.position as string);
+  if (!midVideoMap.has(key)) midVideoMap.set(key, []);
+  midVideoMap.get(key)!.push(v.id);
 }
 ---
 
@@ -220,71 +219,107 @@ if (props.type === 'lesson') {
     title={`${props.module.title} — Curso de Notion`}
     description={props.module.description}
   >
-    <div class="page-wrapper">
-      <Breadcrumb
-        items={[
-          { label: 'Curso', href: '/curso' },
-          { label: props.module.title },
-        ]}
-      />
-
-      <header class="module-header">
-        <span class="module-header__emoji" aria-hidden="true">
-          {props.module.emoji}
-        </span>
-        <h1 class="module-header__title">{props.module.title}</h1>
-        <p class="module-header__desc">{props.module.description}</p>
-      </header>
-
-      {/* Contenido intro de la lección padre (si existe en Notion) */}
-      {moduleBlocks.length > 0 && (
-        <div class="blog-post-content content" style="margin-bottom: var(--space-10);">
-          <NotionRenderer blocks={moduleBlocks} />
-        </div>
-      )}
-
-      <h2 style="font-size: 1rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-secondary);">
-        Lecciones
-      </h2>
-
-      <div class="module-lessons">
-        {props.moduleLessons.map((lesson: any) => (
-          <a href={`/curso/${lesson.id}`} class="module-lesson-card">
-            <div class="module-lesson-card__body">
-              <h3 class="module-lesson-card__title">
-                {lesson.data.title}
-              </h3>
-              {lesson.data.description && (
-                <p class="module-lesson-card__desc">{lesson.data.description}</p>
-              )}
-            </div>
-          </a>
-        ))}
+    <div class="lesson-layout">
+      <!-- Header (full width) -->
+      <div class="lesson-layout__header">
+        <header class="lesson-header">
+          <nav class="lesson-header__meta" aria-label="Breadcrumb">
+            <a href="/curso" class="lesson-header__crumb">Curso</a>
+            <span class="lesson-header__separator">/</span>
+            <span class="lesson-header__number">{props.module.title}</span>
+          </nav>
+          <h1 class="lesson-header__title">
+            <span class="lesson-header__emoji" aria-hidden="true">{props.module.emoji}</span>
+            {props.module.title}
+          </h1>
+          <p class="lesson-header__description">{props.module.description}</p>
+        </header>
+        <hr />
       </div>
 
-      <!-- Module prev/next -->
-      <nav class="page-nav" aria-label="Navegación de módulos">
-        {props.prevModule ? (
-          <a
-            href={isSingleLessonModule(props.prevModule) ? `/curso/${props.prevModule.lessonSlugs[0]}` : `/curso/${props.prevModule.slug}`}
-            class="page-nav__link"
-          >
-            ← {props.prevModule.title}
-          </a>
-        ) : (
-          <span class="page-nav__link page-nav__link--disabled"></span>
+      <!-- Body: sidebar (if TOC) + content -->
+      <div class={`lesson-layout__body${toc.length === 0 ? ' lesson-layout__body--full' : ''}`}>
+        {toc.length > 0 && (
+          <aside class="lesson-layout__sidebar" id="lesson-sidebar">
+            <TableOfContents entries={toc} variant="sidebar" />
+          </aside>
         )}
-        {props.nextModule ? (
-          <a
-            href={isSingleLessonModule(props.nextModule) ? `/curso/${props.nextModule.lessonSlugs[0]}` : `/curso/${props.nextModule.slug}`}
-            class="page-nav__link page-nav__link--next"
-          >
-            {props.nextModule.title} →
-          </a>
-        ) : (
-          <span class="page-nav__link page-nav__link--disabled"></span>
-        )}
-      </nav>
+
+        <div class="lesson-layout__content">
+          {/* Contenido Notion del módulo (con videos inyectados) */}
+          {blocks.length > 0 && (
+            <div class="blog-post-content content" style="margin-bottom: var(--space-10);">
+              {topVideos.map((v) => (
+                <YouTubeEmbed videoId={v.id} title={props.module.title} />
+              ))}
+
+              {blocks.map((block) => {
+                const headingText = getHeadingText(block);
+                const normalized = headingText ? normalizeText(headingText) : null;
+                const videosAfter = normalized ? midVideoMap.get(normalized) : null;
+
+                return (
+                  <>
+                    <NotionRenderer blocks={[block]} />
+                    {videosAfter &&
+                      videosAfter.map((vid) => (
+                        <YouTubeEmbed
+                          videoId={vid}
+                          title={headingText || props.module.title}
+                        />
+                      ))}
+                  </>
+                );
+              })}
+            </div>
+          )}
+
+          <h2 style="font-size: 1rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-secondary);">
+            Lecciones
+          </h2>
+
+          <div class="module-lessons">
+            {props.moduleLessons.map((lesson: any) => (
+              <a href={`/curso/${lesson.id}`} class="module-lesson-card">
+                <div class="module-lesson-card__body">
+                  <h3 class="module-lesson-card__title">
+                    {lesson.data.title}
+                  </h3>
+                  {lesson.data.description && (
+                    <p class="module-lesson-card__desc">{lesson.data.description}</p>
+                  )}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer: prev/next (full width) -->
+      <div class="lesson-layout__footer">
+        <nav class="page-nav" aria-label="Navegación de módulos">
+          {props.prevModule ? (
+            <a
+              href={isSingleLessonModule(props.prevModule) ? `/curso/${props.prevModule.lessonSlugs[0]}` : `/curso/${props.prevModule.slug}`}
+              class="page-nav__link"
+            >
+              ← {props.prevModule.title}
+            </a>
+          ) : (
+            <span class="page-nav__link page-nav__link--disabled"></span>
+          )}
+          {props.nextModule ? (
+            <a
+              href={isSingleLessonModule(props.nextModule) ? `/curso/${props.nextModule.lessonSlugs[0]}` : `/curso/${props.nextModule.slug}`}
+              class="page-nav__link page-nav__link--next"
+            >
+              {props.nextModule.title} →
+            </a>
+          ) : (
+            <span class="page-nav__link page-nav__link--disabled"></span>
+          )}
+        </nav>
+      </div>
     </div>
   </BaseLayout>
 ) : (
@@ -413,39 +448,40 @@ if (props.type === 'lesson') {
       </div>
     </div>
 
-    <!-- Active TOC highlighting (scroll-spy only, no JS position hacks) -->
-    <script is:inline>
-      document.addEventListener('DOMContentLoaded', () => {
-        const tocLinks = document.querySelectorAll('.toc--sidebar .toc__list a');
-        if (!tocLinks.length) return;
-
-        const headings = Array.from(tocLinks)
-          .map((link) => {
-            const id = link.getAttribute('href')?.slice(1);
-            return id ? document.getElementById(id) : null;
-          })
-          .filter(Boolean);
-
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                tocLinks.forEach((l) => l.classList.remove('toc--active'));
-                const active = document.querySelector(
-                  '.toc--sidebar a[href="#' + entry.target.id + '"]'
-                );
-                if (active) active.classList.add('toc--active');
-              }
-            });
-          },
-          { rootMargin: '-80px 0px -80% 0px' }
-        );
-
-        headings.forEach((h) => observer.observe(h));
-      });
-    </script>
   </BaseLayout>
 )}
+
+<!-- Active TOC highlighting (scroll-spy) — works on both module and lesson pages -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tocLinks = document.querySelectorAll('.toc--sidebar .toc__list a');
+    if (!tocLinks.length) return;
+
+    const headings = Array.from(tocLinks)
+      .map((link) => {
+        const id = link.getAttribute('href')?.slice(1);
+        return id ? document.getElementById(id) : null;
+      })
+      .filter(Boolean);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            tocLinks.forEach((l) => l.classList.remove('toc--active'));
+            const active = document.querySelector(
+              '.toc--sidebar a[href="#' + entry.target.id + '"]'
+            );
+            if (active) active.classList.add('toc--active');
+          }
+        });
+      },
+      { rootMargin: '-80px 0px -80% 0px' }
+    );
+
+    headings.forEach((h) => observer.observe(h));
+  });
+</script>
 
 <style>
   .lesson-header {
